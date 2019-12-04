@@ -145,6 +145,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-HTML-CSS知识点（CSS部分）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/">HTML+CSS知识点（CSS部分）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-04T02:46:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h1><h3 id="CSS样式书写方式"><a href="#CSS样式书写方式" class="headerlink" title="CSS样式书写方式"></a>CSS样式书写方式</h3><p>嵌入样式&lt; style &gt;&lt; /style &gt;里面<br>内联样式（行内式）写在style：” “里面<br>外联样式通过&lt; link rel=”stylesheet” href=”” &gt;引入<br>###样式  </p>
+<h3 id="width-宽"><a href="#width-宽" class="headerlink" title="width:宽"></a>width:宽</h3><h3 id="height-高"><a href="#height-高" class="headerlink" title="height:高"></a>height:高</h3><h3 id="padding-内边距-看情况可以参考margin"><a href="#padding-内边距-看情况可以参考margin" class="headerlink" title="padding:内边距(看情况可以参考margin)"></a>padding:内边距(看情况可以参考margin)</h3><h3 id="margin-外边距"><a href="#margin-外边距" class="headerlink" title="margin:外边距"></a>margin:外边距</h3><p>margin:10px;四个方向都是10px;<br>margin:10px 20px;上下10px 左右20px<br>margin:10px 20px 30px; 上10px 左右20px 下30px<br>margin:10px 20px 30px 40px 四个值上右下左<br>也可以单独书写某一个方向的值：margin-top: ;margin-left: ;margin-right: ;margin-bottom: ;<br>特殊情况盒子水平居中margin：100px  auto;盒子一定要有宽度。  </p>
+<h3 id="border-边框"><a href="#border-边框" class="headerlink" title="border:边框"></a>border:边框</h3><p>border，三个值 线粗细 线样式 线颜色.<br>3要素，4条边。<br>3要素：border-width、border-style(solid dashed dotted)、border-color；<br>4条边：border-top、border-right、border-bottom、border-left。  </p>
+<h3 id="Opacity：文字和背景都变"><a href="#Opacity：文字和背景都变" class="headerlink" title="Opacity：文字和背景都变"></a>Opacity：文字和背景都变</h3><p>###Background:背景<br>background: rgba(0, 0, 0, 1.0)背景变透明<br>包含四个值<br>1    background-color背景颜色<br>2    background-image背景图片<br>3    background-repeat是否平铺<br>4    background-position图片位置<br>5    background-size背景图片大小  </p>
+<p>line-height:行高。单行文字在盒子垂直居中<br>Text-align:center文字水平居中  </p>
+<h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><p>Font-size:字体大小；<br>Font-weight:bold加粗<br>Font-weight:normal正常<br>Font-style:italic;文字倾斜<br>Font-style:normal正常<br>Text-decoration:none不加下划线;<br>Text-decoration：underline下划线<br>Font-family:设置字体；<br>Color：文字颜色  </p>
+<h3 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h3><p>Display:none;隐藏<br>Display:block;转化成块级元素也可以是显示的意思<br>Display:inline;转化成行内元素<br>Display:inline-block转化成行内块<br>Cursor:pointer;小手；  </p>
+<h3 id="overflow-hiddden"><a href="#overflow-hiddden" class="headerlink" title="overflow:hiddden"></a>overflow:hiddden</h3><p>1、溢出隐藏（百度图片展示）<br>2、清除浮动影响（子级元素浮动之后，父级检测不到子级元素的高度，加此属性可以解决浮动影响）<br>3、解决外边距塌陷（子级元素接了上外边距之后父级跟着下来）<br>4、滚动条<br>Overflow-X:auto（hidden）出现滚动条或者溢出隐藏<br>Overflow-Y:auto（hidden）<br>盒子投影  </p>
+<h3 id="shadow"><a href="#shadow" class="headerlink" title="shadow"></a>shadow</h3><p>Box-shadow:水平方向光照 垂直方向的光照 羽化程度 颜色；<br>文本投影<br>Text-shadow: 水平方向光照 垂直方向的光照 羽化程度 颜色  </p>
+<h3 id="三大动画模块"><a href="#三大动画模块" class="headerlink" title="三大动画模块"></a>三大动画模块</h3><p>转化模块：<br>关键属性：Transform:<br>属性值：<br>Translate(0px,0px)<br>rotate(30deg)旋转<br>scale()缩放<br>值与值之间用空格隔开<br>也可以书写XYZ一个方向（具体参考音乐盒的制作）<br>Transform-origin:center center;旋转中心点。  </p>
+<h3 id="过渡模块"><a href="#过渡模块" class="headerlink" title="过渡模块"></a>过渡模块</h3><p>关键属性：<br>Transition：all 时间;<br>过渡模块书写步骤：（不是只有一种写法，可以通过增加删除类来控制，具体参考千寻案例）<br>1、    书写默认样式<br>2、    触发之后的样式：hover<br>3、    回到默认样式书写transition：all 时间（all也可以单独改成某一个属性:比如：width）  </p>
+<h3 id="动画模块："><a href="#动画模块：" class="headerlink" title="动画模块："></a>动画模块：</h3><p>关键属性：animation：name 时间 linear（平缓） infinite（循环）<br>使用步骤：  </p>
+<ol>
+<li>定义动画：@keyframes name {<br>a)    每一帧的状态<br>b)    每一帧都是一个样式条<br>}</li>
+<li>使用动画：animation：name 时间 linear（平缓） infinite（循环）  <h3 id="3D效果"><a href="#3D效果" class="headerlink" title="3D效果"></a>3D效果</h3>transform-style:preserve-3d可以让其内部的元素以该元素作为参照物进入三维坐标<br>Border-radius:5px;<br>出现圆角（可以四个不同的值：左上 右上 右下 左下）<br>Border-radius:50%;变成圆形<br>所有css3的属性前面都要加私有前缀：-moz-,-ms-,-o-,-webkit<br>也就是都要写五遍  <h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3>Float:left;左浮动：脱离标准流<br>Float:right;右浮动：脱离标准流<br>浮动之后的元素可以给宽高<br>浮动之后同级元素也要浮动<br>###相对定位<br>就是微调元素位置的。让元素相对自己原来的位置，进行位置调整。<br>相对定位不脱标，真实位置是在老家，只不过影子出去了，可以到处飘。<br>相对定位有坑，所以一般不用于做“压盖”效果。页面中，效果极小。就两个作用：<br>1） 微调元素<br>2） 做绝对定位的参考，子绝父相<br>一个绝对定位的元素，如果父辈元素中出现了也定位了的元素，那么将以父辈这个元素，为参考点。<br>要听最近的已经定位的祖先元素的，不一定是父亲，可能是爷爷：<br>不一定是相对定位，任何定位，都可以作为参考点<br>定位之后（固定或绝对）盒子居中<br>当做公式记忆下来。就是<br>left:50%; margin-left:负的宽度的一半。<br>top:50%; margin-top:负的高度的一半。<br>###固定定位<br>fixed,就是相对浏览器窗口定位。页面如何滚动，这个盒子显示的位置不变。<br>固定定位坐标！<br>###z-index<br>表示谁压着谁。数值大的压盖住数值小的。<br>● 只有定位了的元素，才能有z-index值。也就是说，不管相对定位、绝对定位、固定定位，都可以使用z-index值。而浮动的东西不能用。<br>● z-index值没有单位，就是一个正整数。默认的z-index值是0。<br>● 如果大家都没有z-index值，或者z-index值一样，那么谁写在HTML后面，谁在上面能压住别人。定位了的元素，永远能够压住没有定位的元素。  <h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3>标签(直接书写标签名字)<br>P{<br>}<br>Id（命名：id=””，选择的时候通过#ID名字，id具有唯一性，类似我们的身份证号码）  </li>
+</ol>
+<p>“#ID”名字{<br>}<br>类名（命名：class=””，选择的时候通过.类名字，类名可以重复，类似我们的名字）<br>.类名{<br>}<br>Div p 空格 后代<br>Div&gt;p子代<br>H3.special 交集选择器<br>H3,h1并集选择器<br>“*”通配符,选择所有标签<br>###继承性。<br>有一些属性给祖先元素，所有的后代元素都集成上了。<br>哪些属性能继承：color、font-、text-、line-<br>层叠性。<br>层叠性是一种能力，就是处理冲突的能力。当不同选择器，对一个标签的同一个样式，有不同的值，听谁的？这就是冲突。css有着严格的处理冲突的机制：<br>■ 选择上了，数权重，(id的数量，类的数量，标签的数量)。如果权重一样，谁写在后面听谁的。<br>■ 没有选择上，通过继承影响的，就近原则，谁描述的近听谁的。如果描述的一样近，比如选择器权重，如果权重再一样重，谁写在后面听谁的。  </p>
+<h3 id="important标记"><a href="#important标记" class="headerlink" title="!important标记"></a>!important标记</h3><p>!important提升的是一个属性，而不是一个选择器    </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-HTML-CSS知识点（HTML部分）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
