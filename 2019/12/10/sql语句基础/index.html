@@ -11,14 +11,14 @@
   <meta name="description" content="sql语句基础select&amp;ensp;列名from&amp;ensp;表名where&amp;ensp;限制dual:虚表，不管什么命令，强制执行date&#x3D;’1-1月（可以用英文：JAN）-99’–日期为：99年1月1日算数运算符+&amp;ensp;-&amp;ensp;&amp;ensp;&#x2F;与null运算仍为null*连接运算符**||比较运算符&amp;ensp;&amp;gt;&amp;ensp;&amp;lt;&amp;ensp;&#x3D;&amp;ensp;&amp;lt;&amp;gt;特殊比">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql语句基础">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;10&#x2F;1&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;10&#x2F;sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80&#x2F;index.html">
 <meta property="og:site_name" content="sitongtt.top">
 <meta property="og:description" content="sql语句基础select&amp;ensp;列名from&amp;ensp;表名where&amp;ensp;限制dual:虚表，不管什么命令，强制执行date&#x3D;’1-1月（可以用英文：JAN）-99’–日期为：99年1月1日算数运算符+&amp;ensp;-&amp;ensp;&amp;ensp;&#x2F;与null运算仍为null*连接运算符**||比较运算符&amp;ensp;&amp;gt;&amp;ensp;&amp;lt;&amp;ensp;&#x3D;&amp;ensp;&amp;lt;&amp;gt;特殊比">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;10&#x2F;1&#x2F;date%E8%BD%AC%E6%8D%A2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;10&#x2F;sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80&#x2F;date%E8%BD%AC%E6%8D%A2.png">
 <meta property="og:updated_time" content="2019-12-15T15:14:47.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;10&#x2F;1&#x2F;date%E8%BD%AC%E6%8D%A2.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;10&#x2F;sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80&#x2F;date%E8%BD%AC%E6%8D%A2.png">
   
     <link rel="alternative" href="/atom.xml" title="sitongtt.top" type="application/atom+xml">
   
@@ -148,7 +148,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sql语句基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -160,7 +160,7 @@
   
 
         
-        <a href="/2019/12/10/1/" class="archive-article-date">
+        <a href="/2019/12/10/sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/" class="archive-article-date">
   	<time datetime="2019-12-10T01:15:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-10</time>
 </a>
         
@@ -172,7 +172,7 @@
 <h4 id="单行函数"><a href="#单行函数" class="headerlink" title="单行函数"></a>单行函数</h4><p><strong>字符</strong><br>大小写转换<br>lower():变小写<br>upper():变大写<br>initcap():首字母大写<br>concat():<strong>两个（只能）</strong>参数之间用逗号连接，用于连接字符<br>substr(a,n1,n2):返回第一个参数中，从n1位置开始，长度为n2的子串。（截取）<br>-如果n2省略，取第n1位开始的所有字符<br>-如果n1为负值，表示从第一个参数的后面第abs(n1)位开始，向右取长度为n2的子串，即从右边开始数（倒数第n1个），开始数n2位。<br>length(column):字符串长度<br>instr(s1,s2,n1,n2):返回s1中，子串s2（s2是s1内的字符）从n1开始，第n2次出现的位置。n1,n2默认值为1。<br>lpad(s1,n1,s2):返回s1：被s2从左面填充到n1长度后的字符串。（左填充）<br>rpad(s1,n1,s2):与lpad用法类似，不同的是从右边填充。<br>trim(‘a’ from ‘b’):去掉b中含有’a’的头尾。（右填充）<br>replace(s1,s2,s3):把s1中的s2用s3替换。  </p>
 <h4 id="数值函数"><a href="#数值函数" class="headerlink" title="数值函数"></a>数值函数</h4><p>round(a,b):将a四舍五入都小数点后b位，b为负数时是小数点左边。<br>trunc(a,b):将a的小数点后b位的数全部砍掉。<br>mod(a,b):a/b取余（a%b）。  </p>
 <h4 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h4><p>a+-b：a+-b天。<br>sysdate:系统时间。<br>months_between(a,b):返回两个日期之间的自然月数。<br>add_months(a,b):返回指定日期加上相应的月数后的日期。<br>next_day（a,b）:返回某一个日期的下一个指定日期（西方星期天为第1天，下一个的第b天）。<br>last_day(a)：当月最后一天的日期。<br>rounnd(a):将date按照fmt指定的格式进行四舍五入，<br>fmt为可选项，如果没有指定fmt，则默认为DD，将date四舍五入为 近的天。 格式码：世纪CC,年YY，月MM,日DD，小时HH24，分MI，秒SS –TRUNC( date[,‘fmt’] )将date按照fmt指定的格式进行截断，fmt为 可选项，如果没有指定fmt，则默认为‘DD’，将date截取为近的 天。<br>extract():返回日期中年份、月份、日。  </p>
-<h4 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h4><p>to_char:转换成字符（用于日期）。<br>to_number:转换成数值（用于数值）。<br>to_date:转换成日期。（用于字符）<br><img src="/2019/12/10/1/date%E8%BD%AC%E6%8D%A2.png" alt="date转换"></p>
+<h4 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h4><p>to_char:转换成字符（用于日期）。<br>to_number:转换成数值（用于数值）。<br>to_date:转换成日期。（用于字符）<br><img src="/2019/12/10/sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/date%E8%BD%AC%E6%8D%A2.png" alt="date转换"></p>
 <h4 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h4><p>nvl(a,b):将a中的空（null）换成b。<br>nvl2(a,b,c):将a中，不为空换成b，空换成c。<br>nullif(a,b):如果ab相同，返回null，不同则返回第一个表达式。<br>coalesce(a,…,n):返回第一个不为空的参数。  </p>
 <p>case:(case xxx<br>&ensp;&ensp;&ensp;&ensp;&ensp;when a then aa<br>&ensp;&ensp;&ensp;&ensp;&ensp;when b then bb<br>&ensp;&ensp;&ensp;&ensp;&ensp;else c end)  </p>
 <p>decode(x,a,aa,b,bb,c,cc):效果同上。  </p>
@@ -234,7 +234,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/10/1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/10/sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
