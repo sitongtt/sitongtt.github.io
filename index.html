@@ -145,6 +145,111 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-子查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/29/%E5%AD%90%E6%9F%A5%E8%AF%A2/">子查询</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/29/%E5%AD%90%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2019-12-29T12:15:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><pre><code>SELECT select__list  
+FROM table  
+WHERE expr operator  
+(SELECT select_list  
+FROM table);  </code></pre><p>**特点：  </p>
+<ol>
+<li>子查询可以独立执行  </li>
+<li>子查询先于主查询执行，并于主查询互不影响  </li>
+<li>使用时要用括号括起来  </li>
+<li>可用于where、having、from子句中**  </li>
+</ol>
+<h4 id="单行子查询所用到的运算符"><a href="#单行子查询所用到的运算符" class="headerlink" title="单行子查询所用到的运算符"></a>单行子查询所用到的运算符</h4><p>单行运算符：之前学到的运算符  </p>
+<h4 id="多行子查询"><a href="#多行子查询" class="headerlink" title="多行子查询"></a>多行子查询</h4><p>概念：子查询返回多行记录。  </p>
+<h4 id="多行子查询所用到的运算符"><a href="#多行子查询所用到的运算符" class="headerlink" title="多行子查询所用到的运算符"></a>多行子查询所用到的运算符</h4><p>in:在集合中的任意一个(和=一起使用)。<br>例如：<br>查询是经理的员工姓名，工资。  </p>
+<pre><code>select ename,sal
+from emp
+where empno in (select mgr from emp);</code></pre><p>any:在集合中的任意一个（和 &gt; &lt; 一起使用，&gt;any:大于集合最小值；&lt;any小于集合最大值）。<br>例如：<br>查询部门编号不为10，且工资比10部门任意一名员工工资 高的员工编号，姓名，职位，工资。  </p>
+<pre><code>select empno,ename,job,sal
+from emp
+where sal&gt;any(select sal from emp where deptno=10)
+and deptno&lt;&gt;10;</code></pre><p>all:在集合中的每一个（ &gt; &lt; 中集合中每一个数值，=无意义）<br>例如：<br>查询部门编号不为10，且工资比10部门所有员工工资高的 员工编号，姓名，职位，工资。  </p>
+<pre><code>select empno,ename,job,sal
+from emp
+where sal&gt;all (select sal from emp where deptno=10)
+and deptno&lt;&gt;10;</code></pre><h4 id="空值问题"><a href="#空值问题" class="headerlink" title="空值问题"></a>空值问题</h4><pre><code>select ename  
+from emp  
+where empno not in (select mgr from emp)</code></pre><p>本来应该出现几条记录，结果却一条都没显示。原因是子查询中有一条含有空值，和空比较的结果都是空值，所以此时不能用NOT IN运算符。  </p>
+<h4 id="rownum"><a href="#rownum" class="headerlink" title="rownum"></a>rownum</h4><p>–ROWNUM是一个伪列，伪列是使用上类似于表中的列,而实际并没有存储在表中的特殊列;<br>–-ROWNUM的功能是在每次查询时，返回结果集的顺序号， 这个顺序号是在记录输出时才一步一步产生的，第一行显示为1，第二行为2，以此类推。<br><strong>rownum运算只能使用&lt;=或&lt;(当然当&lt;=或&lt;存在时也可使用&gt;和&gt;=)。</strong>  </p>
+<h4 id="Top-n查询"><a href="#Top-n查询" class="headerlink" title="Top-n查询"></a>Top-n查询</h4><p>概念：Top-N查询主要是实现表中按照某个列排序，输出最大或 最小的N条记录功能。  </p>
+<pre><code>select 【列名】，rownum
+from (select[列名]
+        from 表名
+        order by top-n操作的列）
+where rownum&lt;=n;</code></pre><h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><pre><code>SELECT b.*  
+FROM (SELECT ROWNUM rn,[列名1,列名2,....列名n]  
+        FROM 表名1,[表名2,...表名n]  
+        WHERE [条件表达式 AND ] ROWNUM &lt;=目标页数*每页记录数) b  
+WHERE rn &gt; (目标页数-1)*每页记录数  </code></pre><p>或  </p>
+<pre><code>SELECT b.*  
+FROM (SELECT ROWNUM rn,[列名1,列名2,....列名n]  
+        FROM 表名1,[表名2,...表名n]  
+        [WHERE 条件表达式]) b  
+WHERE rn &lt;=目标页数*每页记录数 and rn &gt; (目标页数-1)*每页记录数  </code></pre><p>思考：哪种方式效率高？<br><strong>答案是：第一种</strong><br>因为根据sql语句执行顺序，在子查询中，第一种方法执行from语句中时已经筛选了表的哪一页的记录，查的记录不用像第二种那么多。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/29/%E5%AD%90%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-分组函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
