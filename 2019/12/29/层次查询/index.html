@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/12 | sitongtt.top</title>
+  <title>层次查询 | sitongtt.top</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sitongtt.top">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;12&#x2F;page&#x2F;2&#x2F;index.html">
+  <meta name="description" content="层次查询SELECT [LEVEL], column, expr...   FROM   table   [WHERE condition(s)]   [START WITH condition(s)]   [CONNECT BY PRIOR condition(s)] ;   CONNECT BY PRIOR column1 &#x3D; column2;   –LEVEL：节点的层次，伪列，由查询的起点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="层次查询">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;29&#x2F;%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2&#x2F;index.html">
 <meta property="og:site_name" content="sitongtt.top">
+<meta property="og:description" content="层次查询SELECT [LEVEL], column, expr...   FROM   table   [WHERE condition(s)]   [START WITH condition(s)]   [CONNECT BY PRIOR condition(s)] ;   CONNECT BY PRIOR column1 &#x3D; column2;   –LEVEL：节点的层次，伪列，由查询的起点">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;29&#x2F;%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;29&#x2F;%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2&#x2F;2.png">
+<meta property="og:updated_time" content="2019-12-29T15:36:55.407Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;29&#x2F;%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2&#x2F;1.png">
   
     <link rel="alternative" href="/atom.xml" title="sitongtt.top" type="application/atom+xml">
   
@@ -143,79 +149,147 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-层次查询" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-04T02:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/">HTML+CSS知识点（HTML部分）</a>
+    <h1 class="article-title" itemprop="name">
+      层次查询
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/hello-world/" class="archive-article-date">
-  	<time datetime="2019-12-04T01:11:12.776Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
+        
+        <a href="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2019-12-29T15:34:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/hello-world/">Hello World</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="层次查询"><a href="#层次查询" class="headerlink" title="层次查询"></a>层次查询</h1><pre><code>SELECT [LEVEL], column, expr...  
+FROM   table  
+[WHERE condition(s)]  
+[START WITH condition(s)]  
+[CONNECT BY PRIOR condition(s)] ;  
+CONNECT BY PRIOR column1 = column2; 
 
-        <div class="article-info info-on-right">
-          
-          
+–LEVEL：节点的层次，伪列，由查询的起点开始算起为1，依次类推。 
+–FROM table：指定表、视图或包含列的快照，你只能从单独的一个表中选择。
+–WHERE：限制返回的行。
+–Condition：是一个比较式。
+–START WITH：指定层次的根行(起点)。这个子句对于一个正确的分级查询 是必须的。
+–CONNECT BY PRIOR：指定存在父与子行的关系列。对于分级查询该子句是 必须的。</code></pre><p><strong>column1为父节点，column2为子节点 自顶向下</strong><br><strong>column1为子节点，column2为父节点 自底向上</strong>  </p>
+<h4 id="修剪节点、分支"><a href="#修剪节点、分支" class="headerlink" title="修剪节点、分支"></a>修剪节点、分支</h4><p>通过where去除子句某个节点<br><img src="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/1.png" alt><br>通过connect by去掉一个分支<br><img src="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/2.png" alt></p>
 
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/12/29/%E9%AB%98%E7%BA%A7%E5%AD%90%E6%9F%A5%E8%AF%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">高级子查询</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/12/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2019/12/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -239,8 +313,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
