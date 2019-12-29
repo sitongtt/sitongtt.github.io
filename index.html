@@ -145,6 +145,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-集合运算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/">集合运算</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/" class="archive-article-date">
+  	<time datetime="2019-12-29T12:34:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h1><p>概念：是用来把两个或多个查询的结果集做并、交、差的 集合运算，包含集合运算的查询称为复合查询。<br><img src="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97.png" alt="集合运算"></p>
+<p>注意：  </p>
+<ol>
+<li>多个被联合的查询语句所选择的列数和列的数据类型必须一致， 列的名字不必相同。</li>
+<li>每个查询不能包含自己的Order by子句，只能在联合之后使用 Order by子句。  <h1 id="联合运算"><a href="#联合运算" class="headerlink" title="联合运算"></a>联合运算</h1>概念：返回由任一查询结果集包含的行，并且去除重复行,并且按照查询结 果集的第一列升序排序。  <h4 id="关键字union"><a href="#关键字union" class="headerlink" title="关键字union"></a>关键字union</h4> select a<br> from x1<br> union（union all/intersect/minus）<br> select<br> from x2<br> (order by a )  </li>
+</ol>
+<p><strong>只根据第一个select选择</strong>  </p>
+<h4 id="union-all-完全联合运算，不去除重复行"><a href="#union-all-完全联合运算，不去除重复行" class="headerlink" title="union all(完全联合运算，不去除重复行)"></a>union all(完全联合运算，不去除重复行)</h4><h4 id="相交运算"><a href="#相交运算" class="headerlink" title="相交运算"></a>相交运算</h4><p>intersect<br>返回第一个集合和第二个集合中共同存在的记录。  </p>
+<h4 id="相减运算"><a href="#相减运算" class="headerlink" title="相减运算"></a>相减运算</h4><p>minus<br>概念：返回第一个集合中存在，第二个中不存在的记录。  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-子查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
