@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | sitongtt.top</title>
+  <title>数据操作与事务控制 | sitongtt.top</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sitongtt.top">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;page&#x2F;2&#x2F;index.html">
+  <meta name="description" content="数据操作与事务控制DML:insert 新增数据update 修改数据delete 删除数据   insert插入数据INSERT INTO table [(column [, column...])] VALUES(value [, value...]); 插入date类型数据时先把字符串转换为date类型（to_date）采用这种插入方式时只能追加一条记录   插入多行INSERT INTO表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据操作与事务控制">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;29&#x2F;%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6&#x2F;index.html">
 <meta property="og:site_name" content="sitongtt.top">
+<meta property="og:description" content="数据操作与事务控制DML:insert 新增数据update 修改数据delete 删除数据   insert插入数据INSERT INTO table [(column [, column...])] VALUES(value [, value...]); 插入date类型数据时先把字符串转换为date类型（to_date）采用这种插入方式时只能追加一条记录   插入多行INSERT INTO表">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-29T16:00:14.875Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="sitongtt.top" type="application/atom+xml">
@@ -143,106 +146,156 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-数据操作与事务控制" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据操作与事务控制
+    </h1>
+  
+
+        
+        <a href="/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2019-12-29T15:58:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据操作与事务控制"><a href="#数据操作与事务控制" class="headerlink" title="数据操作与事务控制"></a>数据操作与事务控制</h1><p>DML:<br>insert 新增数据<br>update 修改数据<br>delete 删除数据  </p>
+<h4 id="insert插入数据"><a href="#insert插入数据" class="headerlink" title="insert插入数据"></a>insert插入数据</h4><pre><code>INSERT INTO table [(column [, column...])] VALUES(value [, value...]); </code></pre><p><strong>插入date类型数据时先把字符串转换为date类型（to_date）采用这种插入方式时只能追加一条记录</strong>  </p>
+<h5 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a>插入多行</h5><pre><code>INSERT INTO表名[(列名1[,列名2，…，列名n])] 子查询；
+--不用写values
+--INSERT子句和数据类型必须和子查询中列的数量和类型相匹 配中列的数量  </code></pre><h4 id="update修改数据"><a href="#update修改数据" class="headerlink" title="update修改数据"></a>update修改数据</h4><pre><code>update 表
+set column（列）=value[,column=value]
+where 条件
+--WHERE子句用来限定修改哪些行。
+--SET子句用来限定修改哪些列。</code></pre><h6 id="修改多列"><a href="#修改多列" class="headerlink" title="修改多列"></a>修改多列</h6><p>一次修改多列  </p>
+<pre><code>SQL&gt; UPDATE emp
+2  SET    deptno= 20,sal=sal+100
+3  WHERE  deptno= 10;</code></pre><p>嵌入子查询修改  </p>
+<pre><code>SQL&gt; UPDATE emp
+2  SET    deptno= 20,sal=sal+(select avg(sal）from emp)
+3  WHERE  deptno= 10;</code></pre><h4 id="delete删除数据"><a href="#delete删除数据" class="headerlink" title="delete删除数据"></a>delete删除数据</h4><pre><code>DELETE [FROM]table
+[WHEREcondition];</code></pre><p>delete 表:只会删除表中的数据，不会删除表头。  </p>
+<p><strong>当你不再需要该表时， 用 drop；当你仍要保留该表，但要删除所有记录时， 用 truncate；当你要删除部分记录时, 用 delete.</strong> </p>
+<p>truncate语法<br>[ { database_name.[ schema_name ]. | schema_name . } ]<br> table_name<br>[ ; ]  </p>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p>事务组成：在数据库中，事务由一组相关的DML或SELECT语句，加上一个TPL语句（COMMIT、ROLLBACK）或一个DDL语句(CREATE、 ALTER、DROP、TRUNCATE等)或一个DCL（GRANT、REVOKE）  </p>
+<p>事务特性：ACID①原子性②一致性③隔离性④持久性 </p>
+<p>事务结束：COMMIT（提交）或ROLLBACK(回滚)  </p>
+<p>隐式提交：①执行一个DDL(CREATE、ALTER、DROP、TRUNCATE、RENAME）语句；②执行一个DCL(GRANT、REVOKE)语句；③从SQL*Plus正常退出（即使用EXIT或QUIT命令退出）；  </p>
+<p>隐术回滚：①从SQL*Plus中强行退出②客户端连接到服务器端异常中断③系统崩溃  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-04T02:46:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/">HTML+CSS知识点（CSS部分）</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-04T02:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">层次查询</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/">HTML+CSS知识点（HTML部分）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/hello-world/" class="archive-article-date">
-  	<time datetime="2019-12-04T01:11:12.776Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -266,8 +319,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
