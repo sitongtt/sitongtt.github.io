@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | sitongtt.top</title>
+  <title>视图 | sitongtt.top</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sitongtt.top">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;page&#x2F;2&#x2F;index.html">
+  <meta name="description" content="概念：视图是逻辑上来自一个或多个表的数据集合。为什么使用视图：    限制其它用户对数据库表的访问,因为视图可以 有选择性的显示数据库表的一部分；    容易实现复杂的查询；   对于相同的数据可以产生不同的视图； 简单视图和复杂视图的的区别 创建视图 CREATE [OR REPLACE] [FORCE|NOFORCE] VIEW viewname [(column[,column]…)] AS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="视图">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;%E8%A7%86%E5%9B%BE&#x2F;index.html">
 <meta property="og:site_name" content="sitongtt.top">
+<meta property="og:description" content="概念：视图是逻辑上来自一个或多个表的数据集合。为什么使用视图：    限制其它用户对数据库表的访问,因为视图可以 有选择性的显示数据库表的一部分；    容易实现复杂的查询；   对于相同的数据可以产生不同的视图； 简单视图和复杂视图的的区别 创建视图 CREATE [OR REPLACE] [FORCE|NOFORCE] VIEW viewname [(column[,column]…)] AS">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;%E8%A7%86%E5%9B%BE&#x2F;%E5%A4%8D%E6%9D%82%E8%A7%86%E5%9B%BE.png">
+<meta property="og:updated_time" content="2020-01-04T07:12:28.380Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;%E8%A7%86%E5%9B%BE&#x2F;%E5%A4%8D%E6%9D%82%E8%A7%86%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="sitongtt.top" type="application/atom+xml">
   
@@ -143,187 +148,162 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-视图" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      视图
+    </h1>
+  
+
+        
+        <a href="/2020/01/04/%E8%A7%86%E5%9B%BE/" class="archive-article-date">
+  	<time datetime="2020-01-04T07:01:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>概念：视图是逻辑上来自一个或多个表的数据集合。<br>为什么使用视图：  </p>
+<ol>
+<li><p>限制其它用户对数据库表的访问,因为视图可以 有选择性的显示数据库表的一部分；  </p>
+</li>
+<li><p>容易实现复杂的查询； </p>
+</li>
+<li><p>对于相同的数据可以产生不同的视图；</p>
+<h4 id="简单视图和复杂视图的的区别"><a href="#简单视图和复杂视图的的区别" class="headerlink" title="简单视图和复杂视图的的区别"></a>简单视图和复杂视图的的区别</h4><p><img src="/2020/01/04/%E8%A7%86%E5%9B%BE/%E5%A4%8D%E6%9D%82%E8%A7%86%E5%9B%BE.png" alt></p>
+<h4 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h4><p> CREATE [OR REPLACE] [FORCE|NOFORCE]<br> VIEW viewname<br> [(column[,column]…)]<br> AS subquery<br> [WITH CHECK OPTION [CONSTRAINT constraintname]]<br> [WITH READ ONLY]</p>
+</li>
+</ol>
+<p>注：<br>·OR REPLACE：如果所创建的视图已经存在，该选项表示修改原视图的定义；<br>·FORCE：不管视图所基于的基表是否存在，都会创建该视图；<br>·NOFORCE：只有视图所基于的基表都存在，才会创建该视图；<br>·viewname：视图的名称；<br>·column：列名，列名的数量必须和视图所对应查询语句的列数量相等；<br>·subquery：一条完整的SELECT语句；<br>·WITH CHECK OPTION：一个约束条件，通过视图所插入或修改的数据行必须满足视图所定义的查询；constraintname：约束名；<br>·WITH READ ONLY：确保在该视图上不能进行任何DML操作；</p>
+<p>在SQL PLUS中，可以使用DESC命令显示视图的结构。  </p>
+<pre><code>DESC 视图名；</code></pre><h4 id="修改视图"><a href="#修改视图" class="headerlink" title="修改视图"></a>修改视图</h4><p>关键词：CREATE OR REPLACE VIEW（创建或替换视图）<br>注意：CREATE VIEW子句中别名的顺序必须和内部查询中的列的顺序一一对应。  </p>
+<h4 id="DML操作"><a href="#DML操作" class="headerlink" title="DML操作"></a>DML操作</h4><p>可以通过视图进行DML操作，<strong>但是有很多前提：</strong>  </p>
+<ol>
+<li><p>视图中不出现GROUP函数、GROUP BY子句，DISTINCT关键字</p>
+</li>
+<li><p>使用表达式定义的列</p>
+</li>
+<li><p>ROWNUM伪列</p>
+</li>
+<li><p>单表</p>
+</li>
+<li><p>基表中未在视图中选择的其它列定义为非空并且没有默认值；</p>
+<h4 id="拒绝DML操作"><a href="#拒绝DML操作" class="headerlink" title="拒绝DML操作"></a>拒绝DML操作</h4><p>在视图定义时使用WITH READ ONLY后，就不能对视图执行DML操作。</p>
+<h4 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h4><p>DROP VIEW viewname; </p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/10/sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2019-12-10T01:15:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/10/sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/">sql语句基础</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/04/%E8%A7%86%E5%9B%BE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/09/%E8%A7%A3%E9%94%81%E5%92%8C%E7%99%BB%E5%BD%95scott%E7%94%A8%E6%88%B7/" class="archive-article-date">
-  	<time datetime="2019-12-09T06:28:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/02/%E7%BA%A6%E6%9D%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">约束</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/09/%E8%A7%A3%E9%94%81%E5%92%8C%E7%99%BB%E5%BD%95scott%E7%94%A8%E6%88%B7/">解锁和登录scott用户</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/09/oracle%E7%9A%84%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-12-09T06:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/09/oracle%E7%9A%84%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95/">oracle的卸载方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-04T02:46:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/">HTML+CSS知识点（CSS部分）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-04T02:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/">HTML+CSS知识点（HTML部分）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/04/hello-world/" class="archive-article-date">
-  	<time datetime="2019-12-04T01:11:12.776Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -347,8 +327,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
