@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | sitongtt.top</title>
+  <title>序列、索引、同义词 | sitongtt.top</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sitongtt.top">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2020&#x2F;index.html">
+  <meta name="description" content="序列概念：序列是按照一定规则能自动增加&#x2F;减少数字的一种数据库对象。用法：通常用序列自动生成主键值。语法：   CREATE SEQUENCE [schema.]sequencename [INCREMENT BY n] [START WITH n] [MAXVALUE n | NOMAXVALUE] [MINVALUE n | NOMINVALUE] [CYCLE | NOCYCLE] [CACH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="序列、索引、同义词">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D&#x2F;index.html">
 <meta property="og:site_name" content="sitongtt.top">
+<meta property="og:description" content="序列概念：序列是按照一定规则能自动增加&#x2F;减少数字的一种数据库对象。用法：通常用序列自动生成主键值。语法：   CREATE SEQUENCE [schema.]sequencename [INCREMENT BY n] [START WITH n] [MAXVALUE n | NOMAXVALUE] [MINVALUE n | NOMINVALUE] [CYCLE | NOCYCLE] [CACH">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-04T09:02:42.285Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="sitongtt.top" type="application/atom+xml">
@@ -143,130 +146,203 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-序列、索引、同义词" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/04/%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2/" class="archive-article-date">
-  	<time datetime="2020-01-04T09:01:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2/">用户、权限和角色</a>
+    <h1 class="article-title" itemprop="name">
+      序列、索引、同义词
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/" class="archive-article-date">
+        
+        <a href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/" class="archive-article-date">
   	<time datetime="2020-01-04T09:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/">序列、索引、同义词</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h4><p>概念：序列是按照一定规则能自动增加/减少数字的一种数据库对象。<br>用法：通常用序列自动生成主键值。<br>语法：  </p>
+<pre><code>CREATE SEQUENCE [schema.]sequencename [INCREMENT BY n] [START WITH n] [MAXVALUE n | NOMAXVALUE] [MINVALUE n | NOMINVALUE] [CYCLE | NOCYCLE] [CACHE n | NOCACHE]; </code></pre><p>–sequencename:序列对象的名字  </p>
+<p>–INCREMENT BY n：序列连续两个值之间的间隔n，默认为1。  </p>
+<p>–START WITH n ：序列起始值n，该项省略，起始值为1  </p>
+<p>–MAXVALUE n ：序列最大值；NOMAXVALUE ：指定序列无最大值  </p>
+<p>–MINVALUE n：序列最小值；NOMINVALUE：指定序列无最小值  </p>
+<p>–CYCLE|NOCYCLE：表示序列在达到最大值或最小值之后是否继续产生序列值， NOCYLE表示不再产生，NOCYLE是默认选项。  </p>
+<p>–CACHE n|NOCACHE:表示序列值被服务器预先分配并存储在内存中，NOCACHE表示不预先分配并存储，CACHE 20是默认选项  </p>
+<h4 id="NEXTVAL和CURRVAL伪列"><a href="#NEXTVAL和CURRVAL伪列" class="headerlink" title="NEXTVAL和CURRVAL伪列"></a>NEXTVAL和CURRVAL伪列</h4><p>CURRVAL：表示序列返回的 当前值；<br>NEXTVAL：表示序列返回的下一个值；<br>注：<br>CURRVAL在被引用之前，必须先使用NEXTVAL来产生一个序列值；<br>可用语句序列名.CURRVAL或序列名.NEXTVAL来访问序列;  </p>
+<p>以下情况不能使用NEXTVAL和CURRVAL：  </p>
+<ol>
+<li><p>在视图的SELECT列表中  </p>
+</li>
+<li><p>包含DISTINCT关键字的SELECT语句中  </p>
+</li>
+<li><p>含有GROUP BY, HAVING, ORDER BY子句的SELECT语句中  </p>
+</li>
+<li><p>SELECT, DELETE, UPDATE 语句的子查询中  </p>
+</li>
+<li><p>含有DEFAULT表达式的CREATE TABLE、ALTER TABLE语句中  </p>
+<h4 id="序列的创建及使用"><a href="#序列的创建及使用" class="headerlink" title="序列的创建及使用"></a>序列的创建及使用</h4><p>例如：<br>创建序列student_seq：  </p>
+<p> CREATE SEQUENCE student_seq//创建序列名为student_seq<br> START WITH 10000 //从10000开始<br> INCREMENT BY 1;//每次增长1<br>使用序列student_seq生成student表中sid列插入值：  </p>
+<p> INSERT INTO student<br> VALUES (student_seq.NEXTVAL, ‘Scott’, ‘Computer Science’, 11);<br>查看student_seq序列当前值：  </p>
+<p> SELECT student_seq.CURRVAL FROM dual;</p>
+<h4 id="修改序列"><a href="#修改序列" class="headerlink" title="修改序列"></a>修改序列</h4><p>和创建序列一样，不过在前面加了关键词ALTER  </p>
+<p> ALTER SEQUENCE test_seq<br> INCREMENT BY 4    ——序列每次增加4<br> MAXVALUE 1000     ——序列最大值1000<br> NOCACHE；——不设定缓存</p>
+<h4 id="删除序列"><a href="#删除序列" class="headerlink" title="删除序列"></a>删除序列</h4><p> DROP SEQUENCE [schema.]sequencename；</p>
+<h4 id="ROWID"><a href="#ROWID" class="headerlink" title="ROWID"></a>ROWID</h4><p>功能：快速定位记录，使用ROWID检索及操作数据，效率最快。  </p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>概念：是对数据库表中一个或多个列的值进行排序的一种数据库对象。<br>功能：可以加速对表的查询速度；<br>单列索引：索引建立在表中的某一列上<br>复合索引:索引建立在表中某几列的组合上  </p>
+<h4 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h4><p> CREATE INDEX indexname<br> ON table (column[, column]…);</p>
+<h4 id="适合创建索引的情况"><a href="#适合创建索引的情况" class="headerlink" title="适合创建索引的情况"></a>适合创建索引的情况</h4></li>
+<li><p>表数据量很大  </p>
+</li>
+<li><p>要查询的结果集在2%-4%左右  </p>
+</li>
+<li><p>经常用来做WHERE条件中的列或者多表连接的列  </p>
+</li>
+<li><p>查询列的数据范围分布很广  </p>
+</li>
+<li><p>查询列中包含大量的NULL值,因为空值不包含在索引中  </p>
+<h4 id="不适合创建索引的情况"><a href="#不适合创建索引的情况" class="headerlink" title="不适合创建索引的情况"></a>不适合创建索引的情况</h4></li>
+<li><p>数据量很小的表  </p>
+</li>
+<li><p>在查询中不常用来作为查询条件的列  </p>
+</li>
+<li><p>频繁更新的表  </p>
+</li>
+<li><p>索引列作为表达式的一部分被使用时，比如常查询的条件是SALARY*12，此时在SALARY列上创建索引是没有效果的  </p>
+</li>
+<li><p>查询条件中有单行函数时，用不上索引  </p>
+<h4 id="索引缺点"><a href="#索引缺点" class="headerlink" title="索引缺点"></a>索引缺点</h4></li>
+<li><p>占用空间  </p>
+</li>
+<li><p>降低DML的操作速度；  </p>
+<h4 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h4><p> DROP INDEX index;</p>
+<h4 id="同义词"><a href="#同义词" class="headerlink" title="同义词"></a>同义词</h4><p>概念：是指向数据库对象（如：表、视图、序列、存储过程等）的数据库指针。  </p>
+<h4 id="同义词的创建"><a href="#同义词的创建" class="headerlink" title="同义词的创建"></a>同义词的创建</h4><p> CREATE [PUBLIC] SYNONYM 同义词<br> FOR  [schema.]对象名；</p>
+<h4 id="同义词的删除"><a href="#同义词的删除" class="headerlink" title="同义词的删除"></a>同义词的删除</h4><p> CREATE SYNONYM  s_emp<br> FOR  hr.employees;</p>
+</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/04/%E8%A7%86%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2020-01-04T07:01:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/01/04/%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          用户、权限和角色
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/04/%E8%A7%86%E5%9B%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">视图</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/%E8%A7%86%E5%9B%BE/">视图</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/02/%E7%BA%A6%E6%9D%9F/" class="archive-article-date">
-  	<time datetime="2020-01-02T12:12:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/02/%E7%BA%A6%E6%9D%9F/">约束</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -289,8 +365,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

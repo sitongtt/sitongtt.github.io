@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | sitongtt.top</title>
+  <title>用户、权限和角色 | sitongtt.top</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sitongtt.top">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2020&#x2F;index.html">
+  <meta name="description" content="用户、权限和角色用户：用户是数据库的使用者。用户一般是由DBA来创建和维护的，创建用户后，用户不可以执行任何Oracle操作（包括建立会话），只有赋予用户相关的权限，用户才能执行权限允许范围内的操作。   创建用户语法   CREATE USER user   IDENTIFIED BY password   [default tablespace 默认表空间名 temp tablespace临时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户、权限和角色">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2&#x2F;index.html">
 <meta property="og:site_name" content="sitongtt.top">
+<meta property="og:description" content="用户、权限和角色用户：用户是数据库的使用者。用户一般是由DBA来创建和维护的，创建用户后，用户不可以执行任何Oracle操作（包括建立会话），只有赋予用户相关的权限，用户才能执行权限允许范围内的操作。   创建用户语法   CREATE USER user   IDENTIFIED BY password   [default tablespace 默认表空间名 temp tablespace临时">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-04T09:02:36.803Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="sitongtt.top" type="application/atom+xml">
@@ -143,130 +146,161 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-用户、权限和角色" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      用户、权限和角色
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/04/%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2/" class="archive-article-date">
+
+        
+        <a href="/2020/01/04/%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2/" class="archive-article-date">
   	<time datetime="2020-01-04T09:01:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2/">用户、权限和角色</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="用户、权限和角色"><a href="#用户、权限和角色" class="headerlink" title="用户、权限和角色"></a>用户、权限和角色</h1><p>用户：用户是数据库的使用者。<br>用户一般是由DBA来创建和维护的，创建用户后，用户不可以执行任何Oracle操作（包括建立会话），只有赋予用户相关的权限，用户才能执行权限允许范围内的操作。  </p>
+<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><p><strong>语法</strong>  </p>
+<pre><code>CREATE USER user  
+IDENTIFIED BY password  
+[default tablespace 默认表空间名 temp tablespace临时表空间名 quota 配额大小 on 表空间名]  </code></pre><p>deafulttablespace:用户的默认表空间;<br>temporary tablespace: 用户的临时表空间;<br>quota  on :表示允许该用户在表空间中使用的空间大小, 可以设置多个不同的表空间;  </p>
+<p>执行该语句的用户需要有“创建用户”的权限，一般为系 统的DBA用户。  </p>
+<h4 id="系统权限"><a href="#系统权限" class="headerlink" title="系统权限"></a>系统权限</h4><p><strong>授予系统权限</strong><br>语法  </p>
+<pre><code>GRANT sys_priv_list TO user_list [WITH ADMIN OPTION]  </code></pre><p>sys_priv_list：系统特权列表，由逗号分隔;<br>user_list: 用户列表，由逗号分隔;<br>WITH ADMIN OPTION：允许权限的接受者再把此特权授予 其他用户。  </p>
+<p>CREATE SESSION 登录权限<br>CREATE TABLE 建表权限<br><strong>回收系统权限</strong><br>REVOKE sys_priv_listFROM user_list;  </p>
+<p>如果A授予权限给B，B又把该权限赋予给C，如果此时A把权 限从B处收回，那么B给予出去的权限是继续保留，即C继续 拥有该权限。</p>
+<h4 id="对象权限"><a href="#对象权限" class="headerlink" title="对象权限"></a>对象权限</h4><p>语法  </p>
+<pre><code>GRANT object_priv| [ALL PRIVILEGES ]|[(column)]  
+ON[schema.]object  
+TO{user|PUBLIC} [WITH GRANT OPTION];  </code></pre><p>object_priv：是将被授予的对象权限；<br>ALL PRIVILEGES：指定对象的所有权限；<br>column：在授予INSERT、REFERENCES或UPDATE权限时可以 指定列；<br>ON object：指定的对象名；<br>TO user：指定权限被授予谁；<br>TO PUBLIC：授予权限给所有用户；<br>WITH GRANT OPTION：允许被授予权限的用户再授予对象权 限给其它用户；<br>SCHEMA：指定用户名，如果省略，默认为当前用户；  </p>
+<p><strong>回收对象权限</strong><br>REVOKE 对象权限种类ON 对象名FROM user;  </p>
+<h4 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h4><p>角色：角色是权限的集合。  （方便权限再赋予）<br><strong>创建角色</strong>  </p>
+<pre><code>CREATE ROLE role;  </code></pre><p><strong>为角色授权</strong>  </p>
+<pre><code>GRANT 权限列表TO 角色列表;  </code></pre><p><strong>通过角色为用户授权</strong>  </p>
+<pre><code>GRANT 角色列表To 用户列表;  </code></pre><p><strong>通过角色从用户收回权限</strong>  </p>
+<pre><code>REVOKE 角色FROM 用户;  </code></pre><p><strong>从角色收回权限</strong>  </p>
+<pre><code>REVOKE 权限FROM 角色;  </code></pre><p><strong>删除角色</strong>  </p>
+<pre><code>DROP ROLE 角色;  </code></pre><h4 id="修改用户"><a href="#修改用户" class="headerlink" title="修改用户"></a>修改用户</h4><p><strong>修改配额</strong>  </p>
+<pre><code>ALTER USER 用户名  
+QUOTA 10mON 表空间名;  </code></pre><p><strong>修改密码</strong>  </p>
+<pre><code>ALTER USER userIDENTIFIED BY 新密码;  </code></pre><p><strong>用户状态</strong><br>OPEN：正常状态，为用户帐号初始创建后状态。<br>EXPIRED：密码过期状态，用户下次登录的时候需要修改密码；<br>LOCKED：锁定状态，不能执行任何Oracle相关操作  </p>
+<pre><code>ALTER USER user PASSWORD EXPIRE;--密码过期  
+ALTER USER user ACCOUNT LOCK[UNLOCK];--帐户锁定/解锁  </code></pre><h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><pre><code>DROP USER user [CASCADE]  </code></pre><p>CASCADE表示系统先自动删除该用户下的所有对象，然后再 删除该用户的定义。<br>已经登录的用户是不允许被删除的。  </p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/04/%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/" class="archive-article-date">
-  	<time datetime="2020-01-04T09:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">序列、索引、同义词</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/">序列、索引、同义词</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/04/%E8%A7%86%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2020-01-04T07:01:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/%E8%A7%86%E5%9B%BE/">视图</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/02/%E7%BA%A6%E6%9D%9F/" class="archive-article-date">
-  	<time datetime="2020-01-02T12:12:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/02/%E7%BA%A6%E6%9D%9F/">约束</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -289,8 +323,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
