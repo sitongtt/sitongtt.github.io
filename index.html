@@ -145,6 +145,373 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-面向对象的高级特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/">面向对象的高级特性</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2020-01-13T12:47:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JAVA面向对象三大特性：继承、封装、多态。<br>继承（泛化）：继承性是子类自动共享父类属性和方法的机制<br>【修饰符】 class 子类名  extends 父类名<br>特点：1.每一个类只有一个父类 2.一个父类可以有多个子类 3.子类拥有父类的属性和方法<br>原理：执行子类的构造函数时自动执行父类的构造函数。  </p>
+<h4 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h4><p>调用父类的构造器。（继承是默认？）<br>只能出现在子类的构造器中，且必须是第一行<br>super()中的参数，决定了调用父类哪个构造器<br>如果子类构造器其中没有super关键字,编译器会自动添加super(),调用父类的空构造函数<br>在同一个构造器中this()和super()不能同时存在  </p>
+<h4 id="this"><a href="#this" class="headerlink" title="this()"></a>this()</h4><p>调用本类的构造器。<br>只能写在第一行  </p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>关键字：extends<br>继承的好处：1.使编码更高效 2.易维护 3.代码的重用<br>抽象类:包含了抽象方法的类</p>
+<h4 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h4><p>[访问权限修饰符] abstract 返回值类型 抽象方法名 (参数列表) ;</p>
+<pre><code>子类继承于抽象类,就要实现父类中的抽象方法,否则只能把自己定义为抽象类
+抽象类不能创建对象
+抽象方法不能为static；
+必须声明为抽象类的情况
+    一个类中包含一个或多个抽象方法的时候</code></pre><p>接口:  </p>
+<pre><code>语法规则:[访问权限修饰符] interface 接口名 {接口的成员}
+//在接口中没有具体实现的方法,都是抽象方法,要在实现类中实现  </code></pre><p>1.jdk8开始可以在接口中使用default关键字修饰方法,使方法可以拥有具体实现<br>2.用static关键字修饰方法,可以使用接口名直接调用方法<br>3.只有声明,没有具体实现(最常用)  </p>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>权限修饰符<br><img src="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="权限修饰符"><br>private权限小，限制类外访问，一般把属性设为private，让其他类 不能直接访问属性，达到保护属性的目的。  </p>
+<p>protected：受保护的，除了可被类自身及与其在同一个包中的代码 访问外，还可以在一个类中通过对象引用来访问，前提是这些对象引用至少应该具有与该成员所在的类相同的类型，也即是这些引用具有该成员所在类的类型或是其一子类型。  </p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>概念：通过不同的子类对象，覆盖相同的父类方法，实现不同的效果。<br>三个必要条件：1.要有继承或实现2.要有重写（覆盖）3.父类引用指向子类对象  </p>
+<p>向上转型：<br>父类类名 对象名=new 子类类名<br>具有继承或实现关系<br>向上转换损失了子类新扩展的属性和方法，仅可以使用从父类中继承的属性和方法<br>向下转型：<br>子类类名 对象名=（子类类名）父类对象  </p>
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><p>内部类:定义在一个类的内部的类<br>语法规则:  </p>
+<pre><code>[访问权限修饰符] class 类名{  
+        [访问权限修饰符] static class 类名{  
+        内部类成员  
+        }  
+        外部类成员  
+    }  </code></pre><p>注意:  </p>
+<ol>
+<li>无需创建外部类对象,可以访问外部类中的属性和方法  </li>
+<li>必须创建内部类对象,才可以使用内部类中的属性和方法  </li>
+<li>如果内部类中的方法名与外部类方法名相同,内部类优先级&gt;外部类优先级  </li>
+<li>不能使用static修饰变量  </li>
+<li>静态内部类  </li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-面向对象思想" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/">面向对象思想</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" class="archive-article-date">
+  	<time datetime="2020-01-13T12:19:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="面向对象思想"><a href="#面向对象思想" class="headerlink" title="面向对象思想"></a>面向对象思想</h1><p>java：面向对象变成<br>类和对象：相当于，类是模板，而对象则是按照模板生产出来的个体(每个个体拥有相同但不一定相等的属性)。<br>####类的定义：<br>&lt;修饰符&gt; class类名{<br>1.属性<br>2.方法(成员方法)<br>3.内部类（了解）<br>4.代码块（了解）<br>}  </p>
+<h4 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h4><p>属性可以和局部变量同名，使用关键字this进行区分  </p>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p><strong>创建类名</strong>：类名 对象名=new 类名（）；<br>栈内存：保存对象的首地址,首地址找到堆内存的位置,从而对对象进行访问和赋值。<br>堆内存:内存空间大,保存对象的具体内容。  </p>
+<h4 id="构造方法（构造器）"><a href="#构造方法（构造器）" class="headerlink" title="构造方法（构造器）"></a>构造方法（构造器）</h4><p><strong>构造器的创建</strong><br>class 类名{}<br>class 类名（参数）{各种this}<br><strong>构造器的使用</strong><br>类名 对象名=new 类名（参数数值）；  </p>
+<h4 id="包"><a href="#包" class="headerlink" title="包"></a>包</h4><p>package 包名；<br>引入包：import 包名；</p>
+<h4 id="代码封装"><a href="#代码封装" class="headerlink" title="代码封装"></a>代码封装</h4><p><strong>封装关键字</strong><br>private（私有）：私有的，不对外公开，类的private成员只能被该类的成员访问。private权限最小，限制类外访问，一般把属性设为private，让其他类不能直接访问属性，达到保护的目的。<br>default（默认）：不使用权限修饰符时(即default)的成员在类内以及 在同一个包中的其他类可以访问。<br>public（公有）：公有的，最高的访问级别，public成员可以在所有其 他类中访问。  </p>
+<h4 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h4><p>概念：保证一个类仅有一个实例，并提供一个访问它的全局访问点。  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/13/%E6%96%B9%E6%B3%95/">方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/13/%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-01-13T12:11:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p><strong>方法的声明</strong>  </p>
+<pre><code>&lt;修饰符&gt; 数据类型 方法名（[数据类型1 参数名1，数据类型2 参数名2...]）{  
+要执行的代码块；  
+return 数据类型；  
+}  </code></pre><p>修饰符：public（公共的）、protect(保护的)、private（私人的）、default（默认的，不填就是这个）<strong>限定了访问的权限</strong>  </p>
+<p>static:使用其修饰，称为静态方法，直接通过方法名调用。  </p>
+<p>final:使用其修饰，方法不能被覆盖。  </p>
+<p>数据类型：基本数据类型，引用数据类型，也可是void表示没有返回值。  </p>
+<p>方法名：使用驼峰命名法。<br>参数列表：可以没有参数，也可以有一个或多个参数。<br>形式参数：定义了这个方法在调用时，输入的参数个数和参数类型，顺序也不能变。（x，y）<br>实际参数：调用方法时，传入的实际数字。(1,2)<br>方法体：逻辑代码<br>return语句：返回的结果必须和定义的数据类型保持一致。<br><strong>方法的重载</strong><br>定义：<strong>在同一个类中</strong>，可以存在一个以上的同名方法。<br>规则:</p>
+<ol>
+<li>方法名称相同  </li>
+<li>参数不同（个数或类型不同）  </li>
+<li>返回值可以相同，也可以不用（不影响）  </li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/13/%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/13/%E6%95%B0%E7%BB%84/">数组</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/13/%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2020-01-13T12:08:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h4 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h4><p><strong>一维数组的定义和创建</strong>  </p>
+<pre><code>数组类型(int) 数组名[] 或 数组类型[] 数组名  </code></pre><p>例如：int a[]或int[] a<br>指定数组长度：数组名=new 数据元素类型【元素个数】<br>例如：</p>
+<pre><code>int a[]=new int[5];  </code></pre><p>数组的索引（下标）从0开始，数组创建后立即拥有默认值：<br>1、整数类型数组的默认值是0<br>2、String类型定义的数组，默认值是null<br>3、char类型定义的数组，默认值是0对应的字符<br>4、浮点类型定义的数组，默认值是0.0<br>5、boolean类型数组的默认值是false<br><strong>数组的初始化</strong><br>静态：int  a[ ] = {1,2,3,4,5} ;<br>动态：int  a[ ] = new int[]{1,2,3,4,5} ;<br><strong>foreach遍历数组</strong>  </p>
+<pre><code>for(数组元素类型 变量名：数组名){
+System.out.println(变量);
+}  </code></pre><p><strong>多维数组的创建</strong>  </p>
+<pre><code>数组名=new&amp;emsp;数据元素类型【行数】 【列数】；  
+数组名=new&amp;emsp;数据元素类型【行数】 【】； //列数可为空，但行数必不为空 </code></pre><p>例如：a=new int [3][4];a=new int[3][];<br><strong>多维数组的初始化</strong>  </p>
+<pre><code>数组类型&amp;emsp;数组名[][]= { {元素11，元素12，…} , {元素21，元素22，… } }  
+数组类型&amp;emsp;数组名[][][= new 数据类型[ ][ ] { {元素11，元素12，…} , {元素21，… } }  </code></pre><p><strong>二维数组遍历</strong>  </p>
+<pre><code>for(int i=0;i&lt;a.length;i++){  
+    for(int j=0;j&lt;a[i].lenght;j++){  
+    ...  
+    }
+}  </code></pre><p><strong>冒泡排序</strong>(由大到小排列)  </p>
+<pre><code>for(i=1;i&lt;n-1;i++)  
+{  
+    for(j=0;j&lt;n-i;j++){  
+        if(a[j]&lt;a[j+1]){  
+            temp=a[j];  
+            a[j]=a[j+1];  
+            a[j+1]=temp;
+        }
+    }
+}</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/13/%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java语句基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -804,362 +1171,9 @@ FROM  user_tables;</code></pre><p>查看数据字典结构  </p>
 
 
   
-    <article id="post-数据操作与事务控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/">数据操作与事务控制</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2019-12-29T15:58:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据操作与事务控制"><a href="#数据操作与事务控制" class="headerlink" title="数据操作与事务控制"></a>数据操作与事务控制</h1><p>DML:<br>insert 新增数据<br>update 修改数据<br>delete 删除数据  </p>
-<h4 id="insert插入数据"><a href="#insert插入数据" class="headerlink" title="insert插入数据"></a>insert插入数据</h4><pre><code>INSERT INTO table [(column [, column...])] VALUES(value [, value...]); </code></pre><p><strong>插入date类型数据时先把字符串转换为date类型（to_date）采用这种插入方式时只能追加一条记录</strong>  </p>
-<h5 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a>插入多行</h5><pre><code>INSERT INTO表名[(列名1[,列名2，…，列名n])] 子查询；
---不用写values
---INSERT子句和数据类型必须和子查询中列的数量和类型相匹 配中列的数量  </code></pre><h4 id="update修改数据"><a href="#update修改数据" class="headerlink" title="update修改数据"></a>update修改数据</h4><pre><code>update 表
-set column（列）=value[,column=value]
-where 条件
---WHERE子句用来限定修改哪些行。
---SET子句用来限定修改哪些列。</code></pre><h6 id="修改多列"><a href="#修改多列" class="headerlink" title="修改多列"></a>修改多列</h6><p>一次修改多列  </p>
-<pre><code>SQL&gt; UPDATE emp
-2  SET    deptno= 20,sal=sal+100
-3  WHERE  deptno= 10;</code></pre><p>嵌入子查询修改  </p>
-<pre><code>SQL&gt; UPDATE emp
-2  SET    deptno= 20,sal=sal+(select avg(sal）from emp)
-3  WHERE  deptno= 10;</code></pre><h4 id="delete删除数据"><a href="#delete删除数据" class="headerlink" title="delete删除数据"></a>delete删除数据</h4><pre><code>DELETE [FROM]table
-[WHEREcondition];</code></pre><p>delete 表:只会删除表中的数据，不会删除表头。  </p>
-<p><strong>当你不再需要该表时， 用 drop；当你仍要保留该表，但要删除所有记录时， 用 truncate；当你要删除部分记录时, 用 delete.</strong> </p>
-<p>truncate语法<br>[ { database_name.[ schema_name ]. | schema_name . } ]<br> table_name<br>[ ; ]  </p>
-<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p>事务组成：在数据库中，事务由一组相关的DML或SELECT语句，加上一个TPL语句（COMMIT、ROLLBACK）或一个DDL语句(CREATE、 ALTER、DROP、TRUNCATE等)或一个DCL（GRANT、REVOKE）  </p>
-<p>事务特性：ACID①原子性②一致性③隔离性④持久性 </p>
-<p>事务结束：COMMIT（提交）或ROLLBACK(回滚)  </p>
-<p>隐式提交：①执行一个DDL(CREATE、ALTER、DROP、TRUNCATE、RENAME）语句；②执行一个DCL(GRANT、REVOKE)语句；③从SQL*Plus正常退出（即使用EXIT或QUIT命令退出）；  </p>
-<p>隐术回滚：①从SQL*Plus中强行退出②客户端连接到服务器端异常中断③系统崩溃  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-层次查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/">层次查询</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
-  	<time datetime="2019-12-29T15:34:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="层次查询"><a href="#层次查询" class="headerlink" title="层次查询"></a>层次查询</h1><pre><code>SELECT [LEVEL], column, expr...  
-FROM   table  
-[WHERE condition(s)]  
-[START WITH condition(s)]  
-[CONNECT BY PRIOR condition(s)] ;  
-CONNECT BY PRIOR column1 = column2; 
-
-–LEVEL：节点的层次，伪列，由查询的起点开始算起为1，依次类推。 
-–FROM table：指定表、视图或包含列的快照，你只能从单独的一个表中选择。
-–WHERE：限制返回的行。
-–Condition：是一个比较式。
-–START WITH：指定层次的根行(起点)。这个子句对于一个正确的分级查询 是必须的。
-–CONNECT BY PRIOR：指定存在父与子行的关系列。对于分级查询该子句是 必须的。</code></pre><p><strong>column1为父节点，column2为子节点 自顶向下</strong><br><strong>column1为子节点，column2为父节点 自底向上</strong>  </p>
-<h4 id="修剪节点、分支"><a href="#修剪节点、分支" class="headerlink" title="修剪节点、分支"></a>修剪节点、分支</h4><p>通过where去除子句某个节点<br><img src="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/1.png" alt><br>通过connect by去掉一个分支<br><img src="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/2.png" alt></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-高级子查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/29/%E9%AB%98%E7%BA%A7%E5%AD%90%E6%9F%A5%E8%AF%A2/">高级子查询</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/29/%E9%AB%98%E7%BA%A7%E5%AD%90%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
-  	<time datetime="2019-12-29T13:58:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="高级子查询"><a href="#高级子查询" class="headerlink" title="高级子查询"></a>高级子查询</h1><h4 id="嵌套子查询（普通子查询）："><a href="#嵌套子查询（普通子查询）：" class="headerlink" title="嵌套子查询（普通子查询）："></a>嵌套子查询（普通子查询）：</h4><p>执行过程：1.子查询先执行2.用子查询的结果来确认或取消父查询的候选项<br>特点：子查询可以独立于父查询执行  </p>
-<h4 id="相关子查询"><a href="#相关子查询" class="headerlink" title="相关子查询"></a>相关子查询</h4><p>执行过程：  </p>
-<ol>
-<li>获取父查询中的候选项  </li>
-<li>根据候选项获取的数据执行子查询  </li>
-<li>子查询执行的结果用于父查询的比较  </li>
-<li>重复以上三个步骤，直到父查询中无剩余的候选行<br>特点：子查询中查询条件依赖于外层查询中的某个值，所以子查询的处理不只一次，要反复求值，以供外层查询使用。    <h4 id="exists和not-exists操作符"><a href="#exists和not-exists操作符" class="headerlink" title="exists和not exists操作符"></a>exists和not exists操作符</h4>相关子查询还可使用EXISTS和NOT EXISTS操作符来进行操作<br>EXISTS判断是否“存在”，具体操作如下：  </li>
-</ol>
-<p>–子查询中如果有记录找到，子查询语句不会继续执行，返回值为TRUE；<br>–子查询中如果到表的末尾也没有记录找到，返回值为FALSE。  </p>
-<p>EXISTS子查询并没有确切记录返回，只判断是否有记录存在，而且只要找到相关记录，子查询就不需要再执行，然后再进行下面的操作。这样大大提高了语句的执行效率。<br>NOT EXISTS正好相反，判断子查询是否没有返回值。如果没有返回值，表达式为真，如果找到一条返回值，则为假。  </p>
-<pre><code>select ename,job,sal,deptno
-from emp e
-where exists (select &apos;1&apos;
-                from emp
-                where mgr=e.empno);</code></pre><p>因为EXISTS子句中，并没有确切记录返回，只返回真或假。 所以’1’只是占位用，无实际意义。  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/29/%E9%AB%98%E7%BA%A7%E5%AD%90%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-集合运算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/">集合运算</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/" class="archive-article-date">
-  	<time datetime="2019-12-29T12:34:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h1><p>概念：是用来把两个或多个查询的结果集做并、交、差的 集合运算，包含集合运算的查询称为复合查询。<br><img src="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97.png" alt="集合运算"></p>
-<p>注意：  </p>
-<ol>
-<li>多个被联合的查询语句所选择的列数和列的数据类型必须一致， 列的名字不必相同。</li>
-<li>每个查询不能包含自己的Order by子句，只能在联合之后使用 Order by子句。  <h1 id="联合运算"><a href="#联合运算" class="headerlink" title="联合运算"></a>联合运算</h1>概念：返回由任一查询结果集包含的行，并且去除重复行,并且按照查询结 果集的第一列升序排序。  <h4 id="关键字union"><a href="#关键字union" class="headerlink" title="关键字union"></a>关键字union</h4> select a<br> from x1<br> union（union all/intersect/minus）<br> select<br> from x2<br> (order by a )  </li>
-</ol>
-<p><strong>只根据第一个select选择</strong>  </p>
-<h4 id="union-all-完全联合运算，不去除重复行"><a href="#union-all-完全联合运算，不去除重复行" class="headerlink" title="union all(完全联合运算，不去除重复行)"></a>union all(完全联合运算，不去除重复行)</h4><h4 id="相交运算"><a href="#相交运算" class="headerlink" title="相交运算"></a>相交运算</h4><p>intersect<br>返回第一个集合和第二个集合中共同存在的记录。  </p>
-<h4 id="相减运算"><a href="#相减运算" class="headerlink" title="相减运算"></a>相减运算</h4><p>minus<br>概念：返回第一个集合中存在，第二个中不存在的记录。  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

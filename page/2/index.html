@@ -145,6 +145,359 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据操作与事务控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/">数据操作与事务控制</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2019-12-29T15:58:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据操作与事务控制"><a href="#数据操作与事务控制" class="headerlink" title="数据操作与事务控制"></a>数据操作与事务控制</h1><p>DML:<br>insert 新增数据<br>update 修改数据<br>delete 删除数据  </p>
+<h4 id="insert插入数据"><a href="#insert插入数据" class="headerlink" title="insert插入数据"></a>insert插入数据</h4><pre><code>INSERT INTO table [(column [, column...])] VALUES(value [, value...]); </code></pre><p><strong>插入date类型数据时先把字符串转换为date类型（to_date）采用这种插入方式时只能追加一条记录</strong>  </p>
+<h5 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a>插入多行</h5><pre><code>INSERT INTO表名[(列名1[,列名2，…，列名n])] 子查询；
+--不用写values
+--INSERT子句和数据类型必须和子查询中列的数量和类型相匹 配中列的数量  </code></pre><h4 id="update修改数据"><a href="#update修改数据" class="headerlink" title="update修改数据"></a>update修改数据</h4><pre><code>update 表
+set column（列）=value[,column=value]
+where 条件
+--WHERE子句用来限定修改哪些行。
+--SET子句用来限定修改哪些列。</code></pre><h6 id="修改多列"><a href="#修改多列" class="headerlink" title="修改多列"></a>修改多列</h6><p>一次修改多列  </p>
+<pre><code>SQL&gt; UPDATE emp
+2  SET    deptno= 20,sal=sal+100
+3  WHERE  deptno= 10;</code></pre><p>嵌入子查询修改  </p>
+<pre><code>SQL&gt; UPDATE emp
+2  SET    deptno= 20,sal=sal+(select avg(sal）from emp)
+3  WHERE  deptno= 10;</code></pre><h4 id="delete删除数据"><a href="#delete删除数据" class="headerlink" title="delete删除数据"></a>delete删除数据</h4><pre><code>DELETE [FROM]table
+[WHEREcondition];</code></pre><p>delete 表:只会删除表中的数据，不会删除表头。  </p>
+<p><strong>当你不再需要该表时， 用 drop；当你仍要保留该表，但要删除所有记录时， 用 truncate；当你要删除部分记录时, 用 delete.</strong> </p>
+<p>truncate语法<br>[ { database_name.[ schema_name ]. | schema_name . } ]<br> table_name<br>[ ; ]  </p>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p>事务组成：在数据库中，事务由一组相关的DML或SELECT语句，加上一个TPL语句（COMMIT、ROLLBACK）或一个DDL语句(CREATE、 ALTER、DROP、TRUNCATE等)或一个DCL（GRANT、REVOKE）  </p>
+<p>事务特性：ACID①原子性②一致性③隔离性④持久性 </p>
+<p>事务结束：COMMIT（提交）或ROLLBACK(回滚)  </p>
+<p>隐式提交：①执行一个DDL(CREATE、ALTER、DROP、TRUNCATE、RENAME）语句；②执行一个DCL(GRANT、REVOKE)语句；③从SQL*Plus正常退出（即使用EXIT或QUIT命令退出）；  </p>
+<p>隐术回滚：①从SQL*Plus中强行退出②客户端连接到服务器端异常中断③系统崩溃  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-层次查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/">层次查询</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2019-12-29T15:34:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="层次查询"><a href="#层次查询" class="headerlink" title="层次查询"></a>层次查询</h1><pre><code>SELECT [LEVEL], column, expr...  
+FROM   table  
+[WHERE condition(s)]  
+[START WITH condition(s)]  
+[CONNECT BY PRIOR condition(s)] ;  
+CONNECT BY PRIOR column1 = column2; 
+
+–LEVEL：节点的层次，伪列，由查询的起点开始算起为1，依次类推。 
+–FROM table：指定表、视图或包含列的快照，你只能从单独的一个表中选择。
+–WHERE：限制返回的行。
+–Condition：是一个比较式。
+–START WITH：指定层次的根行(起点)。这个子句对于一个正确的分级查询 是必须的。
+–CONNECT BY PRIOR：指定存在父与子行的关系列。对于分级查询该子句是 必须的。</code></pre><p><strong>column1为父节点，column2为子节点 自顶向下</strong><br><strong>column1为子节点，column2为父节点 自底向上</strong>  </p>
+<h4 id="修剪节点、分支"><a href="#修剪节点、分支" class="headerlink" title="修剪节点、分支"></a>修剪节点、分支</h4><p>通过where去除子句某个节点<br><img src="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/1.png" alt><br>通过connect by去掉一个分支<br><img src="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/2.png" alt></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-高级子查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/29/%E9%AB%98%E7%BA%A7%E5%AD%90%E6%9F%A5%E8%AF%A2/">高级子查询</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/29/%E9%AB%98%E7%BA%A7%E5%AD%90%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2019-12-29T13:58:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="高级子查询"><a href="#高级子查询" class="headerlink" title="高级子查询"></a>高级子查询</h1><h4 id="嵌套子查询（普通子查询）："><a href="#嵌套子查询（普通子查询）：" class="headerlink" title="嵌套子查询（普通子查询）："></a>嵌套子查询（普通子查询）：</h4><p>执行过程：1.子查询先执行2.用子查询的结果来确认或取消父查询的候选项<br>特点：子查询可以独立于父查询执行  </p>
+<h4 id="相关子查询"><a href="#相关子查询" class="headerlink" title="相关子查询"></a>相关子查询</h4><p>执行过程：  </p>
+<ol>
+<li>获取父查询中的候选项  </li>
+<li>根据候选项获取的数据执行子查询  </li>
+<li>子查询执行的结果用于父查询的比较  </li>
+<li>重复以上三个步骤，直到父查询中无剩余的候选行<br>特点：子查询中查询条件依赖于外层查询中的某个值，所以子查询的处理不只一次，要反复求值，以供外层查询使用。    <h4 id="exists和not-exists操作符"><a href="#exists和not-exists操作符" class="headerlink" title="exists和not exists操作符"></a>exists和not exists操作符</h4>相关子查询还可使用EXISTS和NOT EXISTS操作符来进行操作<br>EXISTS判断是否“存在”，具体操作如下：  </li>
+</ol>
+<p>–子查询中如果有记录找到，子查询语句不会继续执行，返回值为TRUE；<br>–子查询中如果到表的末尾也没有记录找到，返回值为FALSE。  </p>
+<p>EXISTS子查询并没有确切记录返回，只判断是否有记录存在，而且只要找到相关记录，子查询就不需要再执行，然后再进行下面的操作。这样大大提高了语句的执行效率。<br>NOT EXISTS正好相反，判断子查询是否没有返回值。如果没有返回值，表达式为真，如果找到一条返回值，则为假。  </p>
+<pre><code>select ename,job,sal,deptno
+from emp e
+where exists (select &apos;1&apos;
+                from emp
+                where mgr=e.empno);</code></pre><p>因为EXISTS子句中，并没有确切记录返回，只返回真或假。 所以’1’只是占位用，无实际意义。  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/29/%E9%AB%98%E7%BA%A7%E5%AD%90%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-集合运算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/">集合运算</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/" class="archive-article-date">
+  	<time datetime="2019-12-29T12:34:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h1><p>概念：是用来把两个或多个查询的结果集做并、交、差的 集合运算，包含集合运算的查询称为复合查询。<br><img src="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97.png" alt="集合运算"></p>
+<p>注意：  </p>
+<ol>
+<li>多个被联合的查询语句所选择的列数和列的数据类型必须一致， 列的名字不必相同。</li>
+<li>每个查询不能包含自己的Order by子句，只能在联合之后使用 Order by子句。  <h1 id="联合运算"><a href="#联合运算" class="headerlink" title="联合运算"></a>联合运算</h1>概念：返回由任一查询结果集包含的行，并且去除重复行,并且按照查询结 果集的第一列升序排序。  <h4 id="关键字union"><a href="#关键字union" class="headerlink" title="关键字union"></a>关键字union</h4> select a<br> from x1<br> union（union all/intersect/minus）<br> select<br> from x2<br> (order by a )  </li>
+</ol>
+<p><strong>只根据第一个select选择</strong>  </p>
+<h4 id="union-all-完全联合运算，不去除重复行"><a href="#union-all-完全联合运算，不去除重复行" class="headerlink" title="union all(完全联合运算，不去除重复行)"></a>union all(完全联合运算，不去除重复行)</h4><h4 id="相交运算"><a href="#相交运算" class="headerlink" title="相交运算"></a>相交运算</h4><p>intersect<br>返回第一个集合和第二个集合中共同存在的记录。  </p>
+<h4 id="相减运算"><a href="#相减运算" class="headerlink" title="相减运算"></a>相减运算</h4><p>minus<br>概念：返回第一个集合中存在，第二个中不存在的记录。  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-子查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -672,320 +1025,9 @@ WHERE rn &lt;=目标页数*每页记录数 and rn &gt; (目标页数-1)*每页�
 
 
   
-    <article id="post-HTML-CSS知识点（CSS部分）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/">HTML+CSS知识点（CSS部分）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-04T02:46:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h1><h3 id="CSS样式书写方式"><a href="#CSS样式书写方式" class="headerlink" title="CSS样式书写方式"></a>CSS样式书写方式</h3><p>嵌入样式&lt; style &gt;&lt; /style &gt;里面<br>内联样式（行内式）写在style：” “里面<br>外联样式通过&lt; link rel=”stylesheet” href=”” &gt;引入<br>###样式  </p>
-<h3 id="width-宽"><a href="#width-宽" class="headerlink" title="width:宽"></a>width:宽</h3><h3 id="height-高"><a href="#height-高" class="headerlink" title="height:高"></a>height:高</h3><h3 id="padding-内边距-看情况可以参考margin"><a href="#padding-内边距-看情况可以参考margin" class="headerlink" title="padding:内边距(看情况可以参考margin)"></a>padding:内边距(看情况可以参考margin)</h3><h3 id="margin-外边距"><a href="#margin-外边距" class="headerlink" title="margin:外边距"></a>margin:外边距</h3><p>margin:10px;四个方向都是10px;<br>margin:10px 20px;上下10px 左右20px<br>margin:10px 20px 30px; 上10px 左右20px 下30px<br>margin:10px 20px 30px 40px 四个值上右下左<br>也可以单独书写某一个方向的值：margin-top: ;margin-left: ;margin-right: ;margin-bottom: ;<br>特殊情况盒子水平居中margin：100px  auto;盒子一定要有宽度。  </p>
-<h3 id="border-边框"><a href="#border-边框" class="headerlink" title="border:边框"></a>border:边框</h3><p>border，三个值 线粗细 线样式 线颜色.<br>3要素，4条边。<br>3要素：border-width、border-style(solid dashed dotted)、border-color；<br>4条边：border-top、border-right、border-bottom、border-left。  </p>
-<h3 id="Opacity：文字和背景都变"><a href="#Opacity：文字和背景都变" class="headerlink" title="Opacity：文字和背景都变"></a>Opacity：文字和背景都变</h3><p>###Background:背景<br>background: rgba(0, 0, 0, 1.0)背景变透明<br>包含四个值<br>1    background-color背景颜色<br>2    background-image背景图片<br>3    background-repeat是否平铺<br>4    background-position图片位置<br>5    background-size背景图片大小  </p>
-<p>line-height:行高。单行文字在盒子垂直居中<br>Text-align:center文字水平居中  </p>
-<h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><p>Font-size:字体大小；<br>Font-weight:bold加粗<br>Font-weight:normal正常<br>Font-style:italic;文字倾斜<br>Font-style:normal正常<br>Text-decoration:none不加下划线;<br>Text-decoration：underline下划线<br>Font-family:设置字体；<br>Color：文字颜色  </p>
-<h3 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h3><p>Display:none;隐藏<br>Display:block;转化成块级元素也可以是显示的意思<br>Display:inline;转化成行内元素<br>Display:inline-block转化成行内块<br>Cursor:pointer;小手；  </p>
-<h3 id="overflow-hiddden"><a href="#overflow-hiddden" class="headerlink" title="overflow:hiddden"></a>overflow:hiddden</h3><p>1、溢出隐藏（百度图片展示）<br>2、清除浮动影响（子级元素浮动之后，父级检测不到子级元素的高度，加此属性可以解决浮动影响）<br>3、解决外边距塌陷（子级元素接了上外边距之后父级跟着下来）<br>4、滚动条<br>Overflow-X:auto（hidden）出现滚动条或者溢出隐藏<br>Overflow-Y:auto（hidden）<br>盒子投影  </p>
-<h3 id="shadow"><a href="#shadow" class="headerlink" title="shadow"></a>shadow</h3><p>Box-shadow:水平方向光照 垂直方向的光照 羽化程度 颜色；<br>文本投影<br>Text-shadow: 水平方向光照 垂直方向的光照 羽化程度 颜色  </p>
-<h3 id="三大动画模块"><a href="#三大动画模块" class="headerlink" title="三大动画模块"></a>三大动画模块</h3><p>转化模块：<br>关键属性：Transform:<br>属性值：<br>Translate(0px,0px)<br>rotate(30deg)旋转<br>scale()缩放<br>值与值之间用空格隔开<br>也可以书写XYZ一个方向（具体参考音乐盒的制作）<br>Transform-origin:center center;旋转中心点。  </p>
-<h3 id="过渡模块"><a href="#过渡模块" class="headerlink" title="过渡模块"></a>过渡模块</h3><p>关键属性：<br>Transition：all 时间;<br>过渡模块书写步骤：（不是只有一种写法，可以通过增加删除类来控制，具体参考千寻案例）<br>1、    书写默认样式<br>2、    触发之后的样式：hover<br>3、    回到默认样式书写transition：all 时间（all也可以单独改成某一个属性:比如：width）  </p>
-<h3 id="动画模块："><a href="#动画模块：" class="headerlink" title="动画模块："></a>动画模块：</h3><p>关键属性：animation：name 时间 linear（平缓） infinite（循环）<br>使用步骤：  </p>
-<ol>
-<li>定义动画：@keyframes name {<br>a)    每一帧的状态<br>b)    每一帧都是一个样式条<br>}</li>
-<li>使用动画：animation：name 时间 linear（平缓） infinite（循环）  <h3 id="3D效果"><a href="#3D效果" class="headerlink" title="3D效果"></a>3D效果</h3>transform-style:preserve-3d可以让其内部的元素以该元素作为参照物进入三维坐标<br>Border-radius:5px;<br>出现圆角（可以四个不同的值：左上 右上 右下 左下）<br>Border-radius:50%;变成圆形<br>所有css3的属性前面都要加私有前缀：-moz-,-ms-,-o-,-webkit<br>也就是都要写五遍  <h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3>Float:left;左浮动：脱离标准流<br>Float:right;右浮动：脱离标准流<br>浮动之后的元素可以给宽高<br>浮动之后同级元素也要浮动<br>###相对定位<br>就是微调元素位置的。让元素相对自己原来的位置，进行位置调整。<br>相对定位不脱标，真实位置是在老家，只不过影子出去了，可以到处飘。<br>相对定位有坑，所以一般不用于做“压盖”效果。页面中，效果极小。就两个作用：<br>1） 微调元素<br>2） 做绝对定位的参考，子绝父相<br>一个绝对定位的元素，如果父辈元素中出现了也定位了的元素，那么将以父辈这个元素，为参考点。<br>要听最近的已经定位的祖先元素的，不一定是父亲，可能是爷爷：<br>不一定是相对定位，任何定位，都可以作为参考点<br>定位之后（固定或绝对）盒子居中<br>当做公式记忆下来。就是<br>left:50%; margin-left:负的宽度的一半。<br>top:50%; margin-top:负的高度的一半。<br>###固定定位<br>fixed,就是相对浏览器窗口定位。页面如何滚动，这个盒子显示的位置不变。<br>固定定位坐标！<br>###z-index<br>表示谁压着谁。数值大的压盖住数值小的。<br>● 只有定位了的元素，才能有z-index值。也就是说，不管相对定位、绝对定位、固定定位，都可以使用z-index值。而浮动的东西不能用。<br>● z-index值没有单位，就是一个正整数。默认的z-index值是0。<br>● 如果大家都没有z-index值，或者z-index值一样，那么谁写在HTML后面，谁在上面能压住别人。定位了的元素，永远能够压住没有定位的元素。  <h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3>标签(直接书写标签名字)<br>P{<br>}<br>Id（命名：id=””，选择的时候通过#ID名字，id具有唯一性，类似我们的身份证号码）  </li>
-</ol>
-<p>“#ID”名字{<br>}<br>类名（命名：class=””，选择的时候通过.类名字，类名可以重复，类似我们的名字）<br>.类名{<br>}<br>Div p 空格 后代<br>Div&gt;p子代<br>H3.special 交集选择器<br>H3,h1并集选择器<br>“*”通配符,选择所有标签<br>###继承性。<br>有一些属性给祖先元素，所有的后代元素都集成上了。<br>哪些属性能继承：color、font-、text-、line-<br>层叠性。<br>层叠性是一种能力，就是处理冲突的能力。当不同选择器，对一个标签的同一个样式，有不同的值，听谁的？这就是冲突。css有着严格的处理冲突的机制：<br>■ 选择上了，数权重，(id的数量，类的数量，标签的数量)。如果权重一样，谁写在后面听谁的。<br>■ 没有选择上，通过继承影响的，就近原则，谁描述的近听谁的。如果描述的一样近，比如选择器权重，如果权重再一样重，谁写在后面听谁的。  </p>
-<h3 id="important标记"><a href="#important标记" class="headerlink" title="!important标记"></a>!important标记</h3><p>!important提升的是一个属性，而不是一个选择器    </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">前端部分</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTML-CSS知识点（HTML部分）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/">HTML+CSS知识点（HTML部分）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-04T02:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h1><hr>
-<h2 id="一般标签"><a href="#一般标签" class="headerlink" title="一般标签"></a>一般标签</h2><h3 id="p"><a href="#p" class="headerlink" title="p"></a>p</h3><p>段落标签，行内元素独占父级一行。  </p>
-<h3 id="Img"><a href="#Img" class="headerlink" title="Img"></a>Img</h3><p>图片标签，src属性：所要引入的图片，注意CSS文件是相对CSS自身的路径而JS文件是相对HTML的相对路径。  </p>
-<h3 id="a"><a href="#a" class="headerlink" title="a"></a>a</h3><p>超链接，实现页面的跳转。href:所跳转的目标文件或链接；Target=”_blank”：在新页面中打开；alt:鼠标移入显示的文字  </p>
-<h3 id="h1-h6"><a href="#h1-h6" class="headerlink" title="h1-h6"></a>h1-h6</h3><p>标题标签，1-6从大到小，一级到六级标签。  </p>
-<h3 id="video"><a href="#video" class="headerlink" title="video"></a>video</h3><p>视频标签，autoplay:若出现,视频就绪后立即播放；controls:若出现，向用户显示控件，播放按钮；loop:若出现，播放完毕后再次播放；muted:播放时静音；preload:若出现，在页面加载时加载，并预备播放。  </p>
-<h3 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h3><p>音频标签，controls：播放控制条；autoplay：自动播放。  </p>
-<h3 id="br"><a href="#br" class="headerlink" title="br"></a>br</h3><p>换行  </p>
-<h3 id="nobr"><a href="#nobr" class="headerlink" title="nobr"></a>nobr</h3><p>强制不换行  </p>
-<h3 id="pre"><a href="#pre" class="headerlink" title="pre"></a>pre</h3><p>双标签，按预设原文本书写格式。  </p>
-<h3 id="b"><a href="#b" class="headerlink" title="b"></a>b</h3><p>双标签，加粗。  </p>
-<h3 id="u"><a href="#u" class="headerlink" title="u"></a>u</h3><p>双标签，下划线。  </p>
-<h3 id="i"><a href="#i" class="headerlink" title="i"></a>i</h3><p>双标签，斜体。  </p>
-<h3 id="hr"><a href="#hr" class="headerlink" title="hr"></a>hr</h3><p>水平线。  </p>
-<h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><p>规定文字。  </p>
-<h3 id="span"><a href="#span" class="headerlink" title="span"></a>span</h3><p>小区域容器。  </p>
-<h3 id="div"><a href="#div" class="headerlink" title="div"></a>div</h3><p>大区域容器。  </p>
-<h3 id="dl-gt-dt-dd"><a href="#dl-gt-dt-dd" class="headerlink" title="dl&gt;dt+dd"></a>dl&gt;dt+dd</h3><p>列表，一般用于图文混排  </p>
-<h3 id="ul-gt-li"><a href="#ul-gt-li" class="headerlink" title="ul&gt;li"></a>ul&gt;li</h3><p>无序列表，我的淘宝。  </p>
-<h3 id="ol-gt-li"><a href="#ol-gt-li" class="headerlink" title="ol&gt;li"></a>ol&gt;li</h3><p>有序列表，轮播图。  </p>
-<h3 id="table-gt-tr-gt-th-gt-td"><a href="#table-gt-tr-gt-th-gt-td" class="headerlink" title="table&gt;tr&gt;th&gt;td"></a>table&gt;tr&gt;th&gt;td</h3><p>tr代表一行，th表头，td表格单元，table是包裹的容器。  </p>
-<h2 id="表单元素"><a href="#表单元素" class="headerlink" title="表单元素"></a>表单元素</h2><p>maxlength:限制长度；required:提交时必须填写；disabled:禁止操作；autofocus:自动聚焦；placeholder:默认显示的文本；seclected：默认选中；checked:多选框或者单选框；<br>input:类型：text输入框、password密码框、number数字框、radio单选、checkbox多选、button、submit、reset、range、color、date、week、month。  </p>
-<h3 id="select-gt-option"><a href="#select-gt-option" class="headerlink" title="select&gt;option"></a>select&gt;option</h3><p>下拉条  </p>
-<h3 id="标准文档流"><a href="#标准文档流" class="headerlink" title="标准文档流"></a>标准文档流</h3><p>说白了，就是一个“默认”状态。标准文档流中，标签分为两种：块级元素、行内元素。（块级元素垂直排列，行内元素水平排列）  </p>
-<h3 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h3><p>块级元素：一定是霸占一行的，能设置宽、高，不设置宽度默认就是占满父亲。div、p、h、li、ul  </p>
-<h3 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h3><p>行内元素：和其他行内元素并排，不能设置宽、高，默认宽度就是文字宽度。span、a、b、i、u   </p>
-<h3 id="容器级（块级）标签"><a href="#容器级（块级）标签" class="headerlink" title="容器级（块级）标签"></a>容器级（块级）标签</h3><p>里面可以放置任何东西。</p>
-<h3 id="文本级的标签"><a href="#文本级的标签" class="headerlink" title="文本级的标签"></a>文本级的标签</h3><p>只能放置文字、图片、表单元素。<strong>p标签是一个文本级标签，就要死死记住：p里面只能放文字、图片、表单元素。其他的一律不能放。再次强调，p是一个文本级的标签，p里面只能放文字、图片、表单元素 超链接。</strong><br>HTML5新特性：语义化标签（内容结构化）  </p>
-<table>
-<thead>
-<tr>
-<th>标签</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>header</td>
-<td>定义了文档的头部区域</td>
-</tr>
-<tr>
-<td>footer</td>
-<td>定义了文档的尾部区域</td>
-</tr>
-<tr>
-<td>nav</td>
-<td>定义文档的导航</td>
-</tr>
-<tr>
-<td>section</td>
-<td>定义文档中的节（section、区段）</td>
-</tr>
-<tr>
-<td>article</td>
-<td>定义页面独立的内容区域</td>
-</tr>
-<tr>
-<td>aside</td>
-<td>定义页面的侧边栏内容</td>
-</tr>
-<tr>
-<td>detailes</td>
-<td>用于描述文档或文档某个部分的细节</td>
-</tr>
-<tr>
-<td>summary</td>
-<td>标签包含details 元素的标题</td>
-</tr>
-<tr>
-<td>dialog</td>
-<td>定义对话框，比如提示框</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">前端部分</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/04/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/04/hello-world/" class="archive-article-date">
-  	<time datetime="2019-12-04T01:11:12.776Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/04/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
