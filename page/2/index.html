@@ -145,6 +145,111 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-创建和维护表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/">创建和维护表</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/" class="archive-article-date">
+  	<time datetime="2019-12-30T00:55:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="数据库对象"><a href="#数据库对象" class="headerlink" title="数据库对象"></a>数据库对象</h4><p>数据库对象：是数据库的组成部分，有表、约束 、索引、视图、序列、同义词、触发器、存储过程、函数等。  </p>
+<h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><pre><code>CREATE TABLE [schema.]table
+(column datatype[DEFAULT expr][, ...]); 
+--您必须具备:   
+--CREATE TABLE的权限  
+--一定的存贮空间(ALTER USER 用户名QUOTA 尺寸ON 表空间名字)  
+--您需要指定:  
+--表名、列名、列的类型及列的宽度  </code></pre><p>例如：  </p>
+<pre><code>CREATE TABLE DOSSIER ( 
+ID NUMBER(4), 
+CNAME VARCHAR2(20 ), 
+BIRTHDAY DATE, 
+STATURE    NUMBER(3), 
+WEIGHT NUMBER(5, 2), 
+COUNTRY_CODE CHAR(2 ) DEFAULT ‘01’);  </code></pre><p>用子查询语法创建表  </p>
+<pre><code>CREATE TABLE table[(column, column...)] 
+AS subquery;</code></pre><p>创建和表二一样表头的表一，仅含表头。</p>
+<pre><code>creat table 表1 as select * from 表二 where 1=0</code></pre><h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><p>–指定在插入或更新数据时，列的默认值<br>–合法的值可以是字面值、表达式或SQL函数<br>–非法的值是另一个列的名称或虚拟列<br>–默认值的数据类型必须和列的类型匹配  </p>
+<p>修改默认值<br>例如：  </p>
+<pre><code>update dossier set country_code=default where id=2;</code></pre><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><h5 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/1.png" alt></p>
+<h5 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/2.png" alt><br><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/2.1.png" alt></p>
+<h5 id="日期型"><a href="#日期型" class="headerlink" title="日期型"></a>日期型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/3.png" alt></p>
+<h4 id="图片类型"><a href="#图片类型" class="headerlink" title="图片类型"></a>图片类型</h4><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/4.png" alt></p>
+<h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><h5 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h5><pre><code>ALTER TABLE table  
+ADD (columnname datatype[DEFAULT expr] 
+        [, columnname datatype]...);</code></pre><h5 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h5><pre><code>ALTER TABLE table 
+MODIFY(columnnamedatatype[DEFAULT expr] 
+        [, columnnamedatatype]...);</code></pre><h5 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h5><pre><code>ALTER TABLE table 
+DROP (columnname [,columnname]); </code></pre><h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><pre><code>DROP TABLE table；</code></pre><h4 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h4><pre><code>RENAME old_name TO new_name;</code></pre><h4 id="截断表"><a href="#截断表" class="headerlink" title="截断表"></a>截断表</h4><pre><code>TRUNCATE TABLE table; </code></pre><p>TRUNCATE和DELETE区别<br>TRUNCATE是DDL，只能删除表中所有记录，释放存储空间， 使用ROLLBACK不可以回滚。<br>DELETE是DML，可以删除指定记录，不释放存储空间，使用 ROLLBACK可以回滚。  </p>
+<h4 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h4><p>查询数据字典</p>
+<pre><code>SELECT table_name 
+FROM  user_tables;</code></pre><p>查看数据字典结构  </p>
+<pre><code>DESC user_tables</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数据操作与事务控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -922,80 +1027,6 @@ WHERE rn &lt;=目标页数*每页记录数 and rn &gt; (目标页数-1)*每页�
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/09/%E8%A7%A3%E9%94%81%E5%92%8C%E7%99%BB%E5%BD%95scott%E7%94%A8%E6%88%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-oracle的卸载方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/09/oracle%E7%9A%84%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95/">oracle的卸载方法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/09/oracle%E7%9A%84%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-12-09T06:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Oracle的卸载"><a href="#Oracle的卸载" class="headerlink" title="Oracle的卸载"></a>Oracle的卸载</h1><p>来源于网络<br>用Oracle自带的卸载程序不能从根本上卸载Oracle，从而为下次的安装留下隐患，那么怎么才能完全卸载Oracle呢？<br>那就是直接注册表清除，步骤如下：<br>1、 开始－&gt;设置－&gt;控制面板－&gt;管理工具－&gt;服务<br>停止所有Oracle服务。<br>2、 开始－&gt;程序－&gt;Oracle - OraDb11g_home1－&gt;Oracle安装产品－&gt; Universal Installer<br>卸装所有Oracle产品，但Universal Installer本身不能被删除<br>3、 运行regedit，选择HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE，按del键删除这个入口。<br>4、 运行regedit，删除以下这三个位置中的所有Oracle入口。<br>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\下所有Oracle删除<br>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\下所有Oracle删除<br>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\下所有Oracle删除<br>5、 运行regedit，<br>KEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\下所有Oracle删除，<br>删除所有Oracle入口。<br>6、 开始－&gt;设置－&gt;控制面板－&gt;系统－&gt;高级－&gt;环境变量<br>删除环境变量CLASSPATH和PATH中有关Oracle的设定<br>7、 从桌面上、STARTUP（启动）组、程序菜单中，删除所有有关Oracle的组和图标<br>8、 删除c:\Program Files\Oracle目录<br>9、 【重新启动计算机】，重起后才能完全删除Oracle所在目录<br>10、 删除与Oracle有关的文件，选择Oracle所在的缺省目录C:\Oracle，删除这个入口目录及所有子目录，并从Windows目录（一般为C:\WINDOWS）下删除oralce文件等等。<br>11、 在运行框中输入“win.ini”，回车。WIN.INI文件中若有[ORACLE]的标记段，删除该段<br>12、 【如有必要】，删除所有Oracle相关的ODBC的DSN<br>13、 到事件查看器中，删除Oracle相关的日志  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/09/oracle%E7%9A%84%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95/">展开全文 >></a>
         </p>
       
 

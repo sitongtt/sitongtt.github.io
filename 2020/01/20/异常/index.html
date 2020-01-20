@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>面向对象的高级特性 | sitongtt.top</title>
+  <title>异常 | sitongtt.top</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JAVA面向对象三大特性：继承、封装、多态。继承（泛化）：继承性是子类自动共享父类属性和方法的机制【修饰符】 class 子类名  extends 父类名特点：1.每一个类只有一个父类 2.一个父类可以有多个子类 3.子类拥有父类的属性和方法原理：执行子类的构造函数时自动执行父类的构造函数。   super()调用父类的构造器。（继承是默认？）只能出现在子类的构造器中，且必须是第一行super()">
+  <meta name="description" content="异常概念：运行期间出现的错误，不是编译时出现的语法错误例如：1.打开一个不存在的文件2.网络中断3.操作数组越界####异常类型检查性异常:若系统运行时可能产生该类异常，则必须写出相应的处理代码，否则无法通过编译。非检查性异常：若系统运行时可能产生该类异常，则不必在程序中声明对该类异常的处理， 就可以编译执行。   异常的处理方式：自行处理（积极处理）：   try{   可能出现异常的代码">
 <meta name="keywords" content="JavaSE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面向对象的高级特性">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7&#x2F;index.html">
+<meta property="og:title" content="异常">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;20&#x2F;%E5%BC%82%E5%B8%B8&#x2F;index.html">
 <meta property="og:site_name" content="sitongtt.top">
-<meta property="og:description" content="JAVA面向对象三大特性：继承、封装、多态。继承（泛化）：继承性是子类自动共享父类属性和方法的机制【修饰符】 class 子类名  extends 父类名特点：1.每一个类只有一个父类 2.一个父类可以有多个子类 3.子类拥有父类的属性和方法原理：执行子类的构造函数时自动执行父类的构造函数。   super()调用父类的构造器。（继承是默认？）只能出现在子类的构造器中，且必须是第一行super()">
+<meta property="og:description" content="异常概念：运行期间出现的错误，不是编译时出现的语法错误例如：1.打开一个不存在的文件2.网络中断3.操作数组越界####异常类型检查性异常:若系统运行时可能产生该类异常，则必须写出相应的处理代码，否则无法通过编译。非检查性异常：若系统运行时可能产生该类异常，则不必在程序中声明对该类异常的处理， 就可以编译执行。   异常的处理方式：自行处理（积极处理）：   try{   可能出现异常的代码">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7&#x2F;%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png">
-<meta property="og:updated_time" content="2020-01-13T12:47:42.888Z">
+<meta property="og:updated_time" content="2020-01-20T03:25:23.785Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;13&#x2F;%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7&#x2F;%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png">
   
     <link rel="alternative" href="/atom.xml" title="sitongtt.top" type="application/atom+xml">
   
@@ -149,56 +147,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-面向对象的高级特性" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-异常" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      面向对象的高级特性
+      异常
     </h1>
   
 
         
-        <a href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" class="archive-article-date">
-  	<time datetime="2020-01-13T12:47:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-13</time>
+        <a href="/2020/01/20/%E5%BC%82%E5%B8%B8/" class="archive-article-date">
+  	<time datetime="2020-01-20T03:24:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JAVA面向对象三大特性：继承、封装、多态。<br>继承（泛化）：继承性是子类自动共享父类属性和方法的机制<br>【修饰符】 class 子类名  extends 父类名<br>特点：1.每一个类只有一个父类 2.一个父类可以有多个子类 3.子类拥有父类的属性和方法<br>原理：执行子类的构造函数时自动执行父类的构造函数。  </p>
-<h4 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h4><p>调用父类的构造器。（继承是默认？）<br>只能出现在子类的构造器中，且必须是第一行<br>super()中的参数，决定了调用父类哪个构造器<br>如果子类构造器其中没有super关键字,编译器会自动添加super(),调用父类的空构造函数<br>在同一个构造器中this()和super()不能同时存在  </p>
-<h4 id="this"><a href="#this" class="headerlink" title="this()"></a>this()</h4><p>调用本类的构造器。<br>只能写在第一行  </p>
-<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>关键字：extends<br>继承的好处：1.使编码更高效 2.易维护 3.代码的重用<br>抽象类:包含了抽象方法的类</p>
-<h4 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h4><p>[访问权限修饰符] abstract 返回值类型 抽象方法名 (参数列表) ;</p>
-<pre><code>子类继承于抽象类,就要实现父类中的抽象方法,否则只能把自己定义为抽象类
-抽象类不能创建对象
-抽象方法不能为static；
-必须声明为抽象类的情况
-    一个类中包含一个或多个抽象方法的时候</code></pre><p>接口:  </p>
-<pre><code>语法规则:[访问权限修饰符] interface 接口名 {接口的成员}
-//在接口中没有具体实现的方法,都是抽象方法,要在实现类中实现  </code></pre><p>1.jdk8开始可以在接口中使用default关键字修饰方法,使方法可以拥有具体实现<br>2.用static关键字修饰方法,可以使用接口名直接调用方法<br>3.只有声明,没有具体实现(最常用)  </p>
-<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>权限修饰符<br><img src="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="权限修饰符"><br>private权限小，限制类外访问，一般把属性设为private，让其他类 不能直接访问属性，达到保护属性的目的。  </p>
-<p>protected：受保护的，除了可被类自身及与其在同一个包中的代码 访问外，还可以在一个类中通过对象引用来访问，前提是这些对象引用至少应该具有与该成员所在的类相同的类型，也即是这些引用具有该成员所在类的类型或是其一子类型。  </p>
-<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>概念：通过不同的子类对象，覆盖相同的父类方法，实现不同的效果。<br>三个必要条件：1.要有继承或实现2.要有重写（覆盖）3.父类引用指向子类对象  </p>
-<p>向上转型：<br>父类类名 对象名=new 子类类名<br>具有继承或实现关系<br>向上转换损失了子类新扩展的属性和方法，仅可以使用从父类中继承的属性和方法<br>向下转型：<br>子类类名 对象名=（子类类名）父类对象  </p>
-<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><p>内部类:定义在一个类的内部的类<br>语法规则:  </p>
-<pre><code>[访问权限修饰符] class 类名{  
-        [访问权限修饰符] static class 类名{  
-        内部类成员  
-        }  
-        外部类成员  
-    }  </code></pre><p>注意:  </p>
-<ol>
-<li>无需创建外部类对象,可以访问外部类中的属性和方法  </li>
-<li>必须创建内部类对象,才可以使用内部类中的属性和方法  </li>
-<li>如果内部类中的方法名与外部类方法名相同,内部类优先级&gt;外部类优先级  </li>
-<li>不能使用static修饰变量  </li>
-<li>静态内部类  </li>
-</ol>
+        <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>概念：运行期间出现的错误，不是编译时出现的语法错误<br>例如：1.打开一个不存在的文件2.网络中断3.操作数组越界<br>####异常类型<br>检查性异常:若系统运行时可能产生该类异常，则必须写出相应的处理代码，否则无法通过编译。<br>非检查性异常：若系统运行时可能产生该类异常，则不必在程序中声明对该类异常的处理， 就可以编译执行。  </p>
+<h4 id="异常的处理方式："><a href="#异常的处理方式：" class="headerlink" title="异常的处理方式："></a>异常的处理方式：</h4><p><strong>自行处理（积极处理）：</strong>  </p>
+<pre><code>try{  
+可能出现异常的代码  
+（之前不可以添加任何代码）  
+}catch(异常的类型 对象名){  
+异常的处理  
+}  
+finally{  
+}  </code></pre><p><strong>回避异常（消极处理）：</strong><br>throws:由调用该函数的函数处理    </p>
+<h4 id="try…catch"><a href="#try…catch" class="headerlink" title="try…catch"></a>try…catch</h4><p>注意try…catch之间不允许存在其他代码切必须成对存在（有try必有catch,多少个都行）。<br>风险：把所有代码放进try中，若没有对应类型的检测，则没有办法处理产生的异常。<br>catch中的异常类型按exception从小到大排  </p>
+<h4 id="finally"><a href="#finally" class="headerlink" title="finally{}"></a>finally{}</h4><p>finally:使用在catch代码块之后，不管是否出现异常，都会执行。（当try或catch中执行了System.exit(0)（断电）就不会执行）  </p>
+<h4 id="throws"><a href="#throws" class="headerlink" title="throws()"></a>throws()</h4><p>概念：如果一个方法中的语句执行时可能生成某种异常，但是并不能确定如何处理，则可以在程序所在的函数声明后，使用throws关键字抛出异常  </p>
+<p>语法：[(修饰符)] (返回值类型)(方法名)([参数列表])[throws(异常类)]{……}（可以跟多个异常，中间用逗号连接）</p>
+<pre><code>public void doA(int a) throws Exception1,Exception3{......}</code></pre><h4 id="方法中如果用throws关键词抛出："><a href="#方法中如果用throws关键词抛出：" class="headerlink" title="方法中如果用throws关键词抛出："></a>方法中如果用throws关键词抛出：</h4><p>非检查性异常：上一级去除异常，直到不剖出异常<br>检查性异常：在调用该函数内try-catch,把异常处理掉。那么不往上一级抛出异常，程序正常执行，上一级方法并不知道曾经产生异常。  </p>
+<h4 id="throw"><a href="#throw" class="headerlink" title="throw"></a>throw</h4><p>概念：用于引发明确的异常（抛出异常）。<br>注意：要么和try-catch一起使用，要么和throws一起使用。  </p>
+<h4 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h4><p>概念：当JAVA中的异常类型不能满足程序设计的需要，可以自行定义异常类型。<br>自定义异常：  </p>
+<pre><code>public class MyException extends Exception{
+
+}</code></pre><p>自定义异常的使用：  </p>
+<pre><code>main函数{
+try{
+...
+}catch(MyException e){
+...
+}}
+public static void 方法 throws MyException{
+if(...){throw....}
+else{...}
+}</code></pre><p><strong>异常类全部需要继承Exception</strong>  </p>
 
       
 
@@ -268,7 +266,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/20/%E5%BC%82%E5%B8%B8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,18 +280,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/20/%E5%BC%82%E5%B8%B8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          异常
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">面向对象思想</div>
+    <a href="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面向对象的高级特性</div>
       <i class="icon-circle-right"></i>
     </a>
   

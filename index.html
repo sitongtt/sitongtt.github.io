@@ -145,6 +145,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-异常" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/20/%E5%BC%82%E5%B8%B8/">异常</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/20/%E5%BC%82%E5%B8%B8/" class="archive-article-date">
+  	<time datetime="2020-01-20T03:24:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>概念：运行期间出现的错误，不是编译时出现的语法错误<br>例如：1.打开一个不存在的文件2.网络中断3.操作数组越界<br>####异常类型<br>检查性异常:若系统运行时可能产生该类异常，则必须写出相应的处理代码，否则无法通过编译。<br>非检查性异常：若系统运行时可能产生该类异常，则不必在程序中声明对该类异常的处理， 就可以编译执行。  </p>
+<h4 id="异常的处理方式："><a href="#异常的处理方式：" class="headerlink" title="异常的处理方式："></a>异常的处理方式：</h4><p><strong>自行处理（积极处理）：</strong>  </p>
+<pre><code>try{  
+可能出现异常的代码  
+（之前不可以添加任何代码）  
+}catch(异常的类型 对象名){  
+异常的处理  
+}  
+finally{  
+}  </code></pre><p><strong>回避异常（消极处理）：</strong><br>throws:由调用该函数的函数处理    </p>
+<h4 id="try…catch"><a href="#try…catch" class="headerlink" title="try…catch"></a>try…catch</h4><p>注意try…catch之间不允许存在其他代码切必须成对存在（有try必有catch,多少个都行）。<br>风险：把所有代码放进try中，若没有对应类型的检测，则没有办法处理产生的异常。<br>catch中的异常类型按exception从小到大排  </p>
+<h4 id="finally"><a href="#finally" class="headerlink" title="finally{}"></a>finally{}</h4><p>finally:使用在catch代码块之后，不管是否出现异常，都会执行。（当try或catch中执行了System.exit(0)（断电）就不会执行）  </p>
+<h4 id="throws"><a href="#throws" class="headerlink" title="throws()"></a>throws()</h4><p>概念：如果一个方法中的语句执行时可能生成某种异常，但是并不能确定如何处理，则可以在程序所在的函数声明后，使用throws关键字抛出异常  </p>
+<p>语法：[(修饰符)] (返回值类型)(方法名)([参数列表])[throws(异常类)]{……}（可以跟多个异常，中间用逗号连接）</p>
+<pre><code>public void doA(int a) throws Exception1,Exception3{......}</code></pre><h4 id="方法中如果用throws关键词抛出："><a href="#方法中如果用throws关键词抛出：" class="headerlink" title="方法中如果用throws关键词抛出："></a>方法中如果用throws关键词抛出：</h4><p>非检查性异常：上一级去除异常，直到不剖出异常<br>检查性异常：在调用该函数内try-catch,把异常处理掉。那么不往上一级抛出异常，程序正常执行，上一级方法并不知道曾经产生异常。  </p>
+<h4 id="throw"><a href="#throw" class="headerlink" title="throw"></a>throw</h4><p>概念：用于引发明确的异常（抛出异常）。<br>注意：要么和try-catch一起使用，要么和throws一起使用。  </p>
+<h4 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h4><p>概念：当JAVA中的异常类型不能满足程序设计的需要，可以自行定义异常类型。<br>自定义异常：  </p>
+<pre><code>public class MyException extends Exception{
+
+}</code></pre><p>自定义异常的使用：  </p>
+<pre><code>main函数{
+try{
+...
+}catch(MyException e){
+...
+}}
+public static void 方法 throws MyException{
+if(...){throw....}
+else{...}
+}</code></pre><p><strong>异常类全部需要继承Exception</strong>  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/20/%E5%BC%82%E5%B8%B8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-面向对象的高级特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1037,111 +1140,6 @@ on delete cascade(关联删除)
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/01/02/%E7%BA%A6%E6%9D%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-创建和维护表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/">创建和维护表</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/" class="archive-article-date">
-  	<time datetime="2019-12-30T00:55:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="数据库对象"><a href="#数据库对象" class="headerlink" title="数据库对象"></a>数据库对象</h4><p>数据库对象：是数据库的组成部分，有表、约束 、索引、视图、序列、同义词、触发器、存储过程、函数等。  </p>
-<h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><pre><code>CREATE TABLE [schema.]table
-(column datatype[DEFAULT expr][, ...]); 
---您必须具备:   
---CREATE TABLE的权限  
---一定的存贮空间(ALTER USER 用户名QUOTA 尺寸ON 表空间名字)  
---您需要指定:  
---表名、列名、列的类型及列的宽度  </code></pre><p>例如：  </p>
-<pre><code>CREATE TABLE DOSSIER ( 
-ID NUMBER(4), 
-CNAME VARCHAR2(20 ), 
-BIRTHDAY DATE, 
-STATURE    NUMBER(3), 
-WEIGHT NUMBER(5, 2), 
-COUNTRY_CODE CHAR(2 ) DEFAULT ‘01’);  </code></pre><p>用子查询语法创建表  </p>
-<pre><code>CREATE TABLE table[(column, column...)] 
-AS subquery;</code></pre><p>创建和表二一样表头的表一，仅含表头。</p>
-<pre><code>creat table 表1 as select * from 表二 where 1=0</code></pre><h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><p>–指定在插入或更新数据时，列的默认值<br>–合法的值可以是字面值、表达式或SQL函数<br>–非法的值是另一个列的名称或虚拟列<br>–默认值的数据类型必须和列的类型匹配  </p>
-<p>修改默认值<br>例如：  </p>
-<pre><code>update dossier set country_code=default where id=2;</code></pre><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><h5 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/1.png" alt></p>
-<h5 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/2.png" alt><br><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/2.1.png" alt></p>
-<h5 id="日期型"><a href="#日期型" class="headerlink" title="日期型"></a>日期型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/3.png" alt></p>
-<h4 id="图片类型"><a href="#图片类型" class="headerlink" title="图片类型"></a>图片类型</h4><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/4.png" alt></p>
-<h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><h5 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h5><pre><code>ALTER TABLE table  
-ADD (columnname datatype[DEFAULT expr] 
-        [, columnname datatype]...);</code></pre><h5 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h5><pre><code>ALTER TABLE table 
-MODIFY(columnnamedatatype[DEFAULT expr] 
-        [, columnnamedatatype]...);</code></pre><h5 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h5><pre><code>ALTER TABLE table 
-DROP (columnname [,columnname]); </code></pre><h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><pre><code>DROP TABLE table；</code></pre><h4 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h4><pre><code>RENAME old_name TO new_name;</code></pre><h4 id="截断表"><a href="#截断表" class="headerlink" title="截断表"></a>截断表</h4><pre><code>TRUNCATE TABLE table; </code></pre><p>TRUNCATE和DELETE区别<br>TRUNCATE是DDL，只能删除表中所有记录，释放存储空间， 使用ROLLBACK不可以回滚。<br>DELETE是DML，可以删除指定记录，不释放存储空间，使用 ROLLBACK可以回滚。  </p>
-<h4 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h4><p>查询数据字典</p>
-<pre><code>SELECT table_name 
-FROM  user_tables;</code></pre><p>查看数据字典结构  </p>
-<pre><code>DESC user_tables</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/">展开全文 >></a>
         </p>
       
 
