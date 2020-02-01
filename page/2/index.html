@@ -145,6 +145,137 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-约束" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/02/%E7%BA%A6%E6%9D%9F/">约束</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/02/%E7%BA%A6%E6%9D%9F/" class="archive-article-date">
+  	<time datetime="2020-01-02T12:12:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="定义约束"><a href="#定义约束" class="headerlink" title="定义约束"></a>定义约束</h4><pre><code>CREATE TABLE [schema.]table 
+(column1 datatype[DEFAULT expr] 
+    [CONSTRAINT constraint_name]constraint_type],--列级别约束 
+column2 datatype[DEFAULT expr] [CONSTRAINT constraint_name]constraint_type],--列级别约束 …… 
+[CONSTRAINT constraint_name] constraint_type]--表级别约束 
+    );</code></pre><p>其中<br>–约束既可以写在每个对应列的后面，称之为列级别约束，一个列级别约束只能作用在一个列上；  </p>
+<p>–也可以写完所有列之后，再写约束，称之为表级别约束，一个表级别约束既可以作用在一个列上，也可以作用在列的组合上；  </p>
+<p>–NOT NULL约束只能定义在列级别上，联合主键或联合唯一性约束只能定义在表级 别上，其它约束既可以定义成表级别，也可以定义成列级别；  </p>
+<p>–列级别约束和表级别约束达到的作用完全相同,只是书写的位置不同;  </p>
+<p>–CONSTRAINT:约束的关键字；constraint_name:约束名字；constraint_type：约束的类型；  </p>
+<h4 id="not-null"><a href="#not-null" class="headerlink" title="not null"></a>not null</h4><p>概念：非空约束，确保被约束列 的所有行记录都不能为空值。<br>注意：只能定义在列级上。  </p>
+<p>例如：  </p>
+<pre><code>create table emp(
+ename varchar2(10) not null,
+deptno number(7,2) not null);</code></pre><h4 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h4><p>概念：唯一约束，用来确保表中的某 一列或者某几列组合的所有行数据必须唯一，定义UNIQUE约束的列(或列组合) 被称为唯一键。  </p>
+<p>例如：  </p>
+<pre><code>create table dept(
+dname varchar2(14) &lt;constraint dept_dname_uk&gt;(约束名,可写可不写，最好还是写一下) unique,
+...
+)；</code></pre><p>也可以定义在表一级</p>
+<pre><code>create table dept(
+deptno number(2).
+dname varchar2(14),
+constraint dept_dname_uk unique(danme)
+);</code></pre><h4 id="primary-key"><a href="#primary-key" class="headerlink" title="primary key"></a>primary key</h4><p>概念：主键约束，用来确保表中的某一列或者某几列组合的所有行数据必须唯一，并且确保作为主键一部分的列不能包含空值；<br>注意：每个表只能创建一个主键约束。  </p>
+<p>例如：  </p>
+<pre><code>create tablle dept(
+deptno number(2) constraint dept_deptno_pk primary key,
+...
+)</code></pre><p>也可以定义在表一级  </p>
+<pre><code>create table deptment(
+deptno number(2),
+...
+constraint dept_deptno_pk primary key(deptno),
+...
+);</code></pre><h4 id="foreign-key"><a href="#foreign-key" class="headerlink" title="foreign key"></a>foreign key</h4><p>概念：外键约束，确保相关联的两个字段的关系：<br>–外键列的值必须在引用列值的范围内，或者为空；<br>–外键参照的是列必须是主键或者唯一键；<br>注意：主键表主键值被外键表参照时，主键表记录不允许被删除。  </p>
+<p>例如：  </p>
+<pre><code>create table emp(
+deptno number(7,2) not null constraint emp_deptno_fk refferences dept(deptno),
+...
+)</code></pre><p>也可以定义在表一级</p>
+<pre><code>create table emp(
+deptno number(7,2) not null.
+...
+constraint emp_deptno_fk foreign key (deptno) refferences dept(deptno)
+on delete cascade(关联删除)
+)</code></pre><p>注：<br>–ON DELETE CASCADE:当父表中的行被删除时，子表中相依赖的行同时被删除；<br>–ON DELETE SET NULL:当父表的行被删除时，子表中相依赖的行被转换为空值；<br>–无ON DELETE CASCADE或ON DELETE SET NULL选项，当附表中的行被删除时，如果父表中的行在子表中被引用，则提示不能被删除。  </p>
+<h4 id="check"><a href="#check" class="headerlink" title="check"></a>check</h4><p>概念：检查性约束，确保某个列的所有行数据都必须满足的条件。  </p>
+<p>例如：</p>
+<pre><code>sal number(8,2) constraint dept_sal_min check (sal&gt;0)</code></pre><p>注：<br>-不允许使用伪列。<br>-对其他值查询。  </p>
+<h4 id="追加约束"><a href="#追加约束" class="headerlink" title="追加约束"></a>追加约束</h4><p>语法：  </p>
+<pre><code>ALTER TABLE tableADD [CONSTRAINT constraint] type (column);</code></pre><p>在语法中：<br>–table 是表的名字<br>–constraint 是约束的名字<br>–type 是约束的类型<br>–column 是受约束影响的列的名字  </p>
+<h4 id="删除约束"><a href="#删除约束" class="headerlink" title="删除约束"></a>删除约束</h4><p>语法：  </p>
+<pre><code>ALTER TABLE tableDROP PRIMARY KEY|UNIQUE(column)
+|CONSTRAINT constraint[CASCADE];</code></pre><p>在语法中：<br>–table 是表的名字<br>–column 是受约束影响的列的名字<br>–constraint 是约束的名字<br>–cascade 级联删除  </p>
+<h4 id="约束禁用"><a href="#约束禁用" class="headerlink" title="约束禁用"></a>约束禁用</h4><p>语法：  </p>
+<pre><code>ALTER TABLE tableDISABLE CONSTRAINT constraint[CASCADE]; </code></pre><p>启用：  </p>
+<pre><code>ALTER TABLE tableENABLE CONSTRAINT constraint; </code></pre><h4 id="相关数据字典"><a href="#相关数据字典" class="headerlink" title="相关数据字典"></a>相关数据字典</h4><p>–和约束相关的数据字典有： USER_CONSTRAINTS：查看表上所有的约束。<br>USER_CONS_COLUMNS：查看与约束相关的列名，该字典对于那些由系统指定名字的约束特别有用。<br>–在约束类型中，C代表CHECK，P代表PRIMARY KEY，R代表FOREIGN KEY，U代表UNIQUE，NOT NULL约束实际上是一个CHECK约束。  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/02/%E7%BA%A6%E6%9D%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-创建和维护表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -953,80 +1084,6 @@ WHERE rn &lt;=目标页数*每页记录数 and rn &gt; (目标页数-1)*每页�
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/10/sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-解锁和登录scott用户" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/09/%E8%A7%A3%E9%94%81%E5%92%8C%E7%99%BB%E5%BD%95scott%E7%94%A8%E6%88%B7/">解锁和登录scott用户</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/09/%E8%A7%A3%E9%94%81%E5%92%8C%E7%99%BB%E5%BD%95scott%E7%94%A8%E6%88%B7/" class="archive-article-date">
-  	<time datetime="2019-12-09T06:28:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="解锁和登录scott用户"><a href="#解锁和登录scott用户" class="headerlink" title="解锁和登录scott用户"></a>解锁和登录scott用户</h1><p>创建好数据库后登陆<br>命令运行sqlplus /nolog–无用户身份登录<br>运行 conn / as sysdba;  –连接数据库。<br>alter user sys identified by 密码;  –修改最高权限管理员密码<br>conn sys/密码 as sysdba;  –登录sys用户<br>alter user scott identified by 密码;  –修改scott用户密码<br>alter user scott account unlock;  –对用户scott解锁<br>conn scott/密码； –登录scott用户进行测试  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/09/%E8%A7%A3%E9%94%81%E5%92%8C%E7%99%BB%E5%BD%95scott%E7%94%A8%E6%88%B7/">展开全文 >></a>
         </p>
       
 
