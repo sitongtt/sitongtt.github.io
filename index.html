@@ -145,6 +145,115 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-集合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/04/%E9%9B%86%E5%90%88/">集合</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/04/%E9%9B%86%E5%90%88/" class="archive-article-date">
+  	<time datetime="2020-03-04T09:45:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>注意：Collection是接口，Collections是类。  </p>
+<h4 id="集合和数组的比较"><a href="#集合和数组的比较" class="headerlink" title="集合和数组的比较"></a>集合和数组的比较</h4><p>长度：数组固定不可变,创建时需指定长度；集合可动态修改，创建时不需要指定长度<br>内容：:数组可以存放基本数据类型和引用类型的元素； 集合只能存放引用类型的元素。<br>元素：数组只能存放同一类型的元素；集合可以存放不同类型的元素。 </p>
+<h4 id="Collection（集合）接口下的两个子类——set和list"><a href="#Collection（集合）接口下的两个子类——set和list" class="headerlink" title="Collection（集合）接口下的两个子类——set和list"></a>Collection（集合）接口下的两个子类——set和list</h4><p>set:无序不重复<br>list:有序可重复<br>注：顺序值存入顺序和集合内存储顺序的异同。  </p>
+<h4 id="Collection（集合）的常用方法"><a href="#Collection（集合）的常用方法" class="headerlink" title="Collection（集合）的常用方法"></a>Collection（集合）的常用方法</h4><p><img src="/2020/03/04/%E9%9B%86%E5%90%88/%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%951.png" alt><br><img src="/2020/03/04/%E9%9B%86%E5%90%88/%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%952.png" alt>  </p>
+<h5 id="Set接口的实现类"><a href="#Set接口的实现类" class="headerlink" title="Set接口的实现类"></a>Set接口的实现类</h5><p>使用foreach遍历<br>HashSet:散列存取<br>TreeSet:存入顺序跟存储顺序不同，但存储是按照排序存储。  </p>
+<h4 id="set常用方法"><a href="#set常用方法" class="headerlink" title="set常用方法"></a>set常用方法</h4><p>Collection的常用方法，见上面。  </p>
+<h5 id="List接口的实现类"><a href="#List接口的实现类" class="headerlink" title="List接口的实现类"></a>List接口的实现类</h5><p>ArrayList:是线性顺序存储的，是一种线性表，可以理解为可变长度的数组。<br>LinkedList：是链式存储的，但不仅仅具有链表的特性，既有队列又有栈的特点，可以在头尾添加、删除、取得。  </p>
+<h4 id="list常用方法"><a href="#list常用方法" class="headerlink" title="list常用方法"></a>list常用方法</h4><p><img src="/2020/03/04/%E9%9B%86%E5%90%88/List.png" alt>  </p>
+<h4 id="ArrayList和LinkedList"><a href="#ArrayList和LinkedList" class="headerlink" title="ArrayList和LinkedList"></a>ArrayList和LinkedList</h4><ol>
+<li>ArrayList是线性顺序存储，Linkedlist是链表  </li>
+<li>ArrayList适合随机查询，LinkedList适合插入和删除元素（效率高）  </li>
+<li>总体来说，功能上，LinkedList要多一点<h4 id="Iterator接口（迭代器）"><a href="#Iterator接口（迭代器）" class="headerlink" title="Iterator接口（迭代器）"></a>Iterator接口（迭代器）</h4>· Iterator对象称作迭代器，用来方便的实现对容器内的元素进行遍历操作<br>· Iterator是为遍历而设计，能够从集合中取出元素和删除元素，但是没有添加元素的功能<br>· terator的功能上比较简单，使用中，<strong>只能单向移动</strong><br><img src="/2020/03/04/%E9%9B%86%E5%90%88/Iterator.png" alt>  <h4 id="collections类常用方法"><a href="#collections类常用方法" class="headerlink" title="collections类常用方法"></a>collections类常用方法</h4><img src="/2020/03/04/%E9%9B%86%E5%90%88/Collections.png" alt>  <h4 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h4>Map内存储的是键/值对这样以成对的对象组(可以把一组对象当成一个元素)，通过“键”对象来查询“值”对象<br>Map中，<strong>key值是唯一的(不能重复)</strong>，而key对象是与value对象关联在一起的。  <h4 id="Map常用方法"><a href="#Map常用方法" class="headerlink" title="Map常用方法"></a>Map常用方法</h4><img src="/2020/03/04/%E9%9B%86%E5%90%88/Map.png" alt>  <h5 id="Map接口的实现类"><a href="#Map接口的实现类" class="headerlink" title="Map接口的实现类"></a>Map接口的实现类</h5>HashMap:key/value对是按照Hash算法存储的<br>TreeMap:key/value对是排序(按key排序)存储的，基于树   <h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4></li>
+</ol>
+<p>构造方法：  </p>
+<pre><code>HashMap 变量名=new HasgMap();
+HashMap 变量名=new HashMap(int capacity);//加载因子
+HashMap 变量名=new HashMap(int capacity,float lodeFactor)//初始容量和加载因子
+HashMap 变量名=new HashMap(Map m);</code></pre><h4 id="HashMap和TreeMap的比较"><a href="#HashMap和TreeMap的比较" class="headerlink" title="HashMap和TreeMap的比较"></a>HashMap和TreeMap的比较</h4><p>1.HashMap基于哈希表实现；TreeMap基于树实现。<br>2.HashMap可以通过调优初始容量和负载因子，优化HashMap空间的使用；TreeMap没有调优选项，因为该树总处于平衡状态。<br>3.HashMap性能优于TreeMap。  </p>
+<h4 id="HashMap和Hashtable的比较"><a href="#HashMap和Hashtable的比较" class="headerlink" title="HashMap和Hashtable的比较"></a>HashMap和Hashtable的比较</h4><p>1.Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现。<br>2.Hashtable是线程安全的，也就是说是同步的，而HashMap是线程序不安全的，不是同步的。<br>3.HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。  </p>
+<h4 id="集合类的选择"><a href="#集合类的选择" class="headerlink" title="集合类的选择"></a>集合类的选择</h4><p>· Set内存放的元素不允许重复，List存放的元素有一定的顺序。<br>· Map的应用主要在利用键/值对进行快速查询。<br>· ArrayList和LinkedList的区别在于随机查询性能上ArrayList要好，但LinkedList的中间元素的插入与删除性能好。<br>· HashSet和TreeSet的区别在于集合内元素是否排序。  </p>
+<h4 id="集合的遍历"><a href="#集合的遍历" class="headerlink" title="集合的遍历"></a>集合的遍历</h4><p>1.for循环  </p>
+<pre><code>for(int i=0;i&lt;alist,size();i++) {
+    System.out.println(i);
+}</code></pre><p>2.foreach循环  </p>
+<pre><code>for(Object i:alist) {
+    System.out.println(i);
+    System.out.println(&quot; &quot;);
+}</code></pre><p>3.迭代器遍历  </p>
+<pre><code>Iterator it=alist.iterator();
+while(it.hasNext()) {
+    System.out.println(i);
+    System.out.println(&quot; &quot;);
+}</code></pre><h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>概念：泛型经常被称为参数化类型，它能够像方法一样接受不同类型的参数。  </p>
+<pre><code>ArrayList&lt;E&gt; 变量名；//E是变量类型</code></pre><p>例如：  </p>
+<pre><code>ArrayList&lt;String&gt; arr;
+arr=new ArrayList&lt;String&gt;();
+HashMap&lt;Inreger,String&gt; hm=new HashMap&lt;Integer,String&gt;();</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/04/%E9%9B%86%E5%90%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-工具类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1002,108 +1111,6 @@ ALTER USER user ACCOUNT LOCK[UNLOCK];--帐户锁定/解锁  </code></pre><h4 id=
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/04/%E8%A7%86%E5%9B%BE/">视图</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/04/%E8%A7%86%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2020-01-04T07:01:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>概念：视图是逻辑上来自一个或多个表的数据集合。<br>为什么使用视图：  </p>
-<ol>
-<li><p>限制其它用户对数据库表的访问,因为视图可以 有选择性的显示数据库表的一部分；  </p>
-</li>
-<li><p>容易实现复杂的查询； </p>
-</li>
-<li><p>对于相同的数据可以产生不同的视图；</p>
-<h4 id="简单视图和复杂视图的的区别"><a href="#简单视图和复杂视图的的区别" class="headerlink" title="简单视图和复杂视图的的区别"></a>简单视图和复杂视图的的区别</h4><p><img src="/2020/01/04/%E8%A7%86%E5%9B%BE/%E5%A4%8D%E6%9D%82%E8%A7%86%E5%9B%BE.png" alt></p>
-<h4 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h4><p> CREATE [OR REPLACE] [FORCE|NOFORCE]<br> VIEW viewname<br> [(column[,column]…)]<br> AS subquery<br> [WITH CHECK OPTION [CONSTRAINT constraintname]]<br> [WITH READ ONLY]</p>
-</li>
-</ol>
-<p>注：<br>·OR REPLACE：如果所创建的视图已经存在，该选项表示修改原视图的定义；<br>·FORCE：不管视图所基于的基表是否存在，都会创建该视图；<br>·NOFORCE：只有视图所基于的基表都存在，才会创建该视图；<br>·viewname：视图的名称；<br>·column：列名，列名的数量必须和视图所对应查询语句的列数量相等；<br>·subquery：一条完整的SELECT语句；<br>·WITH CHECK OPTION：一个约束条件，通过视图所插入或修改的数据行必须满足视图所定义的查询；constraintname：约束名；<br>·WITH READ ONLY：确保在该视图上不能进行任何DML操作；</p>
-<p>在SQL PLUS中，可以使用DESC命令显示视图的结构。  </p>
-<pre><code>DESC 视图名；</code></pre><h4 id="修改视图"><a href="#修改视图" class="headerlink" title="修改视图"></a>修改视图</h4><p>关键词：CREATE OR REPLACE VIEW（创建或替换视图）<br>注意：CREATE VIEW子句中别名的顺序必须和内部查询中的列的顺序一一对应。  </p>
-<h4 id="DML操作"><a href="#DML操作" class="headerlink" title="DML操作"></a>DML操作</h4><p>可以通过视图进行DML操作，<strong>但是有很多前提：</strong>  </p>
-<ol>
-<li><p>视图中不出现GROUP函数、GROUP BY子句，DISTINCT关键字</p>
-</li>
-<li><p>使用表达式定义的列</p>
-</li>
-<li><p>ROWNUM伪列</p>
-</li>
-<li><p>单表</p>
-</li>
-<li><p>基表中未在视图中选择的其它列定义为非空并且没有默认值；</p>
-<h4 id="拒绝DML操作"><a href="#拒绝DML操作" class="headerlink" title="拒绝DML操作"></a>拒绝DML操作</h4><p>在视图定义时使用WITH READ ONLY后，就不能对视图执行DML操作。</p>
-<h4 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h4><p>DROP VIEW viewname; </p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/04/%E8%A7%86%E5%9B%BE/">展开全文 >></a>
         </p>
       
 
