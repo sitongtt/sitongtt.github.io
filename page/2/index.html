@@ -145,6 +145,139 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-序列、索引、同义词" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/">序列、索引、同义词</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/" class="archive-article-date">
+  	<time datetime="2020-01-04T09:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h4><p>概念：序列是按照一定规则能自动增加/减少数字的一种数据库对象。<br>用法：通常用序列自动生成主键值。<br>语法：  </p>
+<pre><code>CREATE SEQUENCE [schema.]sequencename [INCREMENT BY n] [START WITH n] [MAXVALUE n | NOMAXVALUE] [MINVALUE n | NOMINVALUE] [CYCLE | NOCYCLE] [CACHE n | NOCACHE]; </code></pre><p>–sequencename:序列对象的名字  </p>
+<p>–INCREMENT BY n：序列连续两个值之间的间隔n，默认为1。  </p>
+<p>–START WITH n ：序列起始值n，该项省略，起始值为1  </p>
+<p>–MAXVALUE n ：序列最大值；NOMAXVALUE ：指定序列无最大值  </p>
+<p>–MINVALUE n：序列最小值；NOMINVALUE：指定序列无最小值  </p>
+<p>–CYCLE|NOCYCLE：表示序列在达到最大值或最小值之后是否继续产生序列值， NOCYLE表示不再产生，NOCYLE是默认选项。  </p>
+<p>–CACHE n|NOCACHE:表示序列值被服务器预先分配并存储在内存中，NOCACHE表示不预先分配并存储，CACHE 20是默认选项  </p>
+<h4 id="NEXTVAL和CURRVAL伪列"><a href="#NEXTVAL和CURRVAL伪列" class="headerlink" title="NEXTVAL和CURRVAL伪列"></a>NEXTVAL和CURRVAL伪列</h4><p>CURRVAL：表示序列返回的 当前值；<br>NEXTVAL：表示序列返回的下一个值；<br>注：<br>CURRVAL在被引用之前，必须先使用NEXTVAL来产生一个序列值；<br>可用语句序列名.CURRVAL或序列名.NEXTVAL来访问序列;  </p>
+<p>以下情况不能使用NEXTVAL和CURRVAL：  </p>
+<ol>
+<li><p>在视图的SELECT列表中  </p>
+</li>
+<li><p>包含DISTINCT关键字的SELECT语句中  </p>
+</li>
+<li><p>含有GROUP BY, HAVING, ORDER BY子句的SELECT语句中  </p>
+</li>
+<li><p>SELECT, DELETE, UPDATE 语句的子查询中  </p>
+</li>
+<li><p>含有DEFAULT表达式的CREATE TABLE、ALTER TABLE语句中  </p>
+<h4 id="序列的创建及使用"><a href="#序列的创建及使用" class="headerlink" title="序列的创建及使用"></a>序列的创建及使用</h4><p>例如：<br>创建序列student_seq：  </p>
+<p> CREATE SEQUENCE student_seq//创建序列名为student_seq<br> START WITH 10000 //从10000开始<br> INCREMENT BY 1;//每次增长1<br>使用序列student_seq生成student表中sid列插入值：  </p>
+<p> INSERT INTO student<br> VALUES (student_seq.NEXTVAL, ‘Scott’, ‘Computer Science’, 11);<br>查看student_seq序列当前值：  </p>
+<p> SELECT student_seq.CURRVAL FROM dual;</p>
+<h4 id="修改序列"><a href="#修改序列" class="headerlink" title="修改序列"></a>修改序列</h4><p>和创建序列一样，不过在前面加了关键词ALTER  </p>
+<p> ALTER SEQUENCE test_seq<br> INCREMENT BY 4    ——序列每次增加4<br> MAXVALUE 1000     ——序列最大值1000<br> NOCACHE；——不设定缓存</p>
+<h4 id="删除序列"><a href="#删除序列" class="headerlink" title="删除序列"></a>删除序列</h4><p> DROP SEQUENCE [schema.]sequencename；</p>
+<h4 id="ROWID"><a href="#ROWID" class="headerlink" title="ROWID"></a>ROWID</h4><p>功能：快速定位记录，使用ROWID检索及操作数据，效率最快。  </p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>概念：是对数据库表中一个或多个列的值进行排序的一种数据库对象。<br>功能：可以加速对表的查询速度；<br>单列索引：索引建立在表中的某一列上<br>复合索引:索引建立在表中某几列的组合上  </p>
+<h4 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h4><p> CREATE INDEX indexname<br> ON table (column[, column]…);</p>
+<h4 id="适合创建索引的情况"><a href="#适合创建索引的情况" class="headerlink" title="适合创建索引的情况"></a>适合创建索引的情况</h4></li>
+<li><p>表数据量很大  </p>
+</li>
+<li><p>要查询的结果集在2%-4%左右  </p>
+</li>
+<li><p>经常用来做WHERE条件中的列或者多表连接的列  </p>
+</li>
+<li><p>查询列的数据范围分布很广  </p>
+</li>
+<li><p>查询列中包含大量的NULL值,因为空值不包含在索引中  </p>
+<h4 id="不适合创建索引的情况"><a href="#不适合创建索引的情况" class="headerlink" title="不适合创建索引的情况"></a>不适合创建索引的情况</h4></li>
+<li><p>数据量很小的表  </p>
+</li>
+<li><p>在查询中不常用来作为查询条件的列  </p>
+</li>
+<li><p>频繁更新的表  </p>
+</li>
+<li><p>索引列作为表达式的一部分被使用时，比如常查询的条件是SALARY*12，此时在SALARY列上创建索引是没有效果的  </p>
+</li>
+<li><p>查询条件中有单行函数时，用不上索引  </p>
+<h4 id="索引缺点"><a href="#索引缺点" class="headerlink" title="索引缺点"></a>索引缺点</h4></li>
+<li><p>占用空间  </p>
+</li>
+<li><p>降低DML的操作速度；  </p>
+<h4 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h4><p> DROP INDEX index;</p>
+<h4 id="同义词"><a href="#同义词" class="headerlink" title="同义词"></a>同义词</h4><p>概念：是指向数据库对象（如：表、视图、序列、存储过程等）的数据库指针。  </p>
+<h4 id="同义词的创建"><a href="#同义词的创建" class="headerlink" title="同义词的创建"></a>同义词的创建</h4><p> CREATE [PUBLIC] SYNONYM 同义词<br> FOR  [schema.]对象名；</p>
+<h4 id="同义词的删除"><a href="#同义词的删除" class="headerlink" title="同义词的删除"></a>同义词的删除</h4><p> CREATE SYNONYM  s_emp<br> FOR  hr.employees;</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1021,90 +1154,6 @@ WHERE rn &lt;=目标页数*每页记录数 and rn &gt; (目标页数-1)*每页�
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/29/%E5%88%86%E7%BB%84%E5%87%BD%E6%95%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多表连接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/15/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5/">多表连接</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/15/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5/" class="archive-article-date">
-  	<time datetime="2019-12-15T15:23:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="多表连接"><a href="#多表连接" class="headerlink" title="多表连接"></a>多表连接</h1><p>按连接条件：等值和非等值。<br>按连接方法：外部和内部。<br>select table1.column,table2.column<br>from table1,table2<br>where teble.column=table2.column </p>
-<h4 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h4><p>一边a人，另一边有b人，则a和b组合有a*b种。<br>上述就相当于做了一个笛卡尔积。  </p>
-<h4 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h4><p>select table1.column,table2.column<br>from table1,table2<br>where teble.column（+）=table2.column<br>哪边有+哪边就可以有空行（从表），另外一边多（主表），只能在一边使用。  </p>
-<h4 id="自身连接（自连接）"><a href="#自身连接（自连接）" class="headerlink" title="自身连接（自连接）"></a>自身连接（自连接）</h4><p>select x1.a,x2.b<br>from x x1,x x2<br>where x1.c1=x2.c2<br>(x1、x2为别名，c1和c2为内容相同的行)  </p>
-<h4 id="cross-join"><a href="#cross-join" class="headerlink" title="cross join"></a>cross join</h4><p>select a,b<br>from x<br>cross join y<br>产生笛卡尔积  </p>
-<h4 id="natural-join自然连接"><a href="#natural-join自然连接" class="headerlink" title="natural join自然连接"></a>natural join自然连接</h4><p>select a,b<br>from x<br>natural join y<br>相当于等值连接  </p>
-<h4 id="using"><a href="#using" class="headerlink" title="using"></a>using</h4><p>select a,b<br>from x join y using(c)<br>指定c连接x、y两张表，也是等值连接。<br><strong>与natural join不能同时使用。</strong>  </p>
-<h4 id="on"><a href="#on" class="headerlink" title="on"></a>on</h4><p>select a,b<br>from x join y on x.c=y.c<br>指定连接条件。  </p>
-<h4 id="左外连接"><a href="#左外连接" class="headerlink" title="左外连接"></a>左外连接</h4><p>select a,b<br>from x left join y on x.c=y.c<br>左边主表，右边从表。  </p>
-<h4 id="右外连接"><a href="#右外连接" class="headerlink" title="右外连接"></a>右外连接</h4><p>select a,b<br>from x right join y on x.c=y.c<br>右边主表，左边从表。<br><strong>自身链接（自连接）也可以使用左（右）连接。</strong><br><strong>注意搞清楚左（右）外连接和外连接写法，主表没空格，副标有空格。</strong>  </p>
-<h4 id="全外连接"><a href="#全外连接" class="headerlink" title="全外连接"></a>全外连接</h4><p>select a,b<br>from x full outer join y on x.c=y.c<br>全都显示，不分主表从表，左右都可以空。  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/15/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5/">展开全文 >></a>
         </p>
       
 

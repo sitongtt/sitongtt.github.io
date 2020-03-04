@@ -6,14 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | sitongtt.top</title>
+  <title>文件与流 | sitongtt.top</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sitongtt.top">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2020&#x2F;page&#x2F;2&#x2F;index.html">
+  <meta name="description" content="文件与流&#x3D;&#x3D;这一块我当时学的不好，经供参考吧&#x3D;&#x3D;   Java中文件的管理，主要针对文件或是目录路径名的管理    文件的属性信息 文件的检查 文件的删除等 不包括文件的访问     File类通过将给定路径名字符串转换成抽象路径名来创建一个File实例 1File 变量名&amp;#x3D;new File(String pathname);2&amp;#x2F;&amp;#x2F;用一个自己设定的路径名(可以是存在的">
+<meta name="keywords" content="JavaSE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件与流">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;index.html">
 <meta property="og:site_name" content="sitongtt.top">
+<meta property="og:description" content="文件与流&#x3D;&#x3D;这一块我当时学的不好，经供参考吧&#x3D;&#x3D;   Java中文件的管理，主要针对文件或是目录路径名的管理    文件的属性信息 文件的检查 文件的删除等 不包括文件的访问     File类通过将给定路径名字符串转换成抽象路径名来创建一个File实例 1File 变量名&amp;#x3D;new File(String pathname);2&amp;#x2F;&amp;#x2F;用一个自己设定的路径名(可以是存在的">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;File1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;File2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;File3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;File4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;File5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;Files.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;Path.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;InputStream.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;OutputStream.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;Reader.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;Writer.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;%E8%8A%82%E7%82%B9%E6%B5%811.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;%E8%8A%82%E7%82%B9%E6%B5%812.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;%E8%8A%82%E7%82%B9%E6%B5%813.png">
+<meta property="og:updated_time" content="2020-03-04T14:37:21.793Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;04&#x2F;%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81&#x2F;File1.png">
   
     <link rel="alternative" href="/atom.xml" title="sitongtt.top" type="application/atom+xml">
   
@@ -143,139 +162,204 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-文件与流" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      文件与流
+    </h1>
+  
+
+        
+        <a href="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/" class="archive-article-date">
+  	<time datetime="2020-03-04T14:15:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="文件与流"><a href="#文件与流" class="headerlink" title="文件与流"></a>文件与流</h1><p>==这一块我当时学的不好，经供参考吧==  </p>
+<p>Java中文件的管理，主要针对<strong>文件</strong>或是<strong>目录路径名</strong>的管理  </p>
+<ul>
+<li>文件的属性信息</li>
+<li>文件的检查</li>
+<li>文件的删除等</li>
+<li><strong>不包括文件的访问</strong>  </li>
+</ul>
+<hr>
+<h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p>通过将给定路径名字符串转换成抽象路径名来创建一个File实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">File 变量名&#x3D;new File(String pathname);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;用一个自己设定的路径名(可以是存在的，也可以是不存在的)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建一个File实例.如果pathname是不存在的.此时不会创建文件目录.因为File类里封装的是一个不是实际存在的文件的信息。</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">File f1&#x3D;new File(&quot;C:\\test&quot;);</span></pre></td></tr></table></figure>
+<p>通过将给定File的uri转换成抽象路径名来创建一个新File实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">File 变量名&#x3D;new File(URI uri);</span></pre></td></tr></table></figure>
+<p>根据父路径名（字符串）和子路径名（字符串）创建一个File实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">File 变量名&#x3D;new File(String Parent, String child);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;例如</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">String parent&#x3D;&quot;d:\\test&quot;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">String child&#x3D;&quot;abc.txt&quot;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">File f2&#x3D;new File(parent,child);</span></pre></td></tr></table></figure>
+<p>根据parent抽象路径名和child路径名（字符串）创建一个File实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">File f1&#x3D;new File(&quot;C:\\test&quot;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">String child&#x3D;&quot;abc.txt&quot;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">File f3&#x3D;new File(f1,child)</span></pre></td></tr></table></figure>
+<h4 id="File类常用方法"><a href="#File类常用方法" class="headerlink" title="File类常用方法"></a>File类常用方法</h4><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File1.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File2.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File3.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File4.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File5.png" alt></p>
+<h4 id="Files类常用方法"><a href="#Files类常用方法" class="headerlink" title="Files类常用方法"></a>Files类常用方法</h4><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/Files.png" alt></p>
+<h4 id="file-Path接口的常用方法"><a href="#file-Path接口的常用方法" class="headerlink" title="file.Path接口的常用方法"></a>file.Path接口的常用方法</h4><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/Path.png" alt></p>
+<h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><p>概念：程序中数据的流通。在Java中，对于数据的输入（输出）是以流的方式进行的</p>
+<ul>
+<li>按流的方向：可以分为输入流</li>
+<li>按单位的不同，可以分为字节流和字符流</li>
+<li>按功能的不同，可以分为节点流和处理流</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命名不同</th>
+<th>字节流</th>
+<th>字符流</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入流</td>
+<td>InputStream</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>输出流</td>
+<td>OutStream</td>
+<td>Writer</td>
+</tr>
+</tbody></table>
+<h3 id="字节输入流和输出流的常用的方法"><a href="#字节输入流和输出流的常用的方法" class="headerlink" title="字节输入流和输出流的常用的方法"></a>字节输入流和输出流的常用的方法</h3><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/InputStream.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/OutputStream.png" alt></p>
+<h3 id="字符输入流和输出流的常用的方法"><a href="#字符输入流和输出流的常用的方法" class="headerlink" title="字符输入流和输出流的常用的方法"></a>字符输入流和输出流的常用的方法</h3><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/Reader.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/Writer.png" alt></p>
+<h2 id="节点流"><a href="#节点流" class="headerlink" title="节点流"></a>节点流</h2><p>概念：从一个特定的数据源（节点）读写数据（如：文件、内存）的类叫做节点流  </p>
+<h3 id="节点流常用的方法"><a href="#节点流常用的方法" class="headerlink" title="节点流常用的方法"></a>节点流常用的方法</h3><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/%E8%8A%82%E7%82%B9%E6%B5%811.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/%E8%8A%82%E7%82%B9%E6%B5%812.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/%E8%8A%82%E7%82%B9%E6%B5%813.png" alt></p>
+<p>使用writite方法输出数据时，有些数据并不会马上输出到我们指定的目的，通常会在内存中有个暂存区，有些输出的数据会暂时存放在这里，如果我们想要立刻把数据输出到目的地不要放在暂存区中时，可以调用”flush”这个方法来对暂存区做清楚的操作。</p>
+<h2 id="文件的访问"><a href="#文件的访问" class="headerlink" title="文件的访问"></a>文件的访问</h2><p>访问文件中的数据，通过以下几个节点类</p>
+<ul>
+<li>FileInputStream</li>
+<li>FileOutStream</li>
+<li>FileReader</li>
+<li>FileWriter</li>
+</ul>
+<h2 id="处理流"><a href="#处理流" class="headerlink" title="处理流"></a>处理流</h2><p>概念：只用字节或是字符为单位来对数据做输入输出是不够的，有时候我们需要一-行一行的读数据，有时我们需要读取特定格式的数据，因此Java提供了这样的机制，能把数据流作连接(chain),让原本没有特殊访问方法的流，通过连接到特殊的流后，变成可以用特定的方法来访问数据。</p>
+<h3 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h3><p>缓冲流对读写的数据提供了缓冲的功能，提高了读写的效率，同时增加了一些新的方法Java提供了四种缓冲流，其构造方法如下。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">BufferedInputStream(InputStream in)&#x2F;&#x2F;默认创建一个带有32字节缓冲区的缓冲输入流</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">BufferedInputStream(InputStream in,int size)&#x2F;&#x2F;多了个限制：为size大小的缓冲区</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;input换成output也可以，Stream换成Reader也可以</span></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/" class="archive-article-date">
-  	<time datetime="2020-01-04T09:00:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/">序列、索引、同义词</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">JavaSE</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/04/%E8%A7%86%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2020-01-04T07:01:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/04/%E9%9B%86%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">集合</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/04/%E8%A7%86%E5%9B%BE/">视图</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/02/%E7%BA%A6%E6%9D%9F/" class="archive-article-date">
-  	<time datetime="2020-01-02T12:12:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/02/%E7%BA%A6%E6%9D%9F/">约束</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -299,8 +383,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
