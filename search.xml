@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>多线程</title>
+    <url>/2020/03/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>进程：计算机在执行的程序的实体</li>
+<li>线程：一个程序内部的顺序控制流</li>
+</ul>
+<ul>
+<li>一个进程中可以包含一个或多个线程；一个线程就是一个程序内部的一条执行线索</li>
+<li>每个进程有独立的代码和数据空间，进程的切换会有很大的的开销</li>
+<li>同一类线程共享代码和数据空间，每个线程有独立运行的栈和程序计数器，线程切换的开销小</li>
+</ul>
+<h2 id="多线程实现的方式"><a href="#多线程实现的方式" class="headerlink" title="多线程实现的方式"></a>多线程实现的方式</h2><ol>
+<li>创建线程类  </li>
+</ol>
+<ul>
+<li>继承Thread类</li>
+<li>或实现Runnable接口</li>
+</ul>
+<ol start="2">
+<li>通过Thread类构造器来创建线程对象</li>
+</ol>
+<ul>
+<li>Thread()</li>
+<li>Thread(Runnable target)</li>
+</ul>
+<ol start="3">
+<li>通过start()方法激活线程对象</li>
+<li>线程执行</li>
+</ol>
+<a id="more"></a>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;线程类</span></pre></td></tr><tr><td class="code"><pre><span class="line">public class ThreadDemo extends Thread&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    public void run()&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        ......</span></pre></td></tr><tr><td class="code"><pre><span class="line">        &#x2F;&#x2F;执行的代码</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;线程调用</span></pre></td></tr><tr><td class="code"><pre><span class="line">public class TestThread&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    ThreadDemo t1&#x3D;new ThreadDemo();</span></pre></td></tr><tr><td class="code"><pre><span class="line">    ThreadDemo t2&#x3D;new ThreadDemo();</span></pre></td></tr><tr><td class="code"><pre><span class="line">    t1.start();</span></pre></td></tr><tr><td class="code"><pre><span class="line">    t2.start();</span></pre></td></tr><tr><td class="code"><pre><span class="line">    ......</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<h2 id="线程的声明周期"><a href="#线程的声明周期" class="headerlink" title="线程的声明周期"></a>线程的声明周期</h2><p><img src="/2020/03/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F.png" alt></p>
+<h2 id="线程中的主要方法"><a href="#线程中的主要方法" class="headerlink" title="线程中的主要方法"></a>线程中的主要方法</h2><p><img src="/2020/03/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95.png" alt></p>
+<h2 id="线程的优先级"><a href="#线程的优先级" class="headerlink" title="线程的优先级"></a>线程的优先级</h2><p>Java提供一个线程调度器来监控程序中启动后进入就绪状态的所有线程，线程调度器按照线程的优先级来决定应调度哪个线程来执行。<br>有三个优先级：  </p>
+<ul>
+<li>Thread.MIN_PRIORITY——1</li>
+<li>Thread.NORM_PRIORITY——5</li>
+<li>Thread.MAX_PRIORITY——10<h2 id="线程的休眠"><a href="#线程的休眠" class="headerlink" title="线程的休眠"></a>线程的休眠</h2></li>
+<li>sleep()  </li>
+</ul>
+<p>让线程种植一段时间的静态方法，在睡眠期满的瞬间，再次调用该线程不一定会恢复他的执行。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Thread.sleep(long millis)</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;暂时停止执行millis毫秒</span></pre></td></tr></table></figure>
+
+<ul>
+<li>join()<br>导致当前线程等待，直到调用这个join方法的线程终止</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">join();</span></pre></td></tr><tr><td class="code"><pre><span class="line">join(long millis);等待执行millis毫秒</span></pre></td></tr><tr><td class="code"><pre><span class="line">join(long millis,int nanos);&#x2F;&#x2F;等待执行millis毫秒，nanaos纳秒</span></pre></td></tr></table></figure>
+
+<ul>
+<li>yield()<br>为其他可行的线程提供执行机会<br>静态方法——Thread.yield()</li>
+</ul>
+<h2 id="线程的中止"><a href="#线程的中止" class="headerlink" title="线程的中止"></a>线程的中止</h2><ul>
+<li>自动终止：一个线程完成执行后，不能再次执行</li>
+<li>手动终止  </li>
+</ul>
+<ol>
+<li>stop()——已经过时，基本不用</li>
+<li>interrupt()———粗暴的终止方式</li>
+<li>可通过使用一个标志指示run方法退出，从而终止线程</li>
+</ol>
+<h2 id="线程的高级操作"><a href="#线程的高级操作" class="headerlink" title="线程的高级操作"></a>线程的高级操作</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void wait()</span></pre></td></tr></table></figure>
+<p>导致当前的线程等待，直到其他线程调用此对象的notify()方法或notiftAll()方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void notify()</span></pre></td></tr></table></figure>
+<p>唤醒在此对象监视器上等待的单个线程</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void notifyAll()</span></pre></td></tr></table></figure>
+<p>唤醒在此对象监视器上等待的所有线程</p>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><p>为了确保两个线程在同时访问同一个文件的时，保证数据的一致性。<br>原理是：使用线程同步语句时，保证只有一个线程在执行。  </p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>概念：每个对象都有一个锁标志，使用synchronized可与锁标志交互，保证里面的对象是线程同步的。</p>
+<h2 id="实现同步的两种方式"><a href="#实现同步的两种方式" class="headerlink" title="实现同步的两种方式"></a>实现同步的两种方式</h2><ul>
+<li>synchronized方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">synchronized void methodA()&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    </span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+
+<ul>
+<li>synchronized语句</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">synchronized(Object object)&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    ......</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F;要同步的语句</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p><strong>注意：受到synchronized保护的程序代码块和方法中，要访问的对象属性必须设定为private,因为如果不设定为private,那么就可以用不同的方式来访问它，这样就达不到保护的效果了。</strong></p>
+<h2 id="synchronized方法和synchronized语句的比较"><a href="#synchronized方法和synchronized语句的比较" class="headerlink" title="synchronized方法和synchronized语句的比较"></a>synchronized方法和synchronized语句的比较</h2><p>synchronized方法  </p>
+<ul>
+<li>优点：可以具体知道哪些方法是被synchronized保护的。</li>
+<li>缺点：方法中的有些内容不需要同步，会降低效率<br>synchronized语句</li>
+<li>优点：可以专门针对某段代码，可以取得不同对象的锁。</li>
+<li>缺点：无法明确得知哪些方法是被synchronized保护的。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文件与流</title>
     <url>/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/</url>
     <content><![CDATA[<h1 id="文件与流"><a href="#文件与流" class="headerlink" title="文件与流"></a>文件与流</h1><p>==这一块我当时学的不好，经供参考吧==  </p>
