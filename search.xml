@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>文件与流</title>
+    <url>/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/</url>
+    <content><![CDATA[<h1 id="文件与流"><a href="#文件与流" class="headerlink" title="文件与流"></a>文件与流</h1><p>==这一块我当时学的不好，经供参考吧==  </p>
+<p>Java中文件的管理，主要针对<strong>文件</strong>或是<strong>目录路径名</strong>的管理  </p>
+<ul>
+<li>文件的属性信息</li>
+<li>文件的检查</li>
+<li>文件的删除等</li>
+<li><strong>不包括文件的访问</strong>  </li>
+</ul>
+<hr>
+<h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p>通过将给定路径名字符串转换成抽象路径名来创建一个File实例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">File 变量名&#x3D;new File(String pathname);</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;用一个自己设定的路径名(可以是存在的，也可以是不存在的)</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;创建一个File实例.如果pathname是不存在的.此时不会创建文件目录.因为File类里封装的是一个不是实际存在的文件的信息。</span></pre></td></tr><tr><td class="code"><pre><span class="line">File f1&#x3D;new File(&quot;C:\\test&quot;);</span></pre></td></tr></table></figure>
+<p>通过将给定File的uri转换成抽象路径名来创建一个新File实例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">File 变量名&#x3D;new File(URI uri);</span></pre></td></tr></table></figure>
+<p>根据父路径名（字符串）和子路径名（字符串）创建一个File实例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">File 变量名&#x3D;new File(String Parent, String child);</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;例如</span></pre></td></tr><tr><td class="code"><pre><span class="line">String parent&#x3D;&quot;d:\\test&quot;;</span></pre></td></tr><tr><td class="code"><pre><span class="line">String child&#x3D;&quot;abc.txt&quot;;</span></pre></td></tr><tr><td class="code"><pre><span class="line">File f2&#x3D;new File(parent,child);</span></pre></td></tr></table></figure>
+<p>根据parent抽象路径名和child路径名（字符串）创建一个File实例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">File f1&#x3D;new File(&quot;C:\\test&quot;);</span></pre></td></tr><tr><td class="code"><pre><span class="line">String child&#x3D;&quot;abc.txt&quot;;</span></pre></td></tr><tr><td class="code"><pre><span class="line">File f3&#x3D;new File(f1,child)</span></pre></td></tr></table></figure>
+<h4 id="File类常用方法"><a href="#File类常用方法" class="headerlink" title="File类常用方法"></a>File类常用方法</h4><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File1.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File2.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File3.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File4.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/File5.png" alt></p>
+<h4 id="Files类常用方法"><a href="#Files类常用方法" class="headerlink" title="Files类常用方法"></a>Files类常用方法</h4><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/Files.png" alt></p>
+<h4 id="file-Path接口的常用方法"><a href="#file-Path接口的常用方法" class="headerlink" title="file.Path接口的常用方法"></a>file.Path接口的常用方法</h4><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/Path.png" alt></p>
+<h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><p>概念：程序中数据的流通。在Java中，对于数据的输入（输出）是以流的方式进行的</p>
+<ul>
+<li>按流的方向：可以分为输入流</li>
+<li>按单位的不同，可以分为字节流和字符流</li>
+<li>按功能的不同，可以分为节点流和处理流</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命名不同</th>
+<th>字节流</th>
+<th>字符流</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入流</td>
+<td>InputStream</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>输出流</td>
+<td>OutStream</td>
+<td>Writer</td>
+</tr>
+</tbody></table>
+<h3 id="字节输入流和输出流的常用的方法"><a href="#字节输入流和输出流的常用的方法" class="headerlink" title="字节输入流和输出流的常用的方法"></a>字节输入流和输出流的常用的方法</h3><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/InputStream.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/OutputStream.png" alt></p>
+<h3 id="字符输入流和输出流的常用的方法"><a href="#字符输入流和输出流的常用的方法" class="headerlink" title="字符输入流和输出流的常用的方法"></a>字符输入流和输出流的常用的方法</h3><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/Reader.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/Writer.png" alt></p>
+<h2 id="节点流"><a href="#节点流" class="headerlink" title="节点流"></a>节点流</h2><p>概念：从一个特定的数据源（节点）读写数据（如：文件、内存）的类叫做节点流  </p>
+<h3 id="节点流常用的方法"><a href="#节点流常用的方法" class="headerlink" title="节点流常用的方法"></a>节点流常用的方法</h3><p><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/%E8%8A%82%E7%82%B9%E6%B5%811.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/%E8%8A%82%E7%82%B9%E6%B5%812.png" alt><br><img src="/2020/03/04/%E6%96%87%E4%BB%B6%E4%B8%8E%E6%B5%81/%E8%8A%82%E7%82%B9%E6%B5%813.png" alt></p>
+<p>使用writite方法输出数据时，有些数据并不会马上输出到我们指定的目的，通常会在内存中有个暂存区，有些输出的数据会暂时存放在这里，如果我们想要立刻把数据输出到目的地不要放在暂存区中时，可以调用”flush”这个方法来对暂存区做清楚的操作。</p>
+<h2 id="文件的访问"><a href="#文件的访问" class="headerlink" title="文件的访问"></a>文件的访问</h2><p>访问文件中的数据，通过以下几个节点类</p>
+<ul>
+<li>FileInputStream</li>
+<li>FileOutStream</li>
+<li>FileReader</li>
+<li>FileWriter</li>
+</ul>
+<h2 id="处理流"><a href="#处理流" class="headerlink" title="处理流"></a>处理流</h2><p>概念：只用字节或是字符为单位来对数据做输入输出是不够的，有时候我们需要一-行一行的读数据，有时我们需要读取特定格式的数据，因此Java提供了这样的机制，能把数据流作连接(chain),让原本没有特殊访问方法的流，通过连接到特殊的流后，变成可以用特定的方法来访问数据。</p>
+<h3 id="缓冲流"><a href="#缓冲流" class="headerlink" title="缓冲流"></a>缓冲流</h3><p>缓冲流对读写的数据提供了缓冲的功能，提高了读写的效率，同时增加了一些新的方法Java提供了四种缓冲流，其构造方法如下。  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BufferedInputStream(InputStream in)&#x2F;&#x2F;默认创建一个带有32字节缓冲区的缓冲输入流</span></pre></td></tr><tr><td class="code"><pre><span class="line">BufferedInputStream(InputStream in,int size)&#x2F;&#x2F;多了个限制：为size大小的缓冲区</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;input换成output也可以，Stream换成Reader也可以</span></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集合</title>
+    <url>/2020/03/04/%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>注意：Collection是接口，Collections是类。  </p>
+<h4 id="集合和数组的比较"><a href="#集合和数组的比较" class="headerlink" title="集合和数组的比较"></a>集合和数组的比较</h4><p>长度：数组固定不可变,创建时需指定长度；集合可动态修改，创建时不需要指定长度<br>内容：:数组可以存放基本数据类型和引用类型的元素； 集合只能存放引用类型的元素。<br>元素：数组只能存放同一类型的元素；集合可以存放不同类型的元素。 </p>
+<h4 id="Collection（集合）接口下的两个子类——set和list"><a href="#Collection（集合）接口下的两个子类——set和list" class="headerlink" title="Collection（集合）接口下的两个子类——set和list"></a>Collection（集合）接口下的两个子类——set和list</h4><p>set:无序不重复<br>list:有序可重复<br>注：顺序值存入顺序和集合内存储顺序的异同。  </p>
+<h4 id="Collection（集合）的常用方法"><a href="#Collection（集合）的常用方法" class="headerlink" title="Collection（集合）的常用方法"></a>Collection（集合）的常用方法</h4><p><img src="/2020/03/04/%E9%9B%86%E5%90%88/%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%951.png" alt><br><img src="/2020/03/04/%E9%9B%86%E5%90%88/%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%952.png" alt>  </p>
+<h5 id="Set接口的实现类"><a href="#Set接口的实现类" class="headerlink" title="Set接口的实现类"></a>Set接口的实现类</h5><p>使用foreach遍历<br>HashSet:散列存取<br>TreeSet:存入顺序跟存储顺序不同，但存储是按照排序存储。  </p>
+<h4 id="set常用方法"><a href="#set常用方法" class="headerlink" title="set常用方法"></a>set常用方法</h4><p>Collection的常用方法，见上面。  </p>
+<h5 id="List接口的实现类"><a href="#List接口的实现类" class="headerlink" title="List接口的实现类"></a>List接口的实现类</h5><p>ArrayList:是线性顺序存储的，是一种线性表，可以理解为可变长度的数组。<br>LinkedList：是链式存储的，但不仅仅具有链表的特性，既有队列又有栈的特点，可以在头尾添加、删除、取得。  </p>
+<h4 id="list常用方法"><a href="#list常用方法" class="headerlink" title="list常用方法"></a>list常用方法</h4><p><img src="/2020/03/04/%E9%9B%86%E5%90%88/List.png" alt>  </p>
+<h4 id="ArrayList和LinkedList"><a href="#ArrayList和LinkedList" class="headerlink" title="ArrayList和LinkedList"></a>ArrayList和LinkedList</h4><ol>
+<li>ArrayList是线性顺序存储，Linkedlist是链表  </li>
+<li>ArrayList适合随机查询，LinkedList适合插入和删除元素（效率高）  </li>
+<li>总体来说，功能上，LinkedList要多一点<h4 id="Iterator接口（迭代器）"><a href="#Iterator接口（迭代器）" class="headerlink" title="Iterator接口（迭代器）"></a>Iterator接口（迭代器）</h4>· Iterator对象称作迭代器，用来方便的实现对容器内的元素进行遍历操作<br>· Iterator是为遍历而设计，能够从集合中取出元素和删除元素，但是没有添加元素的功能<br>· terator的功能上比较简单，使用中，<strong>只能单向移动</strong><br><img src="/2020/03/04/%E9%9B%86%E5%90%88/Iterator.png" alt>  <h4 id="collections类常用方法"><a href="#collections类常用方法" class="headerlink" title="collections类常用方法"></a>collections类常用方法</h4><img src="/2020/03/04/%E9%9B%86%E5%90%88/Collections.png" alt>  <h4 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h4>Map内存储的是键/值对这样以成对的对象组(可以把一组对象当成一个元素)，通过“键”对象来查询“值”对象<br>Map中，<strong>key值是唯一的(不能重复)</strong>，而key对象是与value对象关联在一起的。  <h4 id="Map常用方法"><a href="#Map常用方法" class="headerlink" title="Map常用方法"></a>Map常用方法</h4><img src="/2020/03/04/%E9%9B%86%E5%90%88/Map.png" alt>  <h5 id="Map接口的实现类"><a href="#Map接口的实现类" class="headerlink" title="Map接口的实现类"></a>Map接口的实现类</h5>HashMap:key/value对是按照Hash算法存储的<br>TreeMap:key/value对是排序(按key排序)存储的，基于树   <h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4></li>
+</ol>
+<p>构造方法：  </p>
+<pre><code>HashMap 变量名=new HasgMap();
+HashMap 变量名=new HashMap(int capacity);//加载因子
+HashMap 变量名=new HashMap(int capacity,float lodeFactor)//初始容量和加载因子
+HashMap 变量名=new HashMap(Map m);</code></pre><h4 id="HashMap和TreeMap的比较"><a href="#HashMap和TreeMap的比较" class="headerlink" title="HashMap和TreeMap的比较"></a>HashMap和TreeMap的比较</h4><p>1.HashMap基于哈希表实现；TreeMap基于树实现。<br>2.HashMap可以通过调优初始容量和负载因子，优化HashMap空间的使用；TreeMap没有调优选项，因为该树总处于平衡状态。<br>3.HashMap性能优于TreeMap。  </p>
+<h4 id="HashMap和Hashtable的比较"><a href="#HashMap和Hashtable的比较" class="headerlink" title="HashMap和Hashtable的比较"></a>HashMap和Hashtable的比较</h4><p>1.Hashtable是基于陈旧的Dictionary类的，HashMap是Java 1.2引进的Map接口的一个实现。<br>2.Hashtable是线程安全的，也就是说是同步的，而HashMap是线程序不安全的，不是同步的。<br>3.HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。  </p>
+<h4 id="集合类的选择"><a href="#集合类的选择" class="headerlink" title="集合类的选择"></a>集合类的选择</h4><p>· Set内存放的元素不允许重复，List存放的元素有一定的顺序。<br>· Map的应用主要在利用键/值对进行快速查询。<br>· ArrayList和LinkedList的区别在于随机查询性能上ArrayList要好，但LinkedList的中间元素的插入与删除性能好。<br>· HashSet和TreeSet的区别在于集合内元素是否排序。  </p>
+<h4 id="集合的遍历"><a href="#集合的遍历" class="headerlink" title="集合的遍历"></a>集合的遍历</h4><p>1.for循环  </p>
+<pre><code>for(int i=0;i&lt;alist,size();i++) {
+    System.out.println(i);
+}</code></pre><p>2.foreach循环  </p>
+<pre><code>for(Object i:alist) {
+    System.out.println(i);
+    System.out.println(&quot; &quot;);
+}</code></pre><p>3.迭代器遍历  </p>
+<pre><code>Iterator it=alist.iterator();
+while(it.hasNext()) {
+    System.out.println(i);
+    System.out.println(&quot; &quot;);
+}</code></pre><h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>概念：泛型经常被称为参数化类型，它能够像方法一样接受不同类型的参数。  </p>
+<pre><code>ArrayList&lt;E&gt; 变量名；//E是变量类型</code></pre><p>例如：  </p>
+<pre><code>ArrayList&lt;String&gt; arr;
+arr=new ArrayList&lt;String&gt;();
+HashMap&lt;Inreger,String&gt; hm=new HashMap&lt;Integer,String&gt;();</code></pre>]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工具类</title>
+    <url>/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
+    <content><![CDATA[<h4 id="equals-和’-’的区别"><a href="#equals-和’-’的区别" class="headerlink" title="equals()和’==’的区别"></a>equals()和’==’的区别</h4><p>默认情况下（即没有被重写时）equals()只能比较引用类型，”==”既能 比较引用类型又能比较基本类型。   </p>
+<p>equals()方法从Object类继承，即比较对象引用的值<br>一般都被子类方法覆盖，不再比较引用的值  </p>
+<p>而’==’运算符：<br>比较基本数据类型:相当于算数符号<br>比较引用数据类型：比较引用的值，不能被覆盖。（地址值）  </p>
+<h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><p>Java编程语言不把基本数据类型看作对象。Java 编程语言提供包装类来将基本数据类型看作对象。  </p>
+<p><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/1.png" alt><br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/2.png" alt>  </p>
+<h4 id="字符串类"><a href="#字符串类" class="headerlink" title="字符串类"></a>字符串类</h4><p>String、StringBuffer和StringBuilder的区别：  </p>
+<ol>
+<li>长度可不可变<br>String不可变，StringBuffer和StringBuilder可变。  </li>
+<li>线程是否安全<br>String和StringBuffer安全，StringBuilder不安全  </li>
+<li>效率<br>StringBuilder最高  <h4 id="String类常用的方法"><a href="#String类常用的方法" class="headerlink" title="String类常用的方法"></a>String类常用的方法</h4></li>
+</ol>
+<p><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/3.png" alt><br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/4.png" alt><br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/5.png" alt>  </p>
+<h4 id="StringBuffer类常用的方法"><a href="#StringBuffer类常用的方法" class="headerlink" title="StringBuffer类常用的方法"></a>StringBuffer类常用的方法</h4><p><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/6.png" alt><br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/7.png" alt>  </p>
+<ul>
+<li>如何判断StringBuffer相等？  </li>
+</ul>
+<p>想要判断两个StringBuffer变量的内容是否相等，应先用toString（）将他们转换成String对象。  </p>
+<h4 id="StringBuilder类常用的方法"><a href="#StringBuilder类常用的方法" class="headerlink" title="StringBuilder类常用的方法"></a>StringBuilder类常用的方法</h4><p><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/8.png" alt><br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/9.png" alt>  </p>
+<h4 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h4><p><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/10.png" alt><br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/11.png" alt>  </p>
+<h4 id="日期类"><a href="#日期类" class="headerlink" title="日期类"></a>日期类</h4><ul>
+<li>现在我们更应该多使用 Calendar 类实现日期和时间字段之间 转换，使用DateFormat类来格式化和分析日期字符串；Date中的相应方法已废弃。  <h4 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h4><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/12.png" alt>  <h4 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h4><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/13.png" alt><br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/14.png" alt>  <h4 id="SimpleDateFormat类"><a href="#SimpleDateFormat类" class="headerlink" title="SimpleDateFormat类"></a>SimpleDateFormat类</h4>一个以与语言环境相关的方式来格式化和分析日期的具体类。<br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/15.png" alt><br><img src="/2020/02/01/%E5%B7%A5%E5%85%B7%E7%B1%BB/16.png" alt>  </li>
+</ul>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>异常</title>
+    <url>/2020/01/20/%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><p>概念：运行期间出现的错误，不是编译时出现的语法错误<br>例如：1.打开一个不存在的文件2.网络中断3.操作数组越界<br>####异常类型<br>检查性异常:若系统运行时可能产生该类异常，则必须写出相应的处理代码，否则无法通过编译。<br>非检查性异常：若系统运行时可能产生该类异常，则不必在程序中声明对该类异常的处理， 就可以编译执行。  </p>
+<h4 id="异常的处理方式："><a href="#异常的处理方式：" class="headerlink" title="异常的处理方式："></a>异常的处理方式：</h4><p><strong>自行处理（积极处理）：</strong>  </p>
+<pre><code>try{  
+可能出现异常的代码  
+（之前不可以添加任何代码）  
+}catch(异常的类型 对象名){  
+异常的处理  
+}  
+finally{  
+}  </code></pre><p><strong>回避异常（消极处理）：</strong><br>throws:由调用该函数的函数处理    </p>
+<h4 id="try…catch"><a href="#try…catch" class="headerlink" title="try…catch"></a>try…catch</h4><p>注意try…catch之间不允许存在其他代码切必须成对存在（有try必有catch,多少个都行）。<br>风险：把所有代码放进try中，若没有对应类型的检测，则没有办法处理产生的异常。<br>catch中的异常类型按exception从小到大排  </p>
+<h4 id="finally"><a href="#finally" class="headerlink" title="finally{}"></a>finally{}</h4><p>finally:使用在catch代码块之后，不管是否出现异常，都会执行。（当try或catch中执行了System.exit(0)（断电）就不会执行）  </p>
+<h4 id="throws"><a href="#throws" class="headerlink" title="throws()"></a>throws()</h4><p>概念：如果一个方法中的语句执行时可能生成某种异常，但是并不能确定如何处理，则可以在程序所在的函数声明后，使用throws关键字抛出异常  </p>
+<p>语法：[(修饰符)] (返回值类型)(方法名)([参数列表])[throws(异常类)]{……}（可以跟多个异常，中间用逗号连接）</p>
+<pre><code>public void doA(int a) throws Exception1,Exception3{......}</code></pre><h4 id="方法中如果用throws关键词抛出："><a href="#方法中如果用throws关键词抛出：" class="headerlink" title="方法中如果用throws关键词抛出："></a>方法中如果用throws关键词抛出：</h4><p>非检查性异常：上一级去除异常，直到不剖出异常<br>检查性异常：在调用该函数内try-catch,把异常处理掉。那么不往上一级抛出异常，程序正常执行，上一级方法并不知道曾经产生异常。  </p>
+<h4 id="throw"><a href="#throw" class="headerlink" title="throw"></a>throw</h4><p>概念：用于引发明确的异常（抛出异常）。<br>注意：要么和try-catch一起使用，要么和throws一起使用。  </p>
+<h4 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h4><p>概念：当JAVA中的异常类型不能满足程序设计的需要，可以自行定义异常类型。<br>自定义异常：  </p>
+<pre><code>public class MyException extends Exception{
+
+}</code></pre><p>自定义异常的使用：  </p>
+<pre><code>main函数{
+try{
+...
+}catch(MyException e){
+...
+}}
+public static void 方法 throws MyException{
+if(...){throw....}
+else{...}
+}</code></pre><p><strong>异常类全部需要继承Exception</strong>  </p>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象的高级特性</title>
+    <url>/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<p>JAVA面向对象三大特性：继承、封装、多态。<br>继承（泛化）：继承性是子类自动共享父类属性和方法的机制<br>【修饰符】 class 子类名  extends 父类名<br>特点：1.每一个类只有一个父类 2.一个父类可以有多个子类 3.子类拥有父类的属性和方法<br>原理：执行子类的构造函数时自动执行父类的构造函数。  </p>
+<h4 id="super"><a href="#super" class="headerlink" title="super()"></a>super()</h4><p>调用父类的构造器。（继承是默认？）<br>只能出现在子类的构造器中，且必须是第一行<br>super()中的参数，决定了调用父类哪个构造器<br>如果子类构造器其中没有super关键字,编译器会自动添加super(),调用父类的空构造函数<br>在同一个构造器中this()和super()不能同时存在  </p>
+<h4 id="this"><a href="#this" class="headerlink" title="this()"></a>this()</h4><p>调用本类的构造器。<br>只能写在第一行  </p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>关键字：extends<br>继承的好处：1.使编码更高效 2.易维护 3.代码的重用<br>抽象类:包含了抽象方法的类</p>
+<h4 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h4><p>[访问权限修饰符] abstract 返回值类型 抽象方法名 (参数列表) ;</p>
+<pre><code>子类继承于抽象类,就要实现父类中的抽象方法,否则只能把自己定义为抽象类
+抽象类不能创建对象
+抽象方法不能为static；
+必须声明为抽象类的情况
+    一个类中包含一个或多个抽象方法的时候</code></pre><p>接口:  </p>
+<pre><code>语法规则:[访问权限修饰符] interface 接口名 {接口的成员}
+//在接口中没有具体实现的方法,都是抽象方法,要在实现类中实现  </code></pre><p>1.jdk8开始可以在接口中使用default关键字修饰方法,使方法可以拥有具体实现<br>2.用static关键字修饰方法,可以使用接口名直接调用方法<br>3.只有声明,没有具体实现(最常用)  </p>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>权限修饰符<br><img src="/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png" alt="权限修饰符"><br>private权限小，限制类外访问，一般把属性设为private，让其他类 不能直接访问属性，达到保护属性的目的。  </p>
+<p>protected：受保护的，除了可被类自身及与其在同一个包中的代码 访问外，还可以在一个类中通过对象引用来访问，前提是这些对象引用至少应该具有与该成员所在的类相同的类型，也即是这些引用具有该成员所在类的类型或是其一子类型。  </p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>概念：通过不同的子类对象，覆盖相同的父类方法，实现不同的效果。<br>三个必要条件：1.要有继承或实现2.要有重写（覆盖）3.父类引用指向子类对象  </p>
+<p>向上转型：<br>父类类名 对象名=new 子类类名<br>具有继承或实现关系<br>向上转换损失了子类新扩展的属性和方法，仅可以使用从父类中继承的属性和方法<br>向下转型：<br>子类类名 对象名=（子类类名）父类对象  </p>
+<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><p>内部类:定义在一个类的内部的类<br>语法规则:  </p>
+<pre><code>[访问权限修饰符] class 类名{  
+        [访问权限修饰符] static class 类名{  
+        内部类成员  
+        }  
+        外部类成员  
+    }  </code></pre><p>注意:  </p>
+<ol>
+<li>无需创建外部类对象,可以访问外部类中的属性和方法  </li>
+<li>必须创建内部类对象,才可以使用内部类中的属性和方法  </li>
+<li>如果内部类中的方法名与外部类方法名相同,内部类优先级&gt;外部类优先级  </li>
+<li>不能使用static修饰变量  </li>
+<li>静态内部类  </li>
+</ol>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面向对象思想</title>
+    <url>/2020/01/13/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/</url>
+    <content><![CDATA[<h1 id="面向对象思想"><a href="#面向对象思想" class="headerlink" title="面向对象思想"></a>面向对象思想</h1><p>java：面向对象变成<br>类和对象：相当于，类是模板，而对象则是按照模板生产出来的个体(每个个体拥有相同但不一定相等的属性)。<br>####类的定义：<br>&lt;修饰符&gt; class类名{<br>1.属性<br>2.方法(成员方法)<br>3.内部类（了解）<br>4.代码块（了解）<br>}  </p>
+<h4 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h4><p>属性可以和局部变量同名，使用关键字this进行区分  </p>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p><strong>创建类名</strong>：类名 对象名=new 类名（）；<br>栈内存：保存对象的首地址,首地址找到堆内存的位置,从而对对象进行访问和赋值。<br>堆内存:内存空间大,保存对象的具体内容。  </p>
+<h4 id="构造方法（构造器）"><a href="#构造方法（构造器）" class="headerlink" title="构造方法（构造器）"></a>构造方法（构造器）</h4><p><strong>构造器的创建</strong><br>class 类名{}<br>class 类名（参数）{各种this}<br><strong>构造器的使用</strong><br>类名 对象名=new 类名（参数数值）；  </p>
+<h4 id="包"><a href="#包" class="headerlink" title="包"></a>包</h4><p>package 包名；<br>引入包：import 包名；</p>
+<h4 id="代码封装"><a href="#代码封装" class="headerlink" title="代码封装"></a>代码封装</h4><p><strong>封装关键字</strong><br>private（私有）：私有的，不对外公开，类的private成员只能被该类的成员访问。private权限最小，限制类外访问，一般把属性设为private，让其他类不能直接访问属性，达到保护的目的。<br>default（默认）：不使用权限修饰符时(即default)的成员在类内以及 在同一个包中的其他类可以访问。<br>public（公有）：公有的，最高的访问级别，public成员可以在所有其 他类中访问。  </p>
+<h4 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h4><p>概念：保证一个类仅有一个实例，并提供一个访问它的全局访问点。  </p>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>方法</title>
+    <url>/2020/01/13/%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p><strong>方法的声明</strong>  </p>
+<pre><code>&lt;修饰符&gt; 数据类型 方法名（[数据类型1 参数名1，数据类型2 参数名2...]）{  
+要执行的代码块；  
+return 数据类型；  
+}  </code></pre><p>修饰符：public（公共的）、protect(保护的)、private（私人的）、default（默认的，不填就是这个）<strong>限定了访问的权限</strong>  </p>
+<p>static:使用其修饰，称为静态方法，直接通过方法名调用。  </p>
+<p>final:使用其修饰，方法不能被覆盖。  </p>
+<p>数据类型：基本数据类型，引用数据类型，也可是void表示没有返回值。  </p>
+<p>方法名：使用驼峰命名法。<br>参数列表：可以没有参数，也可以有一个或多个参数。<br>形式参数：定义了这个方法在调用时，输入的参数个数和参数类型，顺序也不能变。（x，y）<br>实际参数：调用方法时，传入的实际数字。(1,2)<br>方法体：逻辑代码<br>return语句：返回的结果必须和定义的数据类型保持一致。<br><strong>方法的重载</strong><br>定义：<strong>在同一个类中</strong>，可以存在一个以上的同名方法。<br>规则:</p>
+<ol>
+<li>方法名称相同  </li>
+<li>参数不同（个数或类型不同）  </li>
+<li>返回值可以相同，也可以不用（不影响）  </li>
+</ol>
+]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组</title>
+    <url>/2020/01/13/%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h4 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h4><p><strong>一维数组的定义和创建</strong>  </p>
+<pre><code>数组类型(int) 数组名[] 或 数组类型[] 数组名  </code></pre><p>例如：int a[]或int[] a<br>指定数组长度：数组名=new 数据元素类型【元素个数】<br>例如：</p>
+<pre><code>int a[]=new int[5];  </code></pre><p>数组的索引（下标）从0开始，数组创建后立即拥有默认值：<br>1、整数类型数组的默认值是0<br>2、String类型定义的数组，默认值是null<br>3、char类型定义的数组，默认值是0对应的字符<br>4、浮点类型定义的数组，默认值是0.0<br>5、boolean类型数组的默认值是false<br><strong>数组的初始化</strong><br>静态：int  a[ ] = {1,2,3,4,5} ;<br>动态：int  a[ ] = new int[]{1,2,3,4,5} ;<br><strong>foreach遍历数组</strong>  </p>
+<pre><code>for(数组元素类型 变量名：数组名){
+System.out.println(变量);
+}  </code></pre><p><strong>多维数组的创建</strong>  </p>
+<pre><code>数组名=new&amp;emsp;数据元素类型【行数】 【列数】；  
+数组名=new&amp;emsp;数据元素类型【行数】 【】； //列数可为空，但行数必不为空 </code></pre><p>例如：a=new int [3][4];a=new int[3][];<br><strong>多维数组的初始化</strong>  </p>
+<pre><code>数组类型&amp;emsp;数组名[][]= { {元素11，元素12，…} , {元素21，元素22，… } }  
+数组类型&amp;emsp;数组名[][][= new 数据类型[ ][ ] { {元素11，元素12，…} , {元素21，… } }  </code></pre><p><strong>二维数组遍历</strong>  </p>
+<pre><code>for(int i=0;i&lt;a.length;i++){  
+    for(int j=0;j&lt;a[i].lenght;j++){  
+    ...  
+    }
+}  </code></pre><p><strong>冒泡排序</strong>(由大到小排列)  </p>
+<pre><code>for(i=1;i&lt;n-1;i++)  
+{  
+    for(j=0;j&lt;n-i;j++){  
+        if(a[j]&lt;a[j+1]){  
+            temp=a[j];  
+            a[j]=a[j+1];  
+            a[j+1]=temp;
+        }
+    }
+}</code></pre>]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java语句基础</title>
+    <url>/2020/01/13/Java%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="java基础"><a href="#java基础" class="headerlink" title="java基础"></a>java基础</h1><p>//：单行注释<br>/* */多行注释<br>public:全局的权限修饰符，表示所有人都可以调用这个类。<br>类的组成部分：①成员属性②成员方法③代码块④内部类<br>数据类型：<br>1.基本数据类型<br>数值型<br>（整型：byte、short、int、long）<br>(浮点型:float、double)<br>字符型 （char）<br>布尔型（boolean）<br>2.引用数据类型（类、接口）  </p>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><pre><code>x=a;  
+y=b;  
+x+=y;//x=x+y=a+b;  
+x-=y;//x=x-y=a-b;  
+x*=y;//x=x*y=a*b;  
+x/=y;x=x/y=a/b;  
+x/y;//得到什么数取决于被除数x的数据类型。  
+x++（x--）;//先赋值，再自增（自减）  
+++x(--x);//先运算，再赋值。  he</code></pre><h5 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h5><p><strong>只对byte、short、char、int、long有效</strong>  </p>
+<p><img src="/2020/01/13/Java%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/1.png" alt="位运算">  </p>
+<h4 id="三元表达式"><a href="#三元表达式" class="headerlink" title="三元表达式"></a>三元表达式</h4><pre><code>int x = 1;  
+int y = 2;  
+int z;  
+z = x &gt; y ? x : y;  
+System.out.println(z);//2  </code></pre>]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用户、权限和角色</title>
+    <url>/2020/01/04/%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%92%8C%E8%A7%92%E8%89%B2/</url>
+    <content><![CDATA[<h1 id="用户、权限和角色"><a href="#用户、权限和角色" class="headerlink" title="用户、权限和角色"></a>用户、权限和角色</h1><p>用户：用户是数据库的使用者。<br>用户一般是由DBA来创建和维护的，创建用户后，用户不可以执行任何Oracle操作（包括建立会话），只有赋予用户相关的权限，用户才能执行权限允许范围内的操作。  </p>
+<h4 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h4><p><strong>语法</strong>  </p>
+<pre><code>CREATE USER user  
+IDENTIFIED BY password  
+[default tablespace 默认表空间名 temp tablespace临时表空间名 quota 配额大小 on 表空间名]  </code></pre><p>deafulttablespace:用户的默认表空间;<br>temporary tablespace: 用户的临时表空间;<br>quota  on :表示允许该用户在表空间中使用的空间大小, 可以设置多个不同的表空间;  </p>
+<p>执行该语句的用户需要有“创建用户”的权限，一般为系 统的DBA用户。  </p>
+<h4 id="系统权限"><a href="#系统权限" class="headerlink" title="系统权限"></a>系统权限</h4><p><strong>授予系统权限</strong><br>语法  </p>
+<pre><code>GRANT sys_priv_list TO user_list [WITH ADMIN OPTION]  </code></pre><p>sys_priv_list：系统特权列表，由逗号分隔;<br>user_list: 用户列表，由逗号分隔;<br>WITH ADMIN OPTION：允许权限的接受者再把此特权授予 其他用户。  </p>
+<p>CREATE SESSION 登录权限<br>CREATE TABLE 建表权限<br><strong>回收系统权限</strong><br>REVOKE sys_priv_listFROM user_list;  </p>
+<p>如果A授予权限给B，B又把该权限赋予给C，如果此时A把权 限从B处收回，那么B给予出去的权限是继续保留，即C继续 拥有该权限。</p>
+<h4 id="对象权限"><a href="#对象权限" class="headerlink" title="对象权限"></a>对象权限</h4><p>语法  </p>
+<pre><code>GRANT object_priv| [ALL PRIVILEGES ]|[(column)]  
+ON[schema.]object  
+TO{user|PUBLIC} [WITH GRANT OPTION];  </code></pre><p>object_priv：是将被授予的对象权限；<br>ALL PRIVILEGES：指定对象的所有权限；<br>column：在授予INSERT、REFERENCES或UPDATE权限时可以 指定列；<br>ON object：指定的对象名；<br>TO user：指定权限被授予谁；<br>TO PUBLIC：授予权限给所有用户；<br>WITH GRANT OPTION：允许被授予权限的用户再授予对象权 限给其它用户；<br>SCHEMA：指定用户名，如果省略，默认为当前用户；  </p>
+<p><strong>回收对象权限</strong><br>REVOKE 对象权限种类ON 对象名FROM user;  </p>
+<h4 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h4><p>角色：角色是权限的集合。  （方便权限再赋予）<br><strong>创建角色</strong>  </p>
+<pre><code>CREATE ROLE role;  </code></pre><p><strong>为角色授权</strong>  </p>
+<pre><code>GRANT 权限列表TO 角色列表;  </code></pre><p><strong>通过角色为用户授权</strong>  </p>
+<pre><code>GRANT 角色列表To 用户列表;  </code></pre><p><strong>通过角色从用户收回权限</strong>  </p>
+<pre><code>REVOKE 角色FROM 用户;  </code></pre><p><strong>从角色收回权限</strong>  </p>
+<pre><code>REVOKE 权限FROM 角色;  </code></pre><p><strong>删除角色</strong>  </p>
+<pre><code>DROP ROLE 角色;  </code></pre><h4 id="修改用户"><a href="#修改用户" class="headerlink" title="修改用户"></a>修改用户</h4><p><strong>修改配额</strong>  </p>
+<pre><code>ALTER USER 用户名  
+QUOTA 10mON 表空间名;  </code></pre><p><strong>修改密码</strong>  </p>
+<pre><code>ALTER USER userIDENTIFIED BY 新密码;  </code></pre><p><strong>用户状态</strong><br>OPEN：正常状态，为用户帐号初始创建后状态。<br>EXPIRED：密码过期状态，用户下次登录的时候需要修改密码；<br>LOCKED：锁定状态，不能执行任何Oracle相关操作  </p>
+<pre><code>ALTER USER user PASSWORD EXPIRE;--密码过期  
+ALTER USER user ACCOUNT LOCK[UNLOCK];--帐户锁定/解锁  </code></pre><h4 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h4><pre><code>DROP USER user [CASCADE]  </code></pre><p>CASCADE表示系统先自动删除该用户下的所有对象，然后再 删除该用户的定义。<br>已经登录的用户是不允许被删除的。  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>序列、索引、同义词</title>
+    <url>/2020/01/04/%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95%E3%80%81%E5%90%8C%E4%B9%89%E8%AF%8D/</url>
+    <content><![CDATA[<h4 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h4><p>概念：序列是按照一定规则能自动增加/减少数字的一种数据库对象。<br>用法：通常用序列自动生成主键值。<br>语法：  </p>
+<pre><code>CREATE SEQUENCE [schema.]sequencename [INCREMENT BY n] [START WITH n] [MAXVALUE n | NOMAXVALUE] [MINVALUE n | NOMINVALUE] [CYCLE | NOCYCLE] [CACHE n | NOCACHE]; </code></pre><p>–sequencename:序列对象的名字  </p>
+<p>–INCREMENT BY n：序列连续两个值之间的间隔n，默认为1。  </p>
+<p>–START WITH n ：序列起始值n，该项省略，起始值为1  </p>
+<p>–MAXVALUE n ：序列最大值；NOMAXVALUE ：指定序列无最大值  </p>
+<p>–MINVALUE n：序列最小值；NOMINVALUE：指定序列无最小值  </p>
+<p>–CYCLE|NOCYCLE：表示序列在达到最大值或最小值之后是否继续产生序列值， NOCYLE表示不再产生，NOCYLE是默认选项。  </p>
+<p>–CACHE n|NOCACHE:表示序列值被服务器预先分配并存储在内存中，NOCACHE表示不预先分配并存储，CACHE 20是默认选项  </p>
+<h4 id="NEXTVAL和CURRVAL伪列"><a href="#NEXTVAL和CURRVAL伪列" class="headerlink" title="NEXTVAL和CURRVAL伪列"></a>NEXTVAL和CURRVAL伪列</h4><p>CURRVAL：表示序列返回的 当前值；<br>NEXTVAL：表示序列返回的下一个值；<br>注：<br>CURRVAL在被引用之前，必须先使用NEXTVAL来产生一个序列值；<br>可用语句序列名.CURRVAL或序列名.NEXTVAL来访问序列;  </p>
+<p>以下情况不能使用NEXTVAL和CURRVAL：  </p>
+<ol>
+<li><p>在视图的SELECT列表中  </p>
+</li>
+<li><p>包含DISTINCT关键字的SELECT语句中  </p>
+</li>
+<li><p>含有GROUP BY, HAVING, ORDER BY子句的SELECT语句中  </p>
+</li>
+<li><p>SELECT, DELETE, UPDATE 语句的子查询中  </p>
+</li>
+<li><p>含有DEFAULT表达式的CREATE TABLE、ALTER TABLE语句中  </p>
+<h4 id="序列的创建及使用"><a href="#序列的创建及使用" class="headerlink" title="序列的创建及使用"></a>序列的创建及使用</h4><p>例如：<br>创建序列student_seq：  </p>
+<p> CREATE SEQUENCE student_seq//创建序列名为student_seq<br> START WITH 10000 //从10000开始<br> INCREMENT BY 1;//每次增长1<br>使用序列student_seq生成student表中sid列插入值：  </p>
+<p> INSERT INTO student<br> VALUES (student_seq.NEXTVAL, ‘Scott’, ‘Computer Science’, 11);<br>查看student_seq序列当前值：  </p>
+<p> SELECT student_seq.CURRVAL FROM dual;</p>
+<h4 id="修改序列"><a href="#修改序列" class="headerlink" title="修改序列"></a>修改序列</h4><p>和创建序列一样，不过在前面加了关键词ALTER  </p>
+<p> ALTER SEQUENCE test_seq<br> INCREMENT BY 4    ——序列每次增加4<br> MAXVALUE 1000     ——序列最大值1000<br> NOCACHE；——不设定缓存</p>
+<h4 id="删除序列"><a href="#删除序列" class="headerlink" title="删除序列"></a>删除序列</h4><p> DROP SEQUENCE [schema.]sequencename；</p>
+<h4 id="ROWID"><a href="#ROWID" class="headerlink" title="ROWID"></a>ROWID</h4><p>功能：快速定位记录，使用ROWID检索及操作数据，效率最快。  </p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>概念：是对数据库表中一个或多个列的值进行排序的一种数据库对象。<br>功能：可以加速对表的查询速度；<br>单列索引：索引建立在表中的某一列上<br>复合索引:索引建立在表中某几列的组合上  </p>
+<h4 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h4><p> CREATE INDEX indexname<br> ON table (column[, column]…);</p>
+<h4 id="适合创建索引的情况"><a href="#适合创建索引的情况" class="headerlink" title="适合创建索引的情况"></a>适合创建索引的情况</h4></li>
+<li><p>表数据量很大  </p>
+</li>
+<li><p>要查询的结果集在2%-4%左右  </p>
+</li>
+<li><p>经常用来做WHERE条件中的列或者多表连接的列  </p>
+</li>
+<li><p>查询列的数据范围分布很广  </p>
+</li>
+<li><p>查询列中包含大量的NULL值,因为空值不包含在索引中  </p>
+<h4 id="不适合创建索引的情况"><a href="#不适合创建索引的情况" class="headerlink" title="不适合创建索引的情况"></a>不适合创建索引的情况</h4></li>
+<li><p>数据量很小的表  </p>
+</li>
+<li><p>在查询中不常用来作为查询条件的列  </p>
+</li>
+<li><p>频繁更新的表  </p>
+</li>
+<li><p>索引列作为表达式的一部分被使用时，比如常查询的条件是SALARY*12，此时在SALARY列上创建索引是没有效果的  </p>
+</li>
+<li><p>查询条件中有单行函数时，用不上索引  </p>
+<h4 id="索引缺点"><a href="#索引缺点" class="headerlink" title="索引缺点"></a>索引缺点</h4></li>
+<li><p>占用空间  </p>
+</li>
+<li><p>降低DML的操作速度；  </p>
+<h4 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h4><p> DROP INDEX index;</p>
+<h4 id="同义词"><a href="#同义词" class="headerlink" title="同义词"></a>同义词</h4><p>概念：是指向数据库对象（如：表、视图、序列、存储过程等）的数据库指针。  </p>
+<h4 id="同义词的创建"><a href="#同义词的创建" class="headerlink" title="同义词的创建"></a>同义词的创建</h4><p> CREATE [PUBLIC] SYNONYM 同义词<br> FOR  [schema.]对象名；</p>
+<h4 id="同义词的删除"><a href="#同义词的删除" class="headerlink" title="同义词的删除"></a>同义词的删除</h4><p> CREATE SYNONYM  s_emp<br> FOR  hr.employees;</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>视图</title>
+    <url>/2020/01/04/%E8%A7%86%E5%9B%BE/</url>
+    <content><![CDATA[<p>概念：视图是逻辑上来自一个或多个表的数据集合。<br>为什么使用视图：  </p>
+<ol>
+<li><p>限制其它用户对数据库表的访问,因为视图可以 有选择性的显示数据库表的一部分；  </p>
+</li>
+<li><p>容易实现复杂的查询； </p>
+</li>
+<li><p>对于相同的数据可以产生不同的视图；</p>
+<h4 id="简单视图和复杂视图的的区别"><a href="#简单视图和复杂视图的的区别" class="headerlink" title="简单视图和复杂视图的的区别"></a>简单视图和复杂视图的的区别</h4><p><img src="/2020/01/04/%E8%A7%86%E5%9B%BE/%E5%A4%8D%E6%9D%82%E8%A7%86%E5%9B%BE.png" alt></p>
+<h4 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h4><p> CREATE [OR REPLACE] [FORCE|NOFORCE]<br> VIEW viewname<br> [(column[,column]…)]<br> AS subquery<br> [WITH CHECK OPTION [CONSTRAINT constraintname]]<br> [WITH READ ONLY]</p>
+</li>
+</ol>
+<p>注：<br>·OR REPLACE：如果所创建的视图已经存在，该选项表示修改原视图的定义；<br>·FORCE：不管视图所基于的基表是否存在，都会创建该视图；<br>·NOFORCE：只有视图所基于的基表都存在，才会创建该视图；<br>·viewname：视图的名称；<br>·column：列名，列名的数量必须和视图所对应查询语句的列数量相等；<br>·subquery：一条完整的SELECT语句；<br>·WITH CHECK OPTION：一个约束条件，通过视图所插入或修改的数据行必须满足视图所定义的查询；constraintname：约束名；<br>·WITH READ ONLY：确保在该视图上不能进行任何DML操作；</p>
+<p>在SQL PLUS中，可以使用DESC命令显示视图的结构。  </p>
+<pre><code>DESC 视图名；</code></pre><h4 id="修改视图"><a href="#修改视图" class="headerlink" title="修改视图"></a>修改视图</h4><p>关键词：CREATE OR REPLACE VIEW（创建或替换视图）<br>注意：CREATE VIEW子句中别名的顺序必须和内部查询中的列的顺序一一对应。  </p>
+<h4 id="DML操作"><a href="#DML操作" class="headerlink" title="DML操作"></a>DML操作</h4><p>可以通过视图进行DML操作，<strong>但是有很多前提：</strong>  </p>
+<ol>
+<li><p>视图中不出现GROUP函数、GROUP BY子句，DISTINCT关键字</p>
+</li>
+<li><p>使用表达式定义的列</p>
+</li>
+<li><p>ROWNUM伪列</p>
+</li>
+<li><p>单表</p>
+</li>
+<li><p>基表中未在视图中选择的其它列定义为非空并且没有默认值；</p>
+<h4 id="拒绝DML操作"><a href="#拒绝DML操作" class="headerlink" title="拒绝DML操作"></a>拒绝DML操作</h4><p>在视图定义时使用WITH READ ONLY后，就不能对视图执行DML操作。</p>
+<h4 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h4><p>DROP VIEW viewname; </p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>约束</title>
+    <url>/2020/01/02/%E7%BA%A6%E6%9D%9F/</url>
+    <content><![CDATA[<h4 id="定义约束"><a href="#定义约束" class="headerlink" title="定义约束"></a>定义约束</h4><pre><code>CREATE TABLE [schema.]table 
+(column1 datatype[DEFAULT expr] 
+    [CONSTRAINT constraint_name]constraint_type],--列级别约束 
+column2 datatype[DEFAULT expr] [CONSTRAINT constraint_name]constraint_type],--列级别约束 …… 
+[CONSTRAINT constraint_name] constraint_type]--表级别约束 
+    );</code></pre><p>其中<br>–约束既可以写在每个对应列的后面，称之为列级别约束，一个列级别约束只能作用在一个列上；  </p>
+<p>–也可以写完所有列之后，再写约束，称之为表级别约束，一个表级别约束既可以作用在一个列上，也可以作用在列的组合上；  </p>
+<p>–NOT NULL约束只能定义在列级别上，联合主键或联合唯一性约束只能定义在表级 别上，其它约束既可以定义成表级别，也可以定义成列级别；  </p>
+<p>–列级别约束和表级别约束达到的作用完全相同,只是书写的位置不同;  </p>
+<p>–CONSTRAINT:约束的关键字；constraint_name:约束名字；constraint_type：约束的类型；  </p>
+<h4 id="not-null"><a href="#not-null" class="headerlink" title="not null"></a>not null</h4><p>概念：非空约束，确保被约束列 的所有行记录都不能为空值。<br>注意：只能定义在列级上。  </p>
+<p>例如：  </p>
+<pre><code>create table emp(
+ename varchar2(10) not null,
+deptno number(7,2) not null);</code></pre><h4 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h4><p>概念：唯一约束，用来确保表中的某 一列或者某几列组合的所有行数据必须唯一，定义UNIQUE约束的列(或列组合) 被称为唯一键。  </p>
+<p>例如：  </p>
+<pre><code>create table dept(
+dname varchar2(14) &lt;constraint dept_dname_uk&gt;(约束名,可写可不写，最好还是写一下) unique,
+...
+)；</code></pre><p>也可以定义在表一级</p>
+<pre><code>create table dept(
+deptno number(2).
+dname varchar2(14),
+constraint dept_dname_uk unique(danme)
+);</code></pre><h4 id="primary-key"><a href="#primary-key" class="headerlink" title="primary key"></a>primary key</h4><p>概念：主键约束，用来确保表中的某一列或者某几列组合的所有行数据必须唯一，并且确保作为主键一部分的列不能包含空值；<br>注意：每个表只能创建一个主键约束。  </p>
+<p>例如：  </p>
+<pre><code>create tablle dept(
+deptno number(2) constraint dept_deptno_pk primary key,
+...
+)</code></pre><p>也可以定义在表一级  </p>
+<pre><code>create table deptment(
+deptno number(2),
+...
+constraint dept_deptno_pk primary key(deptno),
+...
+);</code></pre><h4 id="foreign-key"><a href="#foreign-key" class="headerlink" title="foreign key"></a>foreign key</h4><p>概念：外键约束，确保相关联的两个字段的关系：<br>–外键列的值必须在引用列值的范围内，或者为空；<br>–外键参照的是列必须是主键或者唯一键；<br>注意：主键表主键值被外键表参照时，主键表记录不允许被删除。  </p>
+<p>例如：  </p>
+<pre><code>create table emp(
+deptno number(7,2) not null constraint emp_deptno_fk refferences dept(deptno),
+...
+)</code></pre><p>也可以定义在表一级</p>
+<pre><code>create table emp(
+deptno number(7,2) not null.
+...
+constraint emp_deptno_fk foreign key (deptno) refferences dept(deptno)
+on delete cascade(关联删除)
+)</code></pre><p>注：<br>–ON DELETE CASCADE:当父表中的行被删除时，子表中相依赖的行同时被删除；<br>–ON DELETE SET NULL:当父表的行被删除时，子表中相依赖的行被转换为空值；<br>–无ON DELETE CASCADE或ON DELETE SET NULL选项，当附表中的行被删除时，如果父表中的行在子表中被引用，则提示不能被删除。  </p>
+<h4 id="check"><a href="#check" class="headerlink" title="check"></a>check</h4><p>概念：检查性约束，确保某个列的所有行数据都必须满足的条件。  </p>
+<p>例如：</p>
+<pre><code>sal number(8,2) constraint dept_sal_min check (sal&gt;0)</code></pre><p>注：<br>-不允许使用伪列。<br>-对其他值查询。  </p>
+<h4 id="追加约束"><a href="#追加约束" class="headerlink" title="追加约束"></a>追加约束</h4><p>语法：  </p>
+<pre><code>ALTER TABLE tableADD [CONSTRAINT constraint] type (column);</code></pre><p>在语法中：<br>–table 是表的名字<br>–constraint 是约束的名字<br>–type 是约束的类型<br>–column 是受约束影响的列的名字  </p>
+<h4 id="删除约束"><a href="#删除约束" class="headerlink" title="删除约束"></a>删除约束</h4><p>语法：  </p>
+<pre><code>ALTER TABLE tableDROP PRIMARY KEY|UNIQUE(column)
+|CONSTRAINT constraint[CASCADE];</code></pre><p>在语法中：<br>–table 是表的名字<br>–column 是受约束影响的列的名字<br>–constraint 是约束的名字<br>–cascade 级联删除  </p>
+<h4 id="约束禁用"><a href="#约束禁用" class="headerlink" title="约束禁用"></a>约束禁用</h4><p>语法：  </p>
+<pre><code>ALTER TABLE tableDISABLE CONSTRAINT constraint[CASCADE]; </code></pre><p>启用：  </p>
+<pre><code>ALTER TABLE tableENABLE CONSTRAINT constraint; </code></pre><h4 id="相关数据字典"><a href="#相关数据字典" class="headerlink" title="相关数据字典"></a>相关数据字典</h4><p>–和约束相关的数据字典有： USER_CONSTRAINTS：查看表上所有的约束。<br>USER_CONS_COLUMNS：查看与约束相关的列名，该字典对于那些由系统指定名字的约束特别有用。<br>–在约束类型中，C代表CHECK，P代表PRIMARY KEY，R代表FOREIGN KEY，U代表UNIQUE，NOT NULL约束实际上是一个CHECK约束。  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>创建和维护表</title>
+    <url>/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/</url>
+    <content><![CDATA[<h4 id="数据库对象"><a href="#数据库对象" class="headerlink" title="数据库对象"></a>数据库对象</h4><p>数据库对象：是数据库的组成部分，有表、约束 、索引、视图、序列、同义词、触发器、存储过程、函数等。  </p>
+<h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><pre><code>CREATE TABLE [schema.]table
+(column datatype[DEFAULT expr][, ...]); 
+--您必须具备:   
+--CREATE TABLE的权限  
+--一定的存贮空间(ALTER USER 用户名QUOTA 尺寸ON 表空间名字)  
+--您需要指定:  
+--表名、列名、列的类型及列的宽度  </code></pre><p>例如：  </p>
+<pre><code>CREATE TABLE DOSSIER ( 
+ID NUMBER(4), 
+CNAME VARCHAR2(20 ), 
+BIRTHDAY DATE, 
+STATURE    NUMBER(3), 
+WEIGHT NUMBER(5, 2), 
+COUNTRY_CODE CHAR(2 ) DEFAULT ‘01’);  </code></pre><p>用子查询语法创建表  </p>
+<pre><code>CREATE TABLE table[(column, column...)] 
+AS subquery;</code></pre><p>创建和表二一样表头的表一，仅含表头。</p>
+<pre><code>creat table 表1 as select * from 表二 where 1=0</code></pre><h4 id="default"><a href="#default" class="headerlink" title="default"></a>default</h4><p>–指定在插入或更新数据时，列的默认值<br>–合法的值可以是字面值、表达式或SQL函数<br>–非法的值是另一个列的名称或虚拟列<br>–默认值的数据类型必须和列的类型匹配  </p>
+<p>修改默认值<br>例如：  </p>
+<pre><code>update dossier set country_code=default where id=2;</code></pre><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><h5 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/1.png" alt></p>
+<h5 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/2.png" alt><br><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/2.1.png" alt></p>
+<h5 id="日期型"><a href="#日期型" class="headerlink" title="日期型"></a>日期型</h5><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/3.png" alt></p>
+<h4 id="图片类型"><a href="#图片类型" class="headerlink" title="图片类型"></a>图片类型</h4><p><img src="/2019/12/30/%E5%88%9B%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E8%A1%A8/4.png" alt></p>
+<h4 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h4><h5 id="添加列"><a href="#添加列" class="headerlink" title="添加列"></a>添加列</h5><pre><code>ALTER TABLE table  
+ADD (columnname datatype[DEFAULT expr] 
+        [, columnname datatype]...);</code></pre><h5 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h5><pre><code>ALTER TABLE table 
+MODIFY(columnnamedatatype[DEFAULT expr] 
+        [, columnnamedatatype]...);</code></pre><h5 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h5><pre><code>ALTER TABLE table 
+DROP (columnname [,columnname]); </code></pre><h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><pre><code>DROP TABLE table；</code></pre><h4 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h4><pre><code>RENAME old_name TO new_name;</code></pre><h4 id="截断表"><a href="#截断表" class="headerlink" title="截断表"></a>截断表</h4><pre><code>TRUNCATE TABLE table; </code></pre><p>TRUNCATE和DELETE区别<br>TRUNCATE是DDL，只能删除表中所有记录，释放存储空间， 使用ROLLBACK不可以回滚。<br>DELETE是DML，可以删除指定记录，不释放存储空间，使用 ROLLBACK可以回滚。  </p>
+<h4 id="数据字典"><a href="#数据字典" class="headerlink" title="数据字典"></a>数据字典</h4><p>查询数据字典</p>
+<pre><code>SELECT table_name 
+FROM  user_tables;</code></pre><p>查看数据字典结构  </p>
+<pre><code>DESC user_tables</code></pre>]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据操作与事务控制</title>
+    <url>/2019/12/29/%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[<h1 id="数据操作与事务控制"><a href="#数据操作与事务控制" class="headerlink" title="数据操作与事务控制"></a>数据操作与事务控制</h1><p>DML:<br>insert 新增数据<br>update 修改数据<br>delete 删除数据  </p>
+<h4 id="insert插入数据"><a href="#insert插入数据" class="headerlink" title="insert插入数据"></a>insert插入数据</h4><pre><code>INSERT INTO table [(column [, column...])] VALUES(value [, value...]); </code></pre><p><strong>插入date类型数据时先把字符串转换为date类型（to_date）采用这种插入方式时只能追加一条记录</strong>  </p>
+<h5 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a>插入多行</h5><pre><code>INSERT INTO表名[(列名1[,列名2，…，列名n])] 子查询；
+--不用写values
+--INSERT子句和数据类型必须和子查询中列的数量和类型相匹 配中列的数量  </code></pre><h4 id="update修改数据"><a href="#update修改数据" class="headerlink" title="update修改数据"></a>update修改数据</h4><pre><code>update 表
+set column（列）=value[,column=value]
+where 条件
+--WHERE子句用来限定修改哪些行。
+--SET子句用来限定修改哪些列。</code></pre><h6 id="修改多列"><a href="#修改多列" class="headerlink" title="修改多列"></a>修改多列</h6><p>一次修改多列  </p>
+<pre><code>SQL&gt; UPDATE emp
+2  SET    deptno= 20,sal=sal+100
+3  WHERE  deptno= 10;</code></pre><p>嵌入子查询修改  </p>
+<pre><code>SQL&gt; UPDATE emp
+2  SET    deptno= 20,sal=sal+(select avg(sal）from emp)
+3  WHERE  deptno= 10;</code></pre><h4 id="delete删除数据"><a href="#delete删除数据" class="headerlink" title="delete删除数据"></a>delete删除数据</h4><pre><code>DELETE [FROM]table
+[WHEREcondition];</code></pre><p>delete 表:只会删除表中的数据，不会删除表头。  </p>
+<p><strong>当你不再需要该表时， 用 drop；当你仍要保留该表，但要删除所有记录时， 用 truncate；当你要删除部分记录时, 用 delete.</strong> </p>
+<p>truncate语法<br>[ { database_name.[ schema_name ]. | schema_name . } ]<br> table_name<br>[ ; ]  </p>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p>事务组成：在数据库中，事务由一组相关的DML或SELECT语句，加上一个TPL语句（COMMIT、ROLLBACK）或一个DDL语句(CREATE、 ALTER、DROP、TRUNCATE等)或一个DCL（GRANT、REVOKE）  </p>
+<p>事务特性：ACID①原子性②一致性③隔离性④持久性 </p>
+<p>事务结束：COMMIT（提交）或ROLLBACK(回滚)  </p>
+<p>隐式提交：①执行一个DDL(CREATE、ALTER、DROP、TRUNCATE、RENAME）语句；②执行一个DCL(GRANT、REVOKE)语句；③从SQL*Plus正常退出（即使用EXIT或QUIT命令退出）；  </p>
+<p>隐术回滚：①从SQL*Plus中强行退出②客户端连接到服务器端异常中断③系统崩溃  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>层次查询</title>
+    <url>/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h1 id="层次查询"><a href="#层次查询" class="headerlink" title="层次查询"></a>层次查询</h1><pre><code>SELECT [LEVEL], column, expr...  
+FROM   table  
+[WHERE condition(s)]  
+[START WITH condition(s)]  
+[CONNECT BY PRIOR condition(s)] ;  
+CONNECT BY PRIOR column1 = column2; 
+
+–LEVEL：节点的层次，伪列，由查询的起点开始算起为1，依次类推。 
+–FROM table：指定表、视图或包含列的快照，你只能从单独的一个表中选择。
+–WHERE：限制返回的行。
+–Condition：是一个比较式。
+–START WITH：指定层次的根行(起点)。这个子句对于一个正确的分级查询 是必须的。
+–CONNECT BY PRIOR：指定存在父与子行的关系列。对于分级查询该子句是 必须的。</code></pre><p><strong>column1为父节点，column2为子节点 自顶向下</strong><br><strong>column1为子节点，column2为父节点 自底向上</strong>  </p>
+<h4 id="修剪节点、分支"><a href="#修剪节点、分支" class="headerlink" title="修剪节点、分支"></a>修剪节点、分支</h4><p>通过where去除子句某个节点<br><img src="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/1.png" alt><br>通过connect by去掉一个分支<br><img src="/2019/12/29/%E5%B1%82%E6%AC%A1%E6%9F%A5%E8%AF%A2/2.png" alt></p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高级子查询</title>
+    <url>/2019/12/29/%E9%AB%98%E7%BA%A7%E5%AD%90%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h1 id="高级子查询"><a href="#高级子查询" class="headerlink" title="高级子查询"></a>高级子查询</h1><h4 id="嵌套子查询（普通子查询）："><a href="#嵌套子查询（普通子查询）：" class="headerlink" title="嵌套子查询（普通子查询）："></a>嵌套子查询（普通子查询）：</h4><p>执行过程：1.子查询先执行2.用子查询的结果来确认或取消父查询的候选项<br>特点：子查询可以独立于父查询执行  </p>
+<h4 id="相关子查询"><a href="#相关子查询" class="headerlink" title="相关子查询"></a>相关子查询</h4><p>执行过程：  </p>
+<ol>
+<li>获取父查询中的候选项  </li>
+<li>根据候选项获取的数据执行子查询  </li>
+<li>子查询执行的结果用于父查询的比较  </li>
+<li>重复以上三个步骤，直到父查询中无剩余的候选行<br>特点：子查询中查询条件依赖于外层查询中的某个值，所以子查询的处理不只一次，要反复求值，以供外层查询使用。    <h4 id="exists和not-exists操作符"><a href="#exists和not-exists操作符" class="headerlink" title="exists和not exists操作符"></a>exists和not exists操作符</h4>相关子查询还可使用EXISTS和NOT EXISTS操作符来进行操作<br>EXISTS判断是否“存在”，具体操作如下：  </li>
+</ol>
+<p>–子查询中如果有记录找到，子查询语句不会继续执行，返回值为TRUE；<br>–子查询中如果到表的末尾也没有记录找到，返回值为FALSE。  </p>
+<p>EXISTS子查询并没有确切记录返回，只判断是否有记录存在，而且只要找到相关记录，子查询就不需要再执行，然后再进行下面的操作。这样大大提高了语句的执行效率。<br>NOT EXISTS正好相反，判断子查询是否没有返回值。如果没有返回值，表达式为真，如果找到一条返回值，则为假。  </p>
+<pre><code>select ename,job,sal,deptno
+from emp e
+where exists (select &apos;1&apos;
+                from emp
+                where mgr=e.empno);</code></pre><p>因为EXISTS子句中，并没有确切记录返回，只返回真或假。 所以’1’只是占位用，无实际意义。  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>集合运算</title>
+    <url>/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/</url>
+    <content><![CDATA[<h1 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h1><p>概念：是用来把两个或多个查询的结果集做并、交、差的 集合运算，包含集合运算的查询称为复合查询。<br><img src="/2019/12/29/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97.png" alt="集合运算"></p>
+<p>注意：  </p>
+<ol>
+<li>多个被联合的查询语句所选择的列数和列的数据类型必须一致， 列的名字不必相同。</li>
+<li>每个查询不能包含自己的Order by子句，只能在联合之后使用 Order by子句。  <h1 id="联合运算"><a href="#联合运算" class="headerlink" title="联合运算"></a>联合运算</h1>概念：返回由任一查询结果集包含的行，并且去除重复行,并且按照查询结 果集的第一列升序排序。  <h4 id="关键字union"><a href="#关键字union" class="headerlink" title="关键字union"></a>关键字union</h4> select a<br> from x1<br> union（union all/intersect/minus）<br> select<br> from x2<br> (order by a )  </li>
+</ol>
+<p><strong>只根据第一个select选择</strong>  </p>
+<h4 id="union-all-完全联合运算，不去除重复行"><a href="#union-all-完全联合运算，不去除重复行" class="headerlink" title="union all(完全联合运算，不去除重复行)"></a>union all(完全联合运算，不去除重复行)</h4><h4 id="相交运算"><a href="#相交运算" class="headerlink" title="相交运算"></a>相交运算</h4><p>intersect<br>返回第一个集合和第二个集合中共同存在的记录。  </p>
+<h4 id="相减运算"><a href="#相减运算" class="headerlink" title="相减运算"></a>相减运算</h4><p>minus<br>概念：返回第一个集合中存在，第二个中不存在的记录。  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>子查询</title>
+    <url>/2019/12/29/%E5%AD%90%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><pre><code>SELECT select__list  
+FROM table  
+WHERE expr operator  
+(SELECT select_list  
+FROM table);  </code></pre><p>**特点：  </p>
+<ol>
+<li>子查询可以独立执行  </li>
+<li>子查询先于主查询执行，并于主查询互不影响  </li>
+<li>使用时要用括号括起来  </li>
+<li>可用于where、having、from子句中**  </li>
+</ol>
+<h4 id="单行子查询所用到的运算符"><a href="#单行子查询所用到的运算符" class="headerlink" title="单行子查询所用到的运算符"></a>单行子查询所用到的运算符</h4><p>单行运算符：之前学到的运算符  </p>
+<h4 id="多行子查询"><a href="#多行子查询" class="headerlink" title="多行子查询"></a>多行子查询</h4><p>概念：子查询返回多行记录。  </p>
+<h4 id="多行子查询所用到的运算符"><a href="#多行子查询所用到的运算符" class="headerlink" title="多行子查询所用到的运算符"></a>多行子查询所用到的运算符</h4><p>in:在集合中的任意一个(和=一起使用)。<br>例如：<br>查询是经理的员工姓名，工资。  </p>
+<pre><code>select ename,sal
+from emp
+where empno in (select mgr from emp);</code></pre><p>any:在集合中的任意一个（和 &gt; &lt; 一起使用，&gt;any:大于集合最小值；&lt;any小于集合最大值）。<br>例如：<br>查询部门编号不为10，且工资比10部门任意一名员工工资 高的员工编号，姓名，职位，工资。  </p>
+<pre><code>select empno,ename,job,sal
+from emp
+where sal&gt;any(select sal from emp where deptno=10)
+and deptno&lt;&gt;10;</code></pre><p>all:在集合中的每一个（ &gt; &lt; 中集合中每一个数值，=无意义）<br>例如：<br>查询部门编号不为10，且工资比10部门所有员工工资高的 员工编号，姓名，职位，工资。  </p>
+<pre><code>select empno,ename,job,sal
+from emp
+where sal&gt;all (select sal from emp where deptno=10)
+and deptno&lt;&gt;10;</code></pre><h4 id="空值问题"><a href="#空值问题" class="headerlink" title="空值问题"></a>空值问题</h4><pre><code>select ename  
+from emp  
+where empno not in (select mgr from emp)</code></pre><p>本来应该出现几条记录，结果却一条都没显示。原因是子查询中有一条含有空值，和空比较的结果都是空值，所以此时不能用NOT IN运算符。  </p>
+<h4 id="rownum"><a href="#rownum" class="headerlink" title="rownum"></a>rownum</h4><p>–ROWNUM是一个伪列，伪列是使用上类似于表中的列,而实际并没有存储在表中的特殊列;<br>–-ROWNUM的功能是在每次查询时，返回结果集的顺序号， 这个顺序号是在记录输出时才一步一步产生的，第一行显示为1，第二行为2，以此类推。<br><strong>rownum运算只能使用&lt;=或&lt;(当然当&lt;=或&lt;存在时也可使用&gt;和&gt;=)。</strong>  </p>
+<h4 id="Top-n查询"><a href="#Top-n查询" class="headerlink" title="Top-n查询"></a>Top-n查询</h4><p>概念：Top-N查询主要是实现表中按照某个列排序，输出最大或 最小的N条记录功能。  </p>
+<pre><code>select 【列名】，rownum
+from (select[列名]
+        from 表名
+        order by top-n操作的列）
+where rownum&lt;=n;</code></pre><h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><pre><code>SELECT b.*  
+FROM (SELECT ROWNUM rn,[列名1,列名2,....列名n]  
+        FROM 表名1,[表名2,...表名n]  
+        WHERE [条件表达式 AND ] ROWNUM &lt;=目标页数*每页记录数) b  
+WHERE rn &gt; (目标页数-1)*每页记录数  </code></pre><p>或  </p>
+<pre><code>SELECT b.*  
+FROM (SELECT ROWNUM rn,[列名1,列名2,....列名n]  
+        FROM 表名1,[表名2,...表名n]  
+        [WHERE 条件表达式]) b  
+WHERE rn &lt;=目标页数*每页记录数 and rn &gt; (目标页数-1)*每页记录数  </code></pre><p>思考：哪种方式效率高？<br><strong>答案是：第一种</strong><br>因为根据sql语句执行顺序，在子查询中，第一种方法执行from语句中时已经筛选了表的哪一页的记录，查的记录不用像第二种那么多。</p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分组函数</title>
+    <url>/2019/12/29/%E5%88%86%E7%BB%84%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h1><p>概念：分组函数是对数据行的集合进行操作并按组给出一个结果，这个结果可直接输出，或者用来作判断条件。  </p>
+<h4 id="常见分组函数"><a href="#常见分组函数" class="headerlink" title="常见分组函数"></a>常见分组函数</h4><p>min:最小值<br>max:最大值<br>sum:总和<br>avg:平均值<br>count:总数  </p>
+<h4 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h4><p>概念：通过GROUP BY子句可将表中满足WHERE条件的记录按照指定的列划分成若干个小组，其中GROUP BY子句指定要分组的列。<br>group by a：根据a列分组，谁写在前面先给谁分组。<br><strong>在select子句中出现的列，除了分组函数以外的列，都要在group by中存在。</strong><br><strong>在group by子句中使用的列，不一定在select子句中出现</strong>。  </p>
+<h4 id="having"><a href="#having" class="headerlink" title="having"></a>having</h4><p>概念：对分组之后的数据进行条件筛选。  </p>
+<p>学到现在已经会了这些子句<br>按照如下顺序执行  </p>
+<pre><code>(5)select  (6)（distinct）
+(1)from  
+(2)where  
+(3)group by  
+(4)having  
+(7)order by  
+
+(1)from
+ --找到相应的表
+(2)where
+ --限制条件
+(3)group by
+ --分组
+(4)having
+ --对分组后的行限制
+(5)select
+ --选择哪几列
+(6)distinct
+ --去掉重复的行
+(7)order by
+ --排序</code></pre>]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多表连接</title>
+    <url>/2019/12/15/%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5/</url>
+    <content><![CDATA[<h1 id="多表连接"><a href="#多表连接" class="headerlink" title="多表连接"></a>多表连接</h1><p>按连接条件：等值和非等值。<br>按连接方法：外部和内部。<br>select table1.column,table2.column<br>from table1,table2<br>where teble.column=table2.column </p>
+<h4 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h4><p>一边a人，另一边有b人，则a和b组合有a*b种。<br>上述就相当于做了一个笛卡尔积。  </p>
+<h4 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h4><p>select table1.column,table2.column<br>from table1,table2<br>where teble.column（+）=table2.column<br>哪边有+哪边就可以有空行（从表），另外一边多（主表），只能在一边使用。  </p>
+<h4 id="自身连接（自连接）"><a href="#自身连接（自连接）" class="headerlink" title="自身连接（自连接）"></a>自身连接（自连接）</h4><p>select x1.a,x2.b<br>from x x1,x x2<br>where x1.c1=x2.c2<br>(x1、x2为别名，c1和c2为内容相同的行)  </p>
+<h4 id="cross-join"><a href="#cross-join" class="headerlink" title="cross join"></a>cross join</h4><p>select a,b<br>from x<br>cross join y<br>产生笛卡尔积  </p>
+<h4 id="natural-join自然连接"><a href="#natural-join自然连接" class="headerlink" title="natural join自然连接"></a>natural join自然连接</h4><p>select a,b<br>from x<br>natural join y<br>相当于等值连接  </p>
+<h4 id="using"><a href="#using" class="headerlink" title="using"></a>using</h4><p>select a,b<br>from x join y using(c)<br>指定c连接x、y两张表，也是等值连接。<br><strong>与natural join不能同时使用。</strong>  </p>
+<h4 id="on"><a href="#on" class="headerlink" title="on"></a>on</h4><p>select a,b<br>from x join y on x.c=y.c<br>指定连接条件。  </p>
+<h4 id="左外连接"><a href="#左外连接" class="headerlink" title="左外连接"></a>左外连接</h4><p>select a,b<br>from x left join y on x.c=y.c<br>左边主表，右边从表。  </p>
+<h4 id="右外连接"><a href="#右外连接" class="headerlink" title="右外连接"></a>右外连接</h4><p>select a,b<br>from x right join y on x.c=y.c<br>右边主表，左边从表。<br><strong>自身链接（自连接）也可以使用左（右）连接。</strong><br><strong>注意搞清楚左（右）外连接和外连接写法，主表没空格，副标有空格。</strong>  </p>
+<h4 id="全外连接"><a href="#全外连接" class="headerlink" title="全外连接"></a>全外连接</h4><p>select a,b<br>from x full outer join y on x.c=y.c<br>全都显示，不分主表从表，左右都可以空。  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sql语句基础</title>
+    <url>/2019/12/10/sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="sql语句基础"><a href="#sql语句基础" class="headerlink" title="sql语句基础"></a>sql语句基础</h1><p>select&ensp;列名<br>from&ensp;表名<br>where&ensp;限制<br>dual:虚表，不管什么命令，强制执行<br>date=’1-1月（可以用英文：JAN）-99’–日期为：99年1月1日<br><strong>算数运算符</strong><br>+&ensp;-&ensp;<em>&ensp;/<br>与null运算仍为null<br>*</em>连接运算符**<br>||<br><strong>比较运算符</strong><br>&ensp;&gt;&ensp;&lt;&ensp;=&ensp;&lt;&gt;<br><strong>特殊比较运算符</strong><br>between…and:在某个区间范围内<br>in:表示比较的值在某个集合之内<br>like:像。<br>&ensp;&ensp;&ensp;%“表示0个或多个的字符<br>&ensp;&ensp;&ensp;_表示一个字符<br>is null:是否为空<br><strong>逻辑比较运算符</strong><br>and(与)，or(或)，not(非，优先级最高)<br><strong>排序</strong><br>select<br>from<br>where<br>order by(默认升序排序asc，降序排序desc,可以写多个，按先后顺序，用逗号连接)  </p>
+<h4 id="单行函数"><a href="#单行函数" class="headerlink" title="单行函数"></a>单行函数</h4><p><strong>字符</strong><br>大小写转换<br>lower():变小写<br>upper():变大写<br>initcap():首字母大写<br>concat():<strong>两个（只能）</strong>参数之间用逗号连接，用于连接字符<br>substr(a,n1,n2):返回第一个参数中，从n1位置开始，长度为n2的子串。（截取）<br>-如果n2省略，取第n1位开始的所有字符<br>-如果n1为负值，表示从第一个参数的后面第abs(n1)位开始，向右取长度为n2的子串，即从右边开始数（倒数第n1个），开始数n2位。<br>length(column):字符串长度<br>instr(s1,s2,n1,n2):返回s1中，子串s2（s2是s1内的字符）从n1开始，第n2次出现的位置。n1,n2默认值为1。<br>lpad(s1,n1,s2):返回s1：被s2从左面填充到n1长度后的字符串。（左填充）<br>rpad(s1,n1,s2):与lpad用法类似，不同的是从右边填充。<br>trim(‘a’ from ‘b’):去掉b中含有’a’的头尾。（右填充）<br>replace(s1,s2,s3):把s1中的s2用s3替换。  </p>
+<h4 id="数值函数"><a href="#数值函数" class="headerlink" title="数值函数"></a>数值函数</h4><p>round(a,b):将a四舍五入都小数点后b位，b为负数时是小数点左边。<br>trunc(a,b):将a的小数点后b位的数全部砍掉。<br>mod(a,b):a/b取余（a%b）。  </p>
+<h4 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h4><p>a+-b：a+-b天。<br>sysdate:系统时间。<br>months_between(a,b):返回两个日期之间的自然月数。<br>add_months(a,b):返回指定日期加上相应的月数后的日期。<br>next_day（a,b）:返回某一个日期的下一个指定日期（西方星期天为第1天，下一个的第b天）。<br>last_day(a)：当月最后一天的日期。<br>rounnd(a):将date按照fmt指定的格式进行四舍五入，<br>fmt为可选项，如果没有指定fmt，则默认为DD，将date四舍五入为 近的天。 格式码：世纪CC,年YY，月MM,日DD，小时HH24，分MI，秒SS –TRUNC( date[,‘fmt’] )将date按照fmt指定的格式进行截断，fmt为 可选项，如果没有指定fmt，则默认为‘DD’，将date截取为近的 天。<br>extract():返回日期中年份、月份、日。  </p>
+<h4 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h4><p>to_char:转换成字符（用于日期）。<br>to_number:转换成数值（用于数值）。<br>to_date:转换成日期。（用于字符）<br><img src="/2019/12/10/sql%E8%AF%AD%E5%8F%A5%E5%9F%BA%E7%A1%80/date%E8%BD%AC%E6%8D%A2.png" alt="date转换"></p>
+<h4 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h4><p>nvl(a,b):将a中的空（null）换成b。<br>nvl2(a,b,c):将a中，不为空换成b，空换成c。<br>nullif(a,b):如果ab相同，返回null，不同则返回第一个表达式。<br>coalesce(a,…,n):返回第一个不为空的参数。  </p>
+<p>case:(case xxx<br>&ensp;&ensp;&ensp;&ensp;&ensp;when a then aa<br>&ensp;&ensp;&ensp;&ensp;&ensp;when b then bb<br>&ensp;&ensp;&ensp;&ensp;&ensp;else c end)  </p>
+<p>decode(x,a,aa,b,bb,c,cc):效果同上。  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解锁和登录scott用户</title>
+    <url>/2019/12/09/%E8%A7%A3%E9%94%81%E5%92%8C%E7%99%BB%E5%BD%95scott%E7%94%A8%E6%88%B7/</url>
+    <content><![CDATA[<h1 id="解锁和登录scott用户"><a href="#解锁和登录scott用户" class="headerlink" title="解锁和登录scott用户"></a>解锁和登录scott用户</h1><p>创建好数据库后登陆<br>命令运行sqlplus /nolog–无用户身份登录<br>运行 conn / as sysdba;  –连接数据库。<br>alter user sys identified by 密码;  –修改最高权限管理员密码<br>conn sys/密码 as sysdba;  –登录sys用户<br>alter user scott identified by 密码;  –修改scott用户密码<br>alter user scott account unlock;  –对用户scott解锁<br>conn scott/密码； –登录scott用户进行测试  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>oracle的卸载方法</title>
+    <url>/2019/12/09/oracle%E7%9A%84%E5%8D%B8%E8%BD%BD%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="Oracle的卸载"><a href="#Oracle的卸载" class="headerlink" title="Oracle的卸载"></a>Oracle的卸载</h1><p>来源于网络<br>用Oracle自带的卸载程序不能从根本上卸载Oracle，从而为下次的安装留下隐患，那么怎么才能完全卸载Oracle呢？<br>那就是直接注册表清除，步骤如下：<br>1、 开始－&gt;设置－&gt;控制面板－&gt;管理工具－&gt;服务<br>停止所有Oracle服务。<br>2、 开始－&gt;程序－&gt;Oracle - OraDb11g_home1－&gt;Oracle安装产品－&gt; Universal Installer<br>卸装所有Oracle产品，但Universal Installer本身不能被删除<br>3、 运行regedit，选择HKEY_LOCAL_MACHINE\SOFTWARE\ORACLE，按del键删除这个入口。<br>4、 运行regedit，删除以下这三个位置中的所有Oracle入口。<br>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\下所有Oracle删除<br>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\下所有Oracle删除<br>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\下所有Oracle删除<br>5、 运行regedit，<br>KEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\下所有Oracle删除，<br>删除所有Oracle入口。<br>6、 开始－&gt;设置－&gt;控制面板－&gt;系统－&gt;高级－&gt;环境变量<br>删除环境变量CLASSPATH和PATH中有关Oracle的设定<br>7、 从桌面上、STARTUP（启动）组、程序菜单中，删除所有有关Oracle的组和图标<br>8、 删除c:\Program Files\Oracle目录<br>9、 【重新启动计算机】，重起后才能完全删除Oracle所在目录<br>10、 删除与Oracle有关的文件，选择Oracle所在的缺省目录C:\Oracle，删除这个入口目录及所有子目录，并从Windows目录（一般为C:\WINDOWS）下删除oralce文件等等。<br>11、 在运行框中输入“win.ini”，回车。WIN.INI文件中若有[ORACLE]的标记段，删除该段<br>12、 【如有必要】，删除所有Oracle相关的ODBC的DSN<br>13、 到事件查看器中，删除Oracle相关的日志  </p>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML+CSS知识点（CSS部分）</title>
+    <url>/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88CSS%E9%83%A8%E5%88%86%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h1><h3 id="CSS样式书写方式"><a href="#CSS样式书写方式" class="headerlink" title="CSS样式书写方式"></a>CSS样式书写方式</h3><p>嵌入样式&lt; style &gt;&lt; /style &gt;里面<br>内联样式（行内式）写在style：” “里面<br>外联样式通过&lt; link rel=”stylesheet” href=”” &gt;引入<br>###样式  </p>
+<h3 id="width-宽"><a href="#width-宽" class="headerlink" title="width:宽"></a>width:宽</h3><h3 id="height-高"><a href="#height-高" class="headerlink" title="height:高"></a>height:高</h3><h3 id="padding-内边距-看情况可以参考margin"><a href="#padding-内边距-看情况可以参考margin" class="headerlink" title="padding:内边距(看情况可以参考margin)"></a>padding:内边距(看情况可以参考margin)</h3><h3 id="margin-外边距"><a href="#margin-外边距" class="headerlink" title="margin:外边距"></a>margin:外边距</h3><p>margin:10px;四个方向都是10px;<br>margin:10px 20px;上下10px 左右20px<br>margin:10px 20px 30px; 上10px 左右20px 下30px<br>margin:10px 20px 30px 40px 四个值上右下左<br>也可以单独书写某一个方向的值：margin-top: ;margin-left: ;margin-right: ;margin-bottom: ;<br>特殊情况盒子水平居中margin：100px  auto;盒子一定要有宽度。  </p>
+<h3 id="border-边框"><a href="#border-边框" class="headerlink" title="border:边框"></a>border:边框</h3><p>border，三个值 线粗细 线样式 线颜色.<br>3要素，4条边。<br>3要素：border-width、border-style(solid dashed dotted)、border-color；<br>4条边：border-top、border-right、border-bottom、border-left。  </p>
+<h3 id="Opacity：文字和背景都变"><a href="#Opacity：文字和背景都变" class="headerlink" title="Opacity：文字和背景都变"></a>Opacity：文字和背景都变</h3><p>###Background:背景<br>background: rgba(0, 0, 0, 1.0)背景变透明<br>包含四个值<br>1    background-color背景颜色<br>2    background-image背景图片<br>3    background-repeat是否平铺<br>4    background-position图片位置<br>5    background-size背景图片大小  </p>
+<p>line-height:行高。单行文字在盒子垂直居中<br>Text-align:center文字水平居中  </p>
+<h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><p>Font-size:字体大小；<br>Font-weight:bold加粗<br>Font-weight:normal正常<br>Font-style:italic;文字倾斜<br>Font-style:normal正常<br>Text-decoration:none不加下划线;<br>Text-decoration：underline下划线<br>Font-family:设置字体；<br>Color：文字颜色  </p>
+<h3 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h3><p>Display:none;隐藏<br>Display:block;转化成块级元素也可以是显示的意思<br>Display:inline;转化成行内元素<br>Display:inline-block转化成行内块<br>Cursor:pointer;小手；  </p>
+<h3 id="overflow-hiddden"><a href="#overflow-hiddden" class="headerlink" title="overflow:hiddden"></a>overflow:hiddden</h3><p>1、溢出隐藏（百度图片展示）<br>2、清除浮动影响（子级元素浮动之后，父级检测不到子级元素的高度，加此属性可以解决浮动影响）<br>3、解决外边距塌陷（子级元素接了上外边距之后父级跟着下来）<br>4、滚动条<br>Overflow-X:auto（hidden）出现滚动条或者溢出隐藏<br>Overflow-Y:auto（hidden）<br>盒子投影  </p>
+<h3 id="shadow"><a href="#shadow" class="headerlink" title="shadow"></a>shadow</h3><p>Box-shadow:水平方向光照 垂直方向的光照 羽化程度 颜色；<br>文本投影<br>Text-shadow: 水平方向光照 垂直方向的光照 羽化程度 颜色  </p>
+<h3 id="三大动画模块"><a href="#三大动画模块" class="headerlink" title="三大动画模块"></a>三大动画模块</h3><p>转化模块：<br>关键属性：Transform:<br>属性值：<br>Translate(0px,0px)<br>rotate(30deg)旋转<br>scale()缩放<br>值与值之间用空格隔开<br>也可以书写XYZ一个方向（具体参考音乐盒的制作）<br>Transform-origin:center center;旋转中心点。  </p>
+<h3 id="过渡模块"><a href="#过渡模块" class="headerlink" title="过渡模块"></a>过渡模块</h3><p>关键属性：<br>Transition：all 时间;<br>过渡模块书写步骤：（不是只有一种写法，可以通过增加删除类来控制，具体参考千寻案例）<br>1、    书写默认样式<br>2、    触发之后的样式：hover<br>3、    回到默认样式书写transition：all 时间（all也可以单独改成某一个属性:比如：width）  </p>
+<h3 id="动画模块："><a href="#动画模块：" class="headerlink" title="动画模块："></a>动画模块：</h3><p>关键属性：animation：name 时间 linear（平缓） infinite（循环）<br>使用步骤：  </p>
+<ol>
+<li>定义动画：@keyframes name {<br>a)    每一帧的状态<br>b)    每一帧都是一个样式条<br>}</li>
+<li>使用动画：animation：name 时间 linear（平缓） infinite（循环）  <h3 id="3D效果"><a href="#3D效果" class="headerlink" title="3D效果"></a>3D效果</h3>transform-style:preserve-3d可以让其内部的元素以该元素作为参照物进入三维坐标<br>Border-radius:5px;<br>出现圆角（可以四个不同的值：左上 右上 右下 左下）<br>Border-radius:50%;变成圆形<br>所有css3的属性前面都要加私有前缀：-moz-,-ms-,-o-,-webkit<br>也就是都要写五遍  <h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3>Float:left;左浮动：脱离标准流<br>Float:right;右浮动：脱离标准流<br>浮动之后的元素可以给宽高<br>浮动之后同级元素也要浮动<br>###相对定位<br>就是微调元素位置的。让元素相对自己原来的位置，进行位置调整。<br>相对定位不脱标，真实位置是在老家，只不过影子出去了，可以到处飘。<br>相对定位有坑，所以一般不用于做“压盖”效果。页面中，效果极小。就两个作用：<br>1） 微调元素<br>2） 做绝对定位的参考，子绝父相<br>一个绝对定位的元素，如果父辈元素中出现了也定位了的元素，那么将以父辈这个元素，为参考点。<br>要听最近的已经定位的祖先元素的，不一定是父亲，可能是爷爷：<br>不一定是相对定位，任何定位，都可以作为参考点<br>定位之后（固定或绝对）盒子居中<br>当做公式记忆下来。就是<br>left:50%; margin-left:负的宽度的一半。<br>top:50%; margin-top:负的高度的一半。<br>###固定定位<br>fixed,就是相对浏览器窗口定位。页面如何滚动，这个盒子显示的位置不变。<br>固定定位坐标！<br>###z-index<br>表示谁压着谁。数值大的压盖住数值小的。<br>● 只有定位了的元素，才能有z-index值。也就是说，不管相对定位、绝对定位、固定定位，都可以使用z-index值。而浮动的东西不能用。<br>● z-index值没有单位，就是一个正整数。默认的z-index值是0。<br>● 如果大家都没有z-index值，或者z-index值一样，那么谁写在HTML后面，谁在上面能压住别人。定位了的元素，永远能够压住没有定位的元素。  <h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3>标签(直接书写标签名字)<br>P{<br>}<br>Id（命名：id=””，选择的时候通过#ID名字，id具有唯一性，类似我们的身份证号码）  </li>
+</ol>
+<p>“#ID”名字{<br>}<br>类名（命名：class=””，选择的时候通过.类名字，类名可以重复，类似我们的名字）<br>.类名{<br>}<br>Div p 空格 后代<br>Div&gt;p子代<br>H3.special 交集选择器<br>H3,h1并集选择器<br>“*”通配符,选择所有标签<br>###继承性。<br>有一些属性给祖先元素，所有的后代元素都集成上了。<br>哪些属性能继承：color、font-、text-、line-<br>层叠性。<br>层叠性是一种能力，就是处理冲突的能力。当不同选择器，对一个标签的同一个样式，有不同的值，听谁的？这就是冲突。css有着严格的处理冲突的机制：<br>■ 选择上了，数权重，(id的数量，类的数量，标签的数量)。如果权重一样，谁写在后面听谁的。<br>■ 没有选择上，通过继承影响的，就近原则，谁描述的近听谁的。如果描述的一样近，比如选择器权重，如果权重再一样重，谁写在后面听谁的。  </p>
+<h3 id="important标记"><a href="#important标记" class="headerlink" title="!important标记"></a>!important标记</h3><p>!important提升的是一个属性，而不是一个选择器    </p>
+]]></content>
+      <tags>
+        <tag>前端部分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML+CSS知识点（HTML部分）</title>
+    <url>/2019/12/04/HTML-CSS%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88HTML%E9%83%A8%E5%88%86%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h1><hr>
+<h2 id="一般标签"><a href="#一般标签" class="headerlink" title="一般标签"></a>一般标签</h2><h3 id="p"><a href="#p" class="headerlink" title="p"></a>p</h3><p>段落标签，行内元素独占父级一行。  </p>
+<h3 id="Img"><a href="#Img" class="headerlink" title="Img"></a>Img</h3><p>图片标签，src属性：所要引入的图片，注意CSS文件是相对CSS自身的路径而JS文件是相对HTML的相对路径。  </p>
+<h3 id="a"><a href="#a" class="headerlink" title="a"></a>a</h3><p>超链接，实现页面的跳转。href:所跳转的目标文件或链接；Target=”_blank”：在新页面中打开；alt:鼠标移入显示的文字  </p>
+<h3 id="h1-h6"><a href="#h1-h6" class="headerlink" title="h1-h6"></a>h1-h6</h3><p>标题标签，1-6从大到小，一级到六级标签。  </p>
+<h3 id="video"><a href="#video" class="headerlink" title="video"></a>video</h3><p>视频标签，autoplay:若出现,视频就绪后立即播放；controls:若出现，向用户显示控件，播放按钮；loop:若出现，播放完毕后再次播放；muted:播放时静音；preload:若出现，在页面加载时加载，并预备播放。  </p>
+<h3 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h3><p>音频标签，controls：播放控制条；autoplay：自动播放。  </p>
+<h3 id="br"><a href="#br" class="headerlink" title="br"></a>br</h3><p>换行  </p>
+<h3 id="nobr"><a href="#nobr" class="headerlink" title="nobr"></a>nobr</h3><p>强制不换行  </p>
+<h3 id="pre"><a href="#pre" class="headerlink" title="pre"></a>pre</h3><p>双标签，按预设原文本书写格式。  </p>
+<h3 id="b"><a href="#b" class="headerlink" title="b"></a>b</h3><p>双标签，加粗。  </p>
+<h3 id="u"><a href="#u" class="headerlink" title="u"></a>u</h3><p>双标签，下划线。  </p>
+<h3 id="i"><a href="#i" class="headerlink" title="i"></a>i</h3><p>双标签，斜体。  </p>
+<h3 id="hr"><a href="#hr" class="headerlink" title="hr"></a>hr</h3><p>水平线。  </p>
+<h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><p>规定文字。  </p>
+<h3 id="span"><a href="#span" class="headerlink" title="span"></a>span</h3><p>小区域容器。  </p>
+<h3 id="div"><a href="#div" class="headerlink" title="div"></a>div</h3><p>大区域容器。  </p>
+<h3 id="dl-gt-dt-dd"><a href="#dl-gt-dt-dd" class="headerlink" title="dl&gt;dt+dd"></a>dl&gt;dt+dd</h3><p>列表，一般用于图文混排  </p>
+<h3 id="ul-gt-li"><a href="#ul-gt-li" class="headerlink" title="ul&gt;li"></a>ul&gt;li</h3><p>无序列表，我的淘宝。  </p>
+<h3 id="ol-gt-li"><a href="#ol-gt-li" class="headerlink" title="ol&gt;li"></a>ol&gt;li</h3><p>有序列表，轮播图。  </p>
+<h3 id="table-gt-tr-gt-th-gt-td"><a href="#table-gt-tr-gt-th-gt-td" class="headerlink" title="table&gt;tr&gt;th&gt;td"></a>table&gt;tr&gt;th&gt;td</h3><p>tr代表一行，th表头，td表格单元，table是包裹的容器。  </p>
+<h2 id="表单元素"><a href="#表单元素" class="headerlink" title="表单元素"></a>表单元素</h2><p>maxlength:限制长度；required:提交时必须填写；disabled:禁止操作；autofocus:自动聚焦；placeholder:默认显示的文本；seclected：默认选中；checked:多选框或者单选框；<br>input:类型：text输入框、password密码框、number数字框、radio单选、checkbox多选、button、submit、reset、range、color、date、week、month。  </p>
+<h3 id="select-gt-option"><a href="#select-gt-option" class="headerlink" title="select&gt;option"></a>select&gt;option</h3><p>下拉条  </p>
+<h3 id="标准文档流"><a href="#标准文档流" class="headerlink" title="标准文档流"></a>标准文档流</h3><p>说白了，就是一个“默认”状态。标准文档流中，标签分为两种：块级元素、行内元素。（块级元素垂直排列，行内元素水平排列）  </p>
+<h3 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h3><p>块级元素：一定是霸占一行的，能设置宽、高，不设置宽度默认就是占满父亲。div、p、h、li、ul  </p>
+<h3 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h3><p>行内元素：和其他行内元素并排，不能设置宽、高，默认宽度就是文字宽度。span、a、b、i、u   </p>
+<h3 id="容器级（块级）标签"><a href="#容器级（块级）标签" class="headerlink" title="容器级（块级）标签"></a>容器级（块级）标签</h3><p>里面可以放置任何东西。</p>
+<h3 id="文本级的标签"><a href="#文本级的标签" class="headerlink" title="文本级的标签"></a>文本级的标签</h3><p>只能放置文字、图片、表单元素。<strong>p标签是一个文本级标签，就要死死记住：p里面只能放文字、图片、表单元素。其他的一律不能放。再次强调，p是一个文本级的标签，p里面只能放文字、图片、表单元素 超链接。</strong><br>HTML5新特性：语义化标签（内容结构化）  </p>
+<table>
+<thead>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>header</td>
+<td>定义了文档的头部区域</td>
+</tr>
+<tr>
+<td>footer</td>
+<td>定义了文档的尾部区域</td>
+</tr>
+<tr>
+<td>nav</td>
+<td>定义文档的导航</td>
+</tr>
+<tr>
+<td>section</td>
+<td>定义文档中的节（section、区段）</td>
+</tr>
+<tr>
+<td>article</td>
+<td>定义页面独立的内容区域</td>
+</tr>
+<tr>
+<td>aside</td>
+<td>定义页面的侧边栏内容</td>
+</tr>
+<tr>
+<td>detailes</td>
+<td>用于描述文档或文档某个部分的细节</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>标签包含details 元素的标题</td>
+</tr>
+<tr>
+<td>dialog</td>
+<td>定义对话框，比如提示框</td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>前端部分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2019/12/04/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
