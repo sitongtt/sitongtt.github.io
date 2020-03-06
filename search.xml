@@ -1,6 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JDBC</title>
+    <url>/2020/03/06/JDBC/</url>
+    <content><![CDATA[<h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p>使用前提：在Oracle安装路径下找到classes12.jar文件，并复制粘贴到lib文件下，右键jar包–&gt;Build Path–&gt;Add Build Path<br>1.载入JDBC驱动程序  </p>
+<pre><code>Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;)；</code></pre><p>2.定义连接URL  </p>
+<pre><code>String url=&quot;jdbc:oracle:thin：@localhost:1521:orcl&quot;;//jdbc:oracle:thin:@&lt;主机名或IP&gt;：1521&lt;端口号&gt;： &lt;数据库名&gt;</code></pre><p>3.建立连接  </p>
+<pre><code>Connection conn=DriverManager.getConnection(url,&quot;scott&quot;,&quot;123456&quot;);
+System.out.println(conn)//连接成功！</code></pre><p>4.创建Statement对象  </p>
+<pre><code>Statement stat=conn.createStatment();</code></pre><p>5.执行查询或更新  </p>
+<pre><code>String sql=&quot;select empno,ename,job,hiredate from emp&quot;
+stat.execute(sql);
+//如果查询到的结果为ResultSet对象则返回true;
+//如果返回的是查询结果数或者不存在结果则返回false.
+stat.excuteQuery(sql);
+//适用于查询，返回一个ResultSet结果集。
+stat.excuteUpdate(sql);
+//适用于增删改查，返回操作改变的记录行数，如果返回0怎么说明修改不成功
+ResultSet re=stat.excuteQuery(sql);</code></pre><p>6.结果处理  </p>
+<pre><code>ArrayList&lt;Emp&gt; empList=new ArrayList&lt;&gt;();
+while(rs.next()){
+    Emp emp=new Emp();
+    //声明Emp对象
+    emp.setEmpno(rs.getInt(&quot;empno&quot;));
+    //将每个对象的属性提取出来并存储。
+    emplist.add(emp);
+    //把对象放进集合。
+}
+return empList;</code></pre><p>7.关闭连接 </p>
+<pre><code>finally{
+if(rs!=null){
+    rs.close();
+}
+if(conn!=null){
+    conn.close();
+}
+//检查一开始声明的对象是否放在try前面。
+} </code></pre><h4 id="参数绑定"><a href="#参数绑定" class="headerlink" title="参数绑定"></a>参数绑定</h4><p>sql语句中的参数用”？”代替  </p>
+<pre><code>stat.setInt(1,emp.getEmpno());
+//&quot;1&quot;代表第一个参数，&quot;emp.getEmpno()&quot;代表传进去的参数。</code></pre><h4 id="封装重复的连接过程"><a href="#封装重复的连接过程" class="headerlink" title="封装重复的连接过程"></a>封装重复的连接过程</h4><p>新建config文件夹–&gt;新建file,db.properties</p>
+<pre><code>#Oracle
+classDriver=oracle.jdbc.driver.OracleDriver
+url=jdbc:oracle:thin:@localhost:1521:orcl
+userName=scott
+passWord=123456</code></pre><p>新建DButil文件，封装连接过程。</p>
+<pre><code>package firstproject;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class DButil {
+
+    private static Properties properties = new Properties();
+
+    static {
+        Connection conn = null;
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+
+        try {
+            // 加载外部配置文档db.properties
+            properties.load(new FileInputStream(&quot;config/db.properties&quot;));
+
+            // 1.载入JDBC驱动程序
+            Class.forName(properties.getProperty(&quot;classDriver&quot;));
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    // 连接
+    public static Connection getConnection() {
+        try {
+            // 2.定义连接URL
+            String url = properties.getProperty(&quot;url&quot;);
+            String userName = properties.getProperty(&quot;userName&quot;);
+            String passWord = properties.getProperty(&quot;passWord&quot;);
+
+            // 3.建立连接
+            Connection conn = DriverManager.getConnection(url, userName, passWord);
+
+            // 4.返回连接
+            return conn;
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // 关闭连接
+    public static void close(Connection conn, PreparedStatement stat, ResultSet rs) {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            if (stat != null) {
+                stat.close();
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+}</code></pre>]]></content>
+      <tags>
+        <tag>JavaSE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>多线程</title>
     <url>/2020/03/05/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
