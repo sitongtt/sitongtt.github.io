@@ -1,6 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java Web(杂上)</title>
+    <url>/2020/03/06/Java-Web-%E6%9D%82%E4%B8%8A/</url>
+    <content><![CDATA[<h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>Servlet是基于Java语言的Web服务器端编程技术，按照Java EE规范定义，Servlet是运行在Servlet容器中的Java类，它能处理Web客户的HTTP请求，并产生HTTP响应。</p>
+<h2 id="Servlet的声明周期"><a href="#Servlet的声明周期" class="headerlink" title="Servlet的声明周期"></a>Servlet的声明周期</h2><p>实例化——&gt;初始化——&gt;处理服务——&gt;销毁</p>
+<h1 id="HttpServletRequest"><a href="#HttpServletRequest" class="headerlink" title="HttpServletRequest"></a>HttpServletRequest</h1><ol>
+<li>获取参数信息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">request.getParameter(&quot;参数名&quot;) ;</span></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>获取报头信息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">request.getHeader();</span></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>指定请求字符编码（解决post请求乱码问题）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">request.setChracterEnCoding(&quot;utf-8&quot;);</span></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>获取请求链接</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">request.getRequestURI();</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;为使用Servlet里的service方法做基础。</span></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>保存数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">request.setAttribute();</span></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>获取数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">request.getAttribute();</span></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>删除数据</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">request.removeAttribute();</span></pre></td></tr></table></figure>
+
+
+<a id="more"></a>
+
+
+<h1 id="get和post的区别"><a href="#get和post的区别" class="headerlink" title="get和post的区别"></a>get和post的区别</h1><ul>
+<li>地址栏<br>get将参数显示在地址栏中，post地址栏不可见参数，将参数带在请求数据中</li>
+<li>安全性<br>get请求（查阅）&lt;post请求（新增、删除、修改）</li>
+<li>效率<br>get请求&gt;post请求</li>
+<li>编码方式<br>get默认编码格式是ISO-8859-1，post请求报头默认编码格式是ISO-8859-1，请求数据体编码格式是页面的编码格式</li>
+<li>传递参数大小<br>get请求，2kb；post请求默认不限制,通常在服务器中使用代码限制。</li>
+</ul>
+<h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>==这一块东西有点多以后补充吧==</p>
+<h2 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h2><p>在内存中仅存一个对象，只能new一次。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>优点</li>
+</ul>
+<ol>
+<li>节省内存开销</li>
+<li>能共享一个对象<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2></li>
+<li>构造函数私有化</li>
+<li>自身创建一个对象，</li>
+<li>对外提供公共方法，返回当前对象</li>
+</ol>
+<h1 id="web层共享数据的范围"><a href="#web层共享数据的范围" class="headerlink" title="web层共享数据的范围"></a>web层共享数据的范围</h1><ul>
+<li><p>应用对象：ServletContext application<br>使用范围：同一服务器，不同客户端，均可以共享对象里的数据，当服务器重启时，数据失效。（使用场景：查看当前在线人数等）</p>
+</li>
+<li><p>会话对象：HttpSession session<br>使用范围：同一服务器，同一客户端，均可以共享该对象里的数据，当浏览器关闭时失效。（使用场景：保存当前登录用户信息，购物车信息等）</p>
+</li>
+<li><p>请求对象：HttpServletRequest request<br>使用范围：同一服务器，同一客户端，共享该对象中的数据，当发起请求时，数据失效。（使用场景：登录等页面信息，也可以保存校验信息）</p>
+</li>
+<li><p>页面对象：PageContext page<br>适用范围：同一服务器，同一客户端，同一个页面中，共享该对象数据，一旦页面刷新或跳转，数据失效。（使用场景：较少）</p>
+</li>
+</ul>
+<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><p>本质还是servlet。</p>
+<h2 id="JSP的声明周期"><a href="#JSP的声明周期" class="headerlink" title="JSP的声明周期"></a>JSP的声明周期</h2><p>编译阶段（编译为servlet）——初始化阶段（初始化servlet）——执行阶段——销毁阶段</p>
+<h2 id="JSP脚本元素"><a href="#JSP脚本元素" class="headerlink" title="JSP脚本元素"></a>JSP脚本元素</h2><ul>
+<li>声明  </li>
+</ul>
+<p>定义成员变量和成员方法,全局变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%! int i&#x3D;100; %&gt;</span></pre></td></tr></table></figure>
+
+<ul>
+<li>注释  </li>
+</ul>
+<p>不被翻译，不被编译，没啥用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%-- hello --%&gt;</span></pre></td></tr></table></figure>
+<p>被翻译，不被编译，原原本本发到客户端</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt; !-- hello --&gt;</span></pre></td></tr></table></figure>
+<p>被翻译，不编译，不在相应文件内容中</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%&#x2F;* hello *&#x2F;%&gt;</span></pre></td></tr></table></figure>
+
+<ul>
+<li><p>表达式（注意结尾不要有分号）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%&#x3D; %&gt;</span></pre></td></tr></table></figure>
+</li>
+<li><p>脚本段（里面写Java代码）</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%int a&#x3D;1; %&gt;</span></pre></td></tr></table></figure>
+
+<h2 id="三大指令"><a href="#三大指令" class="headerlink" title="三大指令"></a>三大指令</h2><ul>
+<li>page  </li>
+</ul>
+<ol>
+<li>定义了脚本语言的类型：language=”java”</li>
+<li>告诉浏览器对html页面的内容采用哪种编码格式：</li>
+<li>告诉浏览器复渠段返回的内容的编码格式：contentType</li>
+</ol>
+<ul>
+<li><p>include<br>组合JSP页面</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%@include file&#x3D;&quot;&#x2F;page&#x2F;index.jsp&quot;%&gt;</span></pre></td></tr></table></figure>
+</li>
+<li><p>taglib<br>在我们查询用户信息时，我们用来遍历数据库中查询出来的多条记录,要jstl.jar包</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%@taglib uri&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;jsp&#x2F;jstl&#x2F;core&quot; prefix&#x3D;&quot;c&quot;%&gt;</span></pre></td></tr></table></figure>
+
+<h2 id="九大内置对象"><a href="#九大内置对象" class="headerlink" title="九大内置对象"></a>九大内置对象</h2><ul>
+<li>application<br>同一服务器，不同客户端，均可以共享对象里的数据，当服务器重启时，数据失效。</li>
+<li>session<br>同一服务器，同一客户端，均可以共享该对象里的数据，当浏览器关闭时失效。<br>session有效期设置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;session-config&gt;</span></pre></td></tr><tr><td class="code"><pre><span class="line">	&lt;session&#x3D;timeout&gt;30&lt;&#x2F;session&#x3D;timeout&gt; &lt;!--默认以秒为单位--&gt;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&lt;&#x2F;session-config&gt;</span></pre></td></tr></table></figure>
+
+<ul>
+<li>request<br>同一服务器，同一客户端，共享该对象中的数据，当发起请求时，数据失效。</li>
+<li>pageContext<br>同一服务器，同一客户端，同一个页面中，共享该对象数据，一旦页面刷新或跳转，数据失效。</li>
+<li>out</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">out.print：字符</span></pre></td></tr><tr><td class="code"><pre><span class="line">our.write:字节码</span></pre></td></tr></table></figure>
+
+<ul>
+<li>config<br>与当前JSP页面的Servlet对应的ServletConfig对象。</li>
+<li>exception<br>其他地方抛出的Throwable对象，仅当&lt;%@pageisErrorPage=”True”%&gt;时有效。</li>
+<li>page<br>指向页面自身的方式，相当于this关键字。</li>
+<li>response<br>当前响应对象。</li>
+<li>Cookie<br>不安全、保存在磁盘、有效期自己设定。<br>设置步骤：  </li>
+</ul>
+<ol>
+<li>获取Cookie</li>
+<li>设置Cookie的有效期</li>
+<li>设置保存项目路径</li>
+<li>返回Cookie信息给客户端</li>
+<li>获取Cookie</li>
+<li>清除session和cookie</li>
+</ol>
+<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><p>用法感觉有点像jquery，${…}<br>==详细请参考网络，我就写一些常用的==</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>访问作用域对象（pageContext,request,session,application）</li>
+<li>简单的计算。，输出到浏览器  </li>
+</ol>
+<p><strong>注意:</strong>  </p>
+<p><strong>当我们访问的内容不存在时，输出一个空字符串：””,jsp中输出null;</strong>   </p>
+<p><strong>Set不能通过下标值获取，因为其没有下标值</strong></p>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><table>
+<thead>
+<tr>
+<th>关系运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==或eq</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>!=或ne</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>&lt;或lt</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&gt;或gt</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&lt;=或le</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>&gt;=或ge</td>
+<td>大于等于</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>逻辑运算符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&amp;&amp;或and</td>
+<td>与</td>
+</tr>
+<tr>
+<td>or</td>
+<td>或</td>
+</tr>
+<tr>
+<td>!或not</td>
+<td>非</td>
+</tr>
+</tbody></table>
+<h2 id="c标签"><a href="#c标签" class="headerlink" title="c标签"></a>c标签</h2><p>导入jstl.jar包</p>
+<h3 id="常见标签"><a href="#常见标签" class="headerlink" title="常见标签"></a>常见标签</h3><ul>
+<li>&lt;c:out&gt;<br>用于在JSP中显示数据，就像&lt;%= … &gt;</li>
+<li>&lt;c:set&gt;<br>用于保存数据</li>
+<li>&lt;c:remove&gt;<br>用于删除数据</li>
+<li>&lt;c:if&gt;<br>和平时if一样，不过没有else</li>
+<li>&lt;c:forEach&gt;<br>基础迭代标签，接受多种集合类型</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Java Web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JDBC</title>
     <url>/2020/03/06/JDBC/</url>
     <content><![CDATA[<h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><p>使用前提：在Oracle安装路径下找到classes12.jar文件，并复制粘贴到lib文件下，右键jar包–&gt;Build Path–&gt;Add Build Path<br>1.载入JDBC驱动程序  </p>
